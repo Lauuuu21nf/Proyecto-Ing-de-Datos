@@ -1,3 +1,3 @@
-#Módulo capacitación
+# Módulo capacitación
 
 El modulo capacitación tiene atributos como: codigoCapacitacion, tema, responsables, fechaYHora, lugar y asistenciaProgramada. Ademas, tiene algunos metodos importantes como: crearCapacitacion(), validarCodigoCapacitacion(), consultarFechaHoraCapacitacion(), modificarProgramaCapacitacion(), consultarModalidadCapacitacion(), consultarAsistenciaProgramadaCapacitacion() y consultarListaResponsablesCapacitacion(). 
