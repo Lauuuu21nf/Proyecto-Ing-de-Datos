@@ -57,8 +57,11 @@ CREATE TABLE Capacitacion (
     Tema VARCHAR(255) NOT NULL,
     Actividad TEXT,
     ID_Programa INT NOT NULL,
-    FOREIGN KEY (ID_Programa) REFERENCES Programa(ID_Programa)
+    ID_Usuario INT NOT NULL,
+    FOREIGN KEY (ID_Programa) REFERENCES Programa(ID_Programa),
+    FOREIGN KEY (ID_Usuario) REFERENCES Usuario(ID_Usuario)
 );
+
 
 -- Tabla Puente M:N
 CREATE TABLE Capacitacion_Responsable (
