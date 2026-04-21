@@ -3,6 +3,7 @@
 -- DDL BASADO ESTRICTAMENTE EN EL MODELO LÓGICO (JPG)
 -- ==============================================================================
 
+
 CREATE DATABASE IF NOT EXISTS sst_tgi;
 USE sst_tgi;
 
@@ -92,11 +93,4 @@ CREATE TABLE Asistencia (
     Documento_Trabajador VARCHAR(20) NOT NULL,
     FOREIGN KEY (ID_Programacion) REFERENCES Programacion(ID_Programacion),
     FOREIGN KEY (Documento_Trabajador) REFERENCES Trabajador(Documento_ID)
-);
-
-CREATE TABLE Accidente (
-    ID_Accidente INT AUTO_INCREMENT PRIMARY KEY,
-    Descripcion TEXT NOT NULL,
-    ID_Programacion INT NOT NULL,
-    FOREIGN KEY (ID_Programacion) REFERENCES Programacion(ID_Programacion)
 );
