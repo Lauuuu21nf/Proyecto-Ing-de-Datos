@@ -639,3 +639,85 @@ BEGIN
 	END IF;
 END //
 DELIMITER ;
+
+-- RQF053: Calcular porcentaje de cumplimiento de asistencia por rango de fecha en las capacitaciones de un programa
+DELIMITER //
+CREATE FUNCTION fn_num_asistentes_fechas(
+	p_id_programa INT,
+    p_fecha_inicio DATE,
+    p_fecha_fin DATE
+)
+RETURNS INT
+DETERMINISTIC
+READS SQL DATA
+BEGIN
+	DECLARE v_numAsistentes INT;
+    
+    SELECT COUNT(a.idAsistencia) INTO v_numAsistentes
+    FROM asistencia a
+	INNER JOIN Programacion pr on pr.idProgramacion = a.idProgramacionFK
+	INNER JOIN Capacitacion c on pr.idCapacitacionFK = c.idCapacitacion
+	INNER JOIN Programa p on c.idProgramaFK = p.idPrograma
+	WHERE	asistio = 1 AND p.idPrograma = p_id_programa AND
+							(a.fechaDeAsistencia BETWEEN p_fecha_inicio AND p_fecha_fin);
+                            
+	RETURN v_numAsistentes;
+END //
+DELIMITER ;
+DROP FUNCTION fn_asistencia_programada_fechas;
+DELIMITER //
+CREATE FUNCTION fn_asistencia_programada_fechas(
+	p_id_programa INT,
+    p_fecha_inicio DATE,
+    p_fecha_fin DATE
+)
+RETURNS INT
+DETERMINISTIC
+READS SQL DATA
+BEGIN
+	DECLARE v_asistenciaProgramada INT;
+    
+	SELECT	COUNT(a.idAsistencia) INTO v_asistenciaProgramada
+			FROM programa p
+			INNER JOIN Capacitacion c on p.idPrograma = c.idProgramaFK
+			INNER JOIN Programacion pr on pr.idCapacitacionFK = c.idCapacitacion
+            INNER JOIN Asistencia a on a.idProgramacionFK = pr.idProgramacion
+            WHERE p.idPrograma = p_id_programa 
+			AND (pr.fechaProgramada BETWEEN p_fecha_inicio AND p_fecha_fin);
+    
+    RETURN v_asistenciaProgramada;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE FUNCTION fn_porcentaje_cumplimiento_fechas(
+	p_id_programa INT,
+    p_fecha_inicio DATE,
+    p_fecha_fin DATE
+)
+RETURNS DECIMAL(3,2)
+DETERMINISTIC
+READS SQL DATA
+BEGIN
+	DECLARE v_asistenciaProgramada INT;
+    DECLARE v_numAsistentes INT;
+    DECLARE v_porcentaje DECIMAL(5,2);
+    
+	SET v_asistenciaProgramada = fn_asistencia_programada_fechas(p_id_programa, p_fecha_inicio, p_fecha_fin);
+    
+    SET v_numAsistentes = fn_num_asistentes_fechas(p_id_programa, p_fecha_inicio, p_fecha_fin);
+    
+    SET v_porcentaje = (v_asistenciaProgramada/v_numAsistentes)*100;
+    
+    RETURN v_porcentaje;
+END //
+DELIMITER ;
+
+SELECT 	nombrePrograma,
+		COUNT(c.idCapacitacion) AS NumCapacitaciones,
+		fn_num_asistentes_fechas(7,'2026-01-01','2026-12-31') as NumAsistentes,
+        fn_asistencia_programada_fechas(7,'2026-01-01','2026-12-31') as AsistenciaProgramada, 
+		fn_porcentaje_cumplimiento_fechas(7,'2026-01-01','2026-12-31') as PorcentajeCumplimiento
+FROM programa p
+INNER JOIN capacitacion c ON c.idProgramaFK = p.idPrograma
+WHERE p.idPrograma = 7;
