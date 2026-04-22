@@ -1,0 +1,51 @@
+duracion,tema,actividad,asistenciaProgramada,accidentesAsociados,idUsuarioFK,idProgramaFK
+8.0,Uso y verificación de EPP para alturas,Revisión de equipos de protección personal,20,0,1,1
+16.0,Trabajo en cuerdas y sistemas de anclaje,Entrenamiento en técnicas de ascenso y descenso,15,0,1,1
+4.0,Rescate en alturas,Simulacro de rescate en estructura elevada,12,1,2,1
+6.0,Manejo defensivo en vías rurales,Conducción segura en terrenos difíciles,18,0,1,2
+4.0,Normativa de tránsito para conductores,Revisión de código nacional de tránsito,25,0,2,2
+8.0,Fatiga al volante y factores de riesgo,Análisis de accidentes por fatiga,10,0,1,2
+6.0,Riesgo eléctrico en baja tensión,Identificación de peligros eléctricos domésticos,30,0,2,3
+8.0,Bloqueo y etiquetado LOTO,Procedimiento estándar LOTO en campo,14,0,1,3
+4.0,Primeros auxilios en electrocución,Atención inmediata ante contacto eléctrico,22,2,2,3
+12.0,Entrenamiento trabajador entrante,Procedimientos de ingreso a espacio confinado,16,0,1,4
+8.0,Entrenamiento vigías,Funciones y responsabilidades del vigía,16,0,2,4
+6.0,Equipos de rescate en espacios confinados,Uso de trípode y arnés en extracción,10,1,1,4
+4.0,Hábitos de vida saludable,Actividad física y descanso adecuado,35,0,2,5
+3.0,Alimentación saludable en campo,Nutrición básica para trabajadores en turno,28,0,1,5
+2.0,Riesgo cardiovascular y estrés laboral,Control del estrés y signos de alerta,40,0,2,5
+8.0,Almacenamiento seguro de químicos,Clasificación SGA y fichas de seguridad,18,0,1,6
+6.0,Uso de EPP químico,Selección y mantenimiento de EPP para químicos,15,0,2,6
+4.0,Respuesta ante derrames,Plan de acción ante derrame de sustancias,20,0,1,6
+10.0,Sistemas de detención de caídas,Tipos de arnés y puntos de anclaje,22,0,2,7
+6.0,Inspección de líneas de vida,Criterios de retiro y mantenimiento,17,0,1,7
+4.0,Caídas al mismo nivel,Identificación de superficies resbaladizas,30,0,2,7
+8.0,RCP y desfibrilación,Técnica de RCP y uso del DEA,25,0,1,8
+6.0,Manejo de heridas y quemaduras,Curación básica y clasificación de quemaduras,20,0,2,8
+4.0,Triaje en campo,Clasificación de víctimas en emergencias masivas,12,0,1,8
+10.0,Uso y mantenimiento de extintores,Tipos de fuego y agentes extintores,28,0,2,9
+8.0,Evacuación y brigada contra incendios,Plan de evacuación y roles de la brigada,32,0,1,9
+6.0,Sistemas fijos de supresión,Fundamentos de rociadores y CO2,14,0,2,9
+4.0,Higiene postural en oficina,Ajuste de puesto de trabajo y pausas activas,45,0,1,10
+6.0,Manejo manual de cargas,Técnica segura de levantamiento y transporte,38,0,2,10
+8.0,Desórdenes musculoesqueléticos,Identificación y prevención de DME en campo,22,0,1,10
+5.0,Señalización y demarcación en alturas,Zonas de peligro y acceso restringido,18,0,2,1
+3.0,Check-list de inspección preoperacional,Diligenciamiento de formatos de pre-op,20,0,1,2
+6.0,Riesgo eléctrico en alta tensión,Distancias de seguridad y permisos de trabajo,10,0,2,3
+4.0,Atmosferas peligrosas en espacios confinados,Medición de gases y niveles permisibles,14,0,1,4
+3.0,Pausas activas y bienestar,Ejercicios de estiramiento para jornada laboral,50,0,2,5
+8.0,Gestión de residuos químicos peligrosos,Disposición final y manifiestos de residuos,16,0,1,6
+6.0,Protección de bordes y perímetros,Instalación de barandas y mallas de seguridad,12,0,2,7
+4.0,Botiquín de primeros auxilios,Inventario y uso correcto de insumos,30,0,1,8
+10.0,Plan de emergencia contra incendio,Simulacro integral de emergencia,20,0,2,9
+6.0,Vibración y ruido ocupacional,Efectos en salud y medidas de control,25,0,1,10
+4.0,Investigación de incidentes,Metodología de árbol de causas,18,0,2,1
+8.0,Conducción en vías de alto riesgo,Manejo en zonas de conflicto y clima adverso,14,0,1,2
+3.0,Medidas de prevención de arco eléctrico,Equipos de protección contra arco,10,0,2,3
+6.0,Permisos de trabajo en espacios confinados,Diligenciamiento y aprobación de permisos,15,0,1,4
+4.0,Tabaquismo y consumo de alcohol en trabajo,Política de sustancias psicoactivas,35,0,2,5
+6.0,Fichas de datos de seguridad FDS,Lectura e interpretación de FDS,20,0,1,6
+8.0,Trabajo en andamios,Montaje seguro y puntos críticos de andamios,12,0,2,7
+4.0,Hipotermia e insolación en campo,Reconocimiento y atención de emergencias térmicas,18,0,1,8
+10.0,Detección temprana de incendios,Sistemas de detección y alarma,22,0,2,9
+6.0,Iluminación y confort visual,Condiciones lumínicas en puesto de trabajo,28,0,1,10

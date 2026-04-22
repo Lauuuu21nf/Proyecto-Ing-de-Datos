@@ -1,0 +1,71 @@
+fechaProgramada,horaProgramada,lugarProgramado,modalidadProgramada,idCapacitacionFK,estadoProgramacion
+2026-03-25,07:00:00,Sede Administrativa Central - Sala A,presencial,29,realizada
+2026-03-26,07:30:00,Sala de Capacitaciones Barrancabermeja,virtual,30,realizada
+2026-03-27,08:00:00,Auditorio Sede Norte Bogota,presencial,31,realizada
+2026-03-28,08:30:00,Centro de Entrenamiento Vasconia,virtual,32,realizada
+2026-03-29,09:00:00,Sala Virtual - Teams,presencial,33,realizada
+2026-03-30,09:30:00,Campo Cogua - Area Externa,virtual,34,realizada
+2026-03-31,10:00:00,Sala de Juntas Cali,presencial,35,realizada
+2026-04-01,13:00:00,Auditorio Sede Medellin,virtual,36,realizada
+2026-04-02,13:30:00,Centro Logistico Cartagena - Sala B,presencial,38,realizada
+2026-04-03,14:00:00,Sede Campo Yopal - Carpa Principal,virtual,39,realizada
+2026-04-04,14:30:00,Planta Compresora Occidente - Sala Tecnica,presencial,40,realizada
+2026-04-05,15:00:00,Sala Virtual - Zoom,virtual,41,realizada
+2026-04-06,15:30:00,Sede Bucaramanga - Aula 2,presencial,42,realizada
+2026-04-07,16:00:00,Area de Entrenamiento Meta,virtual,43,cancelada
+2026-04-08,17:00:00,Sede Administrativa Central - Sala A,presencial,45,realizada
+2026-04-09,17:30:00,Sala de Capacitaciones Barrancabermeja,virtual,46,realizada
+2026-04-10,07:00:00,Auditorio Sede Norte Bogota,presencial,47,realizada
+2026-04-11,07:30:00,Centro de Entrenamiento Vasconia,virtual,48,cancelada
+2026-04-12,08:00:00,Sala Virtual - Teams,presencial,49,realizada
+2026-04-13,08:30:00,Campo Cogua - Area Externa,virtual,50,realizada
+2026-04-14,09:00:00,Sala de Juntas Cali,presencial,1,cancelada
+2026-04-15,09:30:00,Auditorio Sede Medellin,virtual,1,realizada
+2026-04-16,10:00:00,Centro Logistico Cartagena - Sala B,presencial,2,cancelada
+2026-04-17,13:00:00,Sede Campo Yopal - Carpa Principal,virtual,2,realizada
+2026-04-18,13:30:00,Planta Compresora Occidente - Sala Tecnica,presencial,3,realizada
+2026-04-19,14:00:00,Sala Virtual - Zoom,virtual,3,realizada
+2026-04-20,14:30:00,Sede Bucaramanga - Aula 2,presencial,4,realizada
+2026-04-21,15:00:00,Area de Entrenamiento Meta,virtual,4,realizada
+2026-03-25,15:30:00,Sede Administrativa Central - Sala A,presencial,5,realizada
+2026-03-26,16:00:00,Sala de Capacitaciones Barrancabermeja,virtual,5,realizada
+2026-03-27,17:00:00,Auditorio Sede Norte Bogota,presencial,6,realizada
+2026-03-28,17:30:00,Centro de Entrenamiento Vasconia,virtual,6,realizada
+2026-03-29,07:00:00,Sala Virtual - Teams,presencial,8,realizada
+2026-03-30,07:30:00,Campo Cogua - Area Externa,virtual,8,realizada
+2026-03-31,08:00:00,Sala de Juntas Cali,presencial,9,realizada
+2026-04-01,08:30:00,Auditorio Sede Medellin,virtual,9,realizada
+2026-04-02,09:00:00,Centro Logistico Cartagena - Sala B,presencial,10,realizada
+2026-04-03,09:30:00,Sede Campo Yopal - Carpa Principal,virtual,10,realizada
+2026-04-04,10:00:00,Planta Compresora Occidente - Sala Tecnica,presencial,11,realizada
+2026-04-05,13:00:00,Sala Virtual - Zoom,virtual,11,realizada
+2026-04-06,13:30:00,Sede Bucaramanga - Aula 2,presencial,12,realizada
+2026-04-07,14:00:00,Area de Entrenamiento Meta,virtual,12,realizada
+2026-04-08,14:30:00,Sede Administrativa Central - Sala A,presencial,13,realizada
+2026-04-09,15:00:00,Sala de Capacitaciones Barrancabermeja,virtual,13,realizada
+2026-04-10,15:30:00,Auditorio Sede Norte Bogota,presencial,15,realizada
+2026-04-11,16:00:00,Centro de Entrenamiento Vasconia,virtual,15,realizada
+2026-04-12,17:00:00,Sala Virtual - Teams,presencial,16,realizada
+2026-04-13,17:30:00,Campo Cogua - Area Externa,virtual,16,cancelada
+2026-04-14,07:00:00,Sala de Juntas Cali,presencial,17,realizada
+2026-04-15,07:30:00,Auditorio Sede Medellin,virtual,17,realizada
+2026-04-16,08:00:00,Centro Logistico Cartagena - Sala B,presencial,18,cancelada
+2026-04-17,08:30:00,Sede Campo Yopal - Carpa Principal,virtual,18,realizada
+2026-04-23,09:00:00,Planta Compresora Occidente - Sala Tecnica,presencial,19,programada
+2026-04-24,09:30:00,Sala Virtual - Zoom,virtual,19,programada
+2026-04-25,10:00:00,Sede Bucaramanga - Aula 2,presencial,20,programada
+2026-04-26,13:00:00,Area de Entrenamiento Meta,virtual,20,programada
+2026-04-27,13:30:00,Sede Administrativa Central - Sala A,presencial,21,programada
+2026-04-28,14:00:00,Sala de Capacitaciones Barrancabermeja,virtual,21,programada
+2026-04-29,14:30:00,Auditorio Sede Norte Bogota,presencial,22,programada
+2026-04-30,15:00:00,Centro de Entrenamiento Vasconia,virtual,22,programada
+2026-05-01,15:30:00,Sala Virtual - Teams,presencial,24,programada
+2026-05-02,16:00:00,Campo Cogua - Area Externa,virtual,24,programada
+2026-05-03,17:00:00,Sala de Juntas Cali,presencial,25,programada
+2026-05-04,17:30:00,Auditorio Sede Medellin,virtual,25,programada
+2026-05-05,07:00:00,Centro Logistico Cartagena - Sala B,presencial,26,programada
+2026-05-06,07:30:00,Sede Campo Yopal - Carpa Principal,virtual,26,programada
+2026-05-07,08:00:00,Planta Compresora Occidente - Sala Tecnica,presencial,27,programada
+2026-05-08,08:30:00,Sala Virtual - Zoom,virtual,27,cancelada
+2026-05-09,09:00:00,Sede Bucaramanga - Aula 2,presencial,28,programada
+2026-05-10,09:30:00,Area de Entrenamiento Meta,virtual,28,programada

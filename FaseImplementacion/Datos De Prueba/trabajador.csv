@@ -1,0 +1,69 @@
+nombreTrabajador,empresaDondeTrabaja,documentoTrabajador,idCentroTrabajoFK,idCargoFK
+Carlos Andres Peña Rios,TGI,1045678901,1,3
+Maria Fernanda Lopez Arce,TGI,1032456789,1,12
+Jorge Enrique Molina Vega,TGI,79456123,2,1
+Luis Alfredo Torres Gomez,TGI,80134567,2,2
+Diana Marcela Ruiz Herrera,TGI,1076543210,3,7
+Andres Felipe Castro Mora,TGI,1023456789,3,6
+Sandra Patricia Vargas Diaz,TGI,52678901,4,8
+Ricardo Emilio Suarez Leon,TGI,71234890,4,3
+Paula Andrea Jimenez Cruz,TGI,1098765432,5,9
+John Freddy Ramirez Pinto,TGI,91234567,5,10
+Angela Maria Ospina Soto,TGI,1065432198,6,11
+Hector Fabio Mendoza Ruiz,TGI,79012345,6,18
+Viviana Paola Guerrero Alba,TGI,1054321987,7,5
+Camilo Augusto Nieto Ramos,TGI,80876543,7,23
+Beatriz Elena Cardona Meza,TGI,43876543,8,19
+Oscar Ivan Calderon Pena,TGI,79543210,8,22
+Liliana Marcela Reyes Cano,TGI,1087654321,9,4
+Ferney Andres Aguilar Leal,TGI,91876543,9,1
+Natalia Esperanza Vidal Torres,TGI,1043219876,10,7
+Juan Pablo Morales Blanco,TGI,80654321,10,13
+Gloria Ines Acosta Pineda,TGI,43210987,11,24
+Manuel Eduardo Florez Rangel,TGI,91654321,11,16
+Adriana Cecilia Sepulveda Marin,TGI,52109876,12,12
+Roberto Carlos Gomez Alvarado,TGI,79876543,12,20
+Paola Milena Sanchez Duarte,TGI,1076512345,13,29
+Eduardo Antonio Parra Quintero,TGI,80321098,13,21
+Claudia Patricia Bermudez Perez,TGI,52876543,14,11
+Nicolas Arturo Velez Castillo,TGI,1067891234,14,15
+Marcela Johana Rojas Contreras,TGI,1089012345,15,5
+Felipe Ernesto Arango Salcedo,TGI,91012345,15,2
+Yesenia Carolina Gutierrez Franco,TGI,1023487650,16,25
+Mauricio Hernan Cano Naranjo,TGI,80567890,16,26
+Sergio Alejandro Blanco Montes,TGI,1056789012,17,1
+Maria Alejandra Quintero Hoyos,TGI,1098012345,17,4
+Jairo Andres Montoya Rivera,TGI,79098765,18,23
+Leidy Tatiana Cortes Pedraza,TGI,1034567809,18,12
+Giovanny Andres Muñoz Mora,TGI,80789012,19,19
+Luz Marina Olarte Bautista,TGI,51234567,19,8
+Daniel Fernando Posada Arias,TGI,1045312678,20,10
+Alba Lucia Pineda Ceballos,TGI,43678901,20,7
+Rodrigo Enrique Pacheco Garzon,Contratista Externo,80012345,5,9
+Javier Mauricio Lozano Arias,Contratista Externo,79345678,8,22
+Sonia Esperanza Barrera Suarez,Contratista Externo,52456789,2,11
+Henry Eliecer Zapata Torres,Contratista Externo,91456789,13,2
+Juliana Andrea Castillo Mora,Contratista Externo,1056012345,1,6
+Ivan Dario Herrera Ceron,TGI,80234567,6,14
+Tatiana Lorena Bedoya Monsalve,TGI,1078901234,7,25
+Gabriel Andres Silva Palacios,TGI,79901234,3,16
+Pilar Constanza Orjuela Medina,TGI,43901234,9,27
+Andres Camilo Garzon Velasquez,TGI,1067012345,4,17
+Yuri Alexandra Cardenas Blanco,TGI,1089123456,10,5
+Carlos Mario Acevedo Torres,TGI,80456781,11,20
+Lina Maria Buritica Lopez,TGI,1021234569,14,29
+Juan Camilo Ochoa Sanchez,TGI,1045601234,16,3
+Dario Hernando Vasquez Pinto,TGI,79234561,17,23
+Ana Milena Chaparro Rincon,TGI,52789015,12,8
+Omar Ferney Quintero Diaz,TGI,91789012,18,10
+Esperanza Margarita Leon Avila,TGI,43123459,19,24
+William Andres Ramirez Calderon,Contratista Externo,80901238,20,1
+Diana Carolina Trujillo Ospina,Contratista Externo,1032109876,6,15
+Alexander Javier Rios Bermudez,TGI,79678903,7,18
+Claudia Ximena Montano Herrera,TGI,52345671,15,12
+Santiago Andres Pinto Guerrero,TGI,1056892345,3,6
+Maria Camila Suarez Nieto,TGI,1098234567,5,7
+Victor Hugo Zuluaga Marin,TGI,91123456,13,21
+Laura Vanessa Moreno Pena,TGI,1043098765,2,4
+Nicolas Esteban Diaz Uribe,TGI,1078012349,17,13
+Zulema Patricia Vargas Cano,TGI,43456790,8,26

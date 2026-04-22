@@ -1,0 +1,38 @@
+Orden de carga:
+
+Cargo
+Centro_Trabajo
+Programa
+Responsable
+Usuario
+Trabajador
+Capacitacion
+detalleCapacitacion
+Programacion
+Asistencia
+
+Prompt 1: Generación de 6 de 10 tablas:
+
+Seguimos con el proyecto de ingeniería de datos en SST. En el archivo 'tgiTablas.sql' está la creación de todas las tablas del modelo lógico (MR) que se obtuvo después de hacer normalización en el UML ('UML Diagrama de Clases Texto Plano.txt'). Necesito csv para probar la inserción a las tablas. Usaré el Import Wizard de MySQL. Necesito específicamente datos de prueba:
+
+1. 20 centros de trabajo con ciudades colombianas, algunas repetidas dos o más veces. Nombres variando entre cosas diferentes (ej: Sede administrativa IV, o Sede Operacional Barrancabermeja,etc.) o cosas por el estilo.
+2. 30 cargos que podrían tener trabajadores de una empresa de gas internacional variados (líder mecánico, ayudante mecánico, brigadista, conductor, etc.)
+3. 70 registros completos de trabajador, con una buena variedad en centros de trabajo y cargos, usando necesariamente los que se crearon anteriormente (conexión FK). La mayoría pero NO TODAS las empresaDondeTrabaja debe ser TGI. Documento trabajador es cédula de ciudadanía colombiana.
+4. 10 programas que abarcan temas grandes dentro de las capacitaciones (ej: trabajo en alturas, plan estratégico de seguridad vial, riesgo eléctrico, etc.) para SST en una empresa transportadora de gas.
+5. 20 responsables, con nombre.
+6. 50 capacitaciones con una duración de entre 1 y 50 horas. Una variedad de temas para salud y seguridad en el trabajo (ej: para el programa 'riesgo cardiovascular' capacitaciones como 'hábitos de estilo de vida', 'alimentación saludable' etc., para 'espacios confinados' temas como 'entrenamiento trabajador entrante' o 'entrenamiento Vigias', etc.) que viven dentro de los programas creados anteriormente, de una empresa transportadora de gas. las actividades son meras descripciones muy muy cortas de los temas. usando las FK de los responsables creados anteriormente.
+Ten en cuenta la existencia de los campos auto_increment (así no los incluyes en el csv). La idea es que para diferentes consultas, sp, funciones, vistas, etc. de las que tenemos listadas en 'RQFs Texto Plano.txt' se vea una variedad de resultados, que demuestren el correcto funcionamiento de consultas en MySQL y uso de DML en general. Recuerda tus inserciones que ahorita te pediré para las otras tablas.
+
+Dame los bloques de texto csv que podría fácilmente copiar y pegar en un bloc de notas y cambiar a csv, separado por tabla de las que te pedí.
+
+
+
+Prompt 2: Generación de 4 de 10 tablas:
+
+Fantástico. Ahora si necesito, siguiendo los mismos lineamientos, los datos de prueba csv de las otras. Seguir las instrucciones:
+
+1. 2 usuarios, cada uno con uno de los dos roles a elegir, ambos con estado 'activo', con contraseñas variadas.
+2. 70 detallecapacitacion. Para las 50 capacitaciones, cada una debe tener por lo menos un responsable de los 20 que ya creaste. Algunos deberán tener 2 o hasta 3 responsables una misma capacitación.
+3. 70 Programaciones para las 50 capacitaciones que creaste anteriormente. El ID de la capacitacion debe ser consistente con esos. Deja unas pocas capacitaciones sin programaciones. con fechas variadas entre el 25 de marzo de 2026 y 30 de julio de 2026, con una variedad de modalidades, con una variedad de lugares, con horas variadas entre las 07:00 y las 18:00. Digamos que hoy es 22 de abril del 2026. Usa esa información para tener una buena variacion de estados (NO todas las fechas que pasaron son 'realizadas' pero si la mayoría). NO todas las fechas que no han pasado con 'programadas' pero si su enorme mayoría. Digamos que el 75% de las programaciones ya pasaron.
+4. 100 asistencias, relacionando los 70 trabajadores que creaste, y con las 70 programaciones que debiste haber creado anteriormente. Los trabajadores pueden asistir a mas de una programacion, pero por el momento, que no asistan a más de 2. las fechaDeAsistencia debe ser consistente con el horario de la programación a la que se relaciona por medio de la FK. la evaluacionCapacitador es va entre 1 y 5, con una mayoría siendo positiva (4 o 5). Los comentarios son opcionales, pero aquellos trabajadores que los hayan llenado variarán sus comentarios desde cosas poco serías como "muy bien", o "sigue asi" a buenas observaciones ej: "deberían compartir el material" o "no quedo claro". la mayoría de las asistencias para fechas que ya pasaron (hoy en 22 de abril del 2026) deben tener asistio = 1 pero algunas deben tenerlo en asistio = 0 SOLO si el estado es 'realizada'. TODAS las capacitaciones que no hayan pasado aún deben tener asistio en 0. SOLO LAS ASISTENCIAS CON ASISTIO = 1 TIENEN FECHADEASISTENCIA, EVALUACIONCAPACITADOR Y COMENTARIOSCAPACITACION. Si asistio = 0, obligatoriamente estos deben ser NULL.
+La idea es que para diferentes consultas, sp, funciones, vistas, etc. de las que tenemos listadas en 'RQFs Texto Plano.txt' se vea una variedad de resultados, que demuestren el correcto funcionamiento de consultas en MySQL y uso de DML en general. Dame los bloques de texto csv que podría fácilmente copiar y pegar en un bloc de notas y cambiar a csv, separado por tabla de las que te pedí.
