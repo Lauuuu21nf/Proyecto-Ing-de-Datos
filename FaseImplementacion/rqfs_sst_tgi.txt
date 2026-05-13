@@ -4,7 +4,7 @@ use sst_tgi_cli
 // Usuarios y autenticación
 // =====================================================================
 // RQF001: Inicio de sesión
-db.usuarios.findOne({ correoUsuario: "juan@tgi.co", estadoUsuario: "activo" })
+db.usuarios.findOne({ correoUsuario: "diego.ramirez@tgi.com.co", estadoUsuario: "activo" })
 
 // RQF002: Autenticación de usuario
 db.usuarios.findOne(
@@ -14,11 +14,11 @@ db.usuarios.findOne(
 
 // RQF003: Crear usuario
 db.usuarios.insertOne({
-  _id: 3,
-  nombreUsuario: "María López",
+  _id: 5,
+  nombreUsuario: "María Alejandra López Castaño",
   rolUsuario: "ayudante",
-  correoUsuario: "maria@tgi.co",
-  contraseñaUsuario: "$2b$10$hashGeneradoEnBackend",
+  correoUsuario: "maria.lopez@tgi.com.co",
+  contraseñaUsuario: "$2b$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy",
   estadoUsuario: "activo"
 })
 
@@ -26,13 +26,16 @@ db.usuarios.insertOne({
 db.usuarios.findOne({ _id: 1 }, { contraseñaUsuario: 0 })
 
 // RQF005: Modificar rol de usuario
-db.usuarios.updateOne({ _id: 1 }, { $set: { rolUsuario: "admin" } })
+db.usuarios.updateOne({ _id: 2 }, { $set: { rolUsuario: "admin" } })
 
 // RQF006: Modificar estado de usuario
-db.usuarios.updateOne({ _id: 1 }, { $set: { estadoUsuario: "inactivo" } })
+db.usuarios.updateOne({ _id: 3 }, { $set: { estadoUsuario: "inactivo" } })
 
 // RQF007: Cambiar contraseña de usuario
-db.usuarios.updateOne({ _id: 1 }, { $set: { contraseñaUsuario: "$2b$10$nuevoHash" } })
+db.usuarios.updateOne(
+  { _id: 1 },
+  { $set: { contraseñaUsuario: "$2b$10$x4kCfQ9wYzN8mP7vT2bRJeH3sL5gWqV1uF6dA0iEoYpUnCmKjBxZW" } }
+)
 
 // =====================================================================
 // Programas
