@@ -1,0 +1,729 @@
+use sst_tgi_cli
+
+// =====================================================================
+// Usuarios y autenticación
+// =====================================================================
+// RQF001: Inicio de sesión
+db.usuarios.findOne({ correoUsuario: "juan@tgi.co", estadoUsuario: "activo" })
+
+// RQF002: Autenticación de usuario
+db.usuarios.findOne(
+  { _id: 1, estadoUsuario: "activo" },
+  { contraseñaUsuario: 0 }
+)
+
+// RQF003: Crear usuario
+db.usuarios.insertOne({
+  _id: 3,
+  nombreUsuario: "María López",
+  rolUsuario: "ayudante",
+  correoUsuario: "maria@tgi.co",
+  contraseñaUsuario: "$2b$10$hashGeneradoEnBackend",
+  estadoUsuario: "activo"
+})
+
+// RQF004: Consultar información de usuario
+db.usuarios.findOne({ _id: 1 }, { contraseñaUsuario: 0 })
+
+// RQF005: Modificar rol de usuario
+db.usuarios.updateOne({ _id: 1 }, { $set: { rolUsuario: "admin" } })
+
+// RQF006: Modificar estado de usuario
+db.usuarios.updateOne({ _id: 1 }, { $set: { estadoUsuario: "inactivo" } })
+
+// RQF007: Cambiar contraseña de usuario
+db.usuarios.updateOne({ _id: 1 }, { $set: { contraseñaUsuario: "$2b$10$nuevoHash" } })
+
+// =====================================================================
+// Programas
+// =====================================================================
+// RQF008: Crear programa
+db.programas.insertOne({
+  _id: 11,
+  nombrePrograma: "Riesgo Biológico",
+  fasePHVA: "planear"
+})
+
+// RQF009: Mostrar lista completa de programas
+db.programas.find()
+
+// =====================================================================
+// Responsables
+// =====================================================================
+// RQF010: Registrar responsable
+db.responsables.insertOne({ _id: 21, nombreResponsable: "Andrea Castaño Roldán" })
+
+// RQF011: Consultar lista completa de responsables
+db.responsables.find()
+
+// =====================================================================
+// Capacitaciones
+// =====================================================================
+// RQF012: Crear capacitación
+db.capacitaciones.insertOne({
+  _id: 51,
+  duracion: 8.0,
+  tema: "EPP para alturas",
+  actividad: "Revisión de equipos de protección personal",
+  accidentesAsociados: 0,
+  idUsuario: 1,
+  programa: {
+    _id: 1,
+    nombrePrograma: "Trabajo en Alturas",
+    fasePHVA: "hacer"
+  },
+  responsables: [
+    { _id: 1, nombreResponsable: "Germán Adolfo Parra Londoño" },
+    { _id: 4, nombreResponsable: "Luisa Fernanda Arango Diaz" },
+    { _id: 9, nombreResponsable: "Alejandro Ivan Rojas Puentes" }
+  ]
+})
+
+// RQF013: Consultar información general de una capacitación
+db.capacitaciones.findOne({ _id: 1 })
+
+// RQF014: Mostrar lista completa de capacitaciones
+db.capacitaciones.find()
+
+// RQF015: Modificar tema y actividad de capacitación
+db.capacitaciones.updateOne(
+  { _id: 1 },
+  { $set: {
+      tema: "Uso correcto de EPP en alturas",
+      actividad: "Inspección y verificación de arnés"
+  } }
+)
+db.programaciones.updateMany(
+  { idCapacitacion: 1 },
+  { $set: { tema: "Uso correcto de EPP en alturas" } }
+)
+
+// RQF016: Modificar lista de responsables de una capacitación
+db.capacitaciones.updateOne(
+  { _id: 1 },
+  { $set: {
+      responsables: [
+        { _id: 2, nombreResponsable: "Catalina Esperanza Reyes Mora" },
+        { _id: 5, nombreResponsable: "Ricardo Camilo Torres Blanco" },
+        { _id: 8, nombreResponsable: "Monica Patricia Suarez Vega" }
+      ]
+  }}
+)
+
+// RQF017: Modificar nombre de responsable
+db.responsables.updateOne(
+  { _id: 1 },
+  { $set: { nombreResponsable: "Germán A. Parra L." } }
+)
+db.capacitaciones.updateMany(
+  { "responsables._id": 1 },
+  { $set: { "responsables.$.nombreResponsable": "Germán A. Parra L." } }
+)
+
+// =====================================================================
+// Programaciones
+// =====================================================================
+// RQF018: Crear programación para capacitación
+db.programaciones.insertOne({
+  _id: 71,
+  fechaProgramada: "2026-06-15",
+  horaProgramada: "08:00:00",
+  lugarProgramado: "Sala B - Sede Norte",
+  modalidadProgramada: "presencial",
+  estadoProgramacion: "programada",
+  asistenciaProgramada: 25,
+  idCapacitacion: 1,
+  tema: "Uso y verificación de EPP para alturas"
+})
+
+// RQF019: Consultar información de programación
+db.programaciones.findOne({ _id: 1 })
+
+// RQF020: Modificar estado de Programación
+db.programaciones.updateOne({ _id: 1 }, { $set: { estadoProgramacion: "realizada" } })
+
+// RQF021: Modificar fecha y hora de programación
+db.programaciones.updateOne(
+  { _id: 1 },
+  { $set: { fechaProgramada: "2026-07-01", horaProgramada: "09:00:00" } }
+)
+
+// RQF022: Cambiar modalidad de programación
+db.programaciones.updateOne({ _id: 1 }, { $set: { modalidadProgramada: "virtual" } })
+
+// RQF023: Modificar lugar de realización de programación
+db.programaciones.updateOne({ _id: 1 }, { $set: { lugarProgramado: "Auditorio Principal" } })
+
+// =====================================================================
+// Cargos y centros de trabajo
+// =====================================================================
+// RQF024: Registrar cargo
+db.cargos.insertOne({ _id: 31, nombreCargo: "Inspector NDT" })
+
+// RQF025: Consultar cargo
+db.cargos.findOne({ _id: 1 })
+db.cargos.find()
+
+// RQF026: Registrar centro trabajo
+db.centrosTrabajo.insertOne({
+  _id: 21,
+  nombreCentroTrabajo: "Sede Operacional Sur II",
+  ciudad: "Neiva"
+})
+
+// RQF027: Consultar centro trabajo
+db.centrosTrabajo.findOne({ _id: 1 })
+db.centrosTrabajo.find()
+
+// =====================================================================
+// Trabajadores
+// =====================================================================
+// RQF028: Registrar trabajador en sistema
+db.trabajadores.insertOne({
+  _id: 71,
+  nombreTrabajador: "Juan Esteban Romero Castro",
+  documentoTrabajador: "1098765432",
+  empresaDondeTrabaja: "TGI",
+  cargo: { _id: 3, nombreCargo: "Técnico en Instrumentación" },
+  centroTrabajo: { _id: 1, nombreCentroTrabajo: "Sede Administrativa Central", ciudad: "Bogotá" }
+})
+
+// RQF029: Consultar información de trabajadores
+db.trabajadores.find()
+db.trabajadores.findOne({ _id: 1 })
+
+// RQF030: Modificar información de trabajador
+db.trabajadores.updateOne(
+  { _id: 1 },
+  { $set: {
+      nombreTrabajador: "Carlos Andrés Peña Ríos",
+      documentoTrabajador: "1045678901"
+  } }
+)
+db.asistencias.updateMany(
+  { "trabajador._id": 1 },
+  { $set: {
+      "trabajador.nombreTrabajador": "Carlos Andrés Peña Ríos",
+      "trabajador.documentoTrabajador": "1045678901"
+  } }
+)
+
+// RQF031: Modificar cargo de trabajador
+db.trabajadores.updateOne(
+  { _id: 1 },
+  { $set: { cargo: { _id: 5, nombreCargo: "Operador de Planta" } } }
+)
+db.asistencias.updateMany(
+  { "trabajador._id": 1 },
+  { $set: { "trabajador.idCargo": 5 } }
+)
+
+// RQF032: Modificar centro de trabajo de trabajador
+db.trabajadores.updateOne(
+  { _id: 1 },
+  { $set: { centroTrabajo: { _id: 5, nombreCentroTrabajo: "Sede Operacional Barrancabermeja", ciudad: "Barrancabermeja" } } }
+)
+db.asistencias.updateMany(
+  { "trabajador._id": 1 },
+  { $set: { "trabajador.idCentroTrabajo": 5, "trabajador.ciudad": "Barrancabermeja" } }
+)
+
+// RQF033: Consultar trabajadores que ejercen un cargo
+db.trabajadores.find({ "cargo._id": 3 })
+
+// RQF034: Consultar trabajadores de un centro de trabajo
+db.trabajadores.find({ "centroTrabajo._id": 1 })
+
+// RQF035: Consultar trabajadores por ciudad
+db.trabajadores.find({ "centroTrabajo.ciudad": "Bogotá" })
+
+// =====================================================================
+// Aforo y citación
+// =====================================================================
+// RQF036: Añadir trabajador al aforo de una programación de capacitación
+db.asistencias.insertOne({
+  _id: 101,
+  idProgramacion: 1,
+  idPrograma: 10,
+  asistio: false,
+  fechaDeAsistencia: null,
+  evaluacionCapacitador: null,
+  comentariosCapacitacion: null,
+  trabajador: {
+    _id: 5,
+    nombreTrabajador: "Diana Marcela Ruiz Herrera",
+    documentoTrabajador: "1076543210",
+    idCargo: 7,
+    idCentroTrabajo: 3,
+    ciudad: "Medellín"
+  }
+})
+
+// RQF037: Añadir trabajadores al aforo de una programación por centro de trabajo
+db.asistencias.insertMany([
+  {
+    _id: 10001,
+    idProgramacion: 1,
+    idPrograma: 10,
+    asistio: false,
+    fechaDeAsistencia: null,
+    evaluacionCapacitador: null,
+    comentariosCapacitacion: null,
+    trabajador: {
+      _id: 1,
+      nombreTrabajador: "Carlos Andres Peña Rios",
+      documentoTrabajador: "1045678901",
+      idCargo: 3,
+      idCentroTrabajo: 1,
+      ciudad: "Bogotá"
+    }
+  },
+  {
+    _id: 10002,
+    idProgramacion: 1,
+    idPrograma: 10,
+    asistio: false,
+    fechaDeAsistencia: null,
+    evaluacionCapacitador: null,
+    comentariosCapacitacion: null,
+    trabajador: {
+      _id: 2,
+      nombreTrabajador: "Maria Fernanda Lopez Arce",
+      documentoTrabajador: "1032456789",
+      idCargo: 12,
+      idCentroTrabajo: 1,
+      ciudad: "Bogotá"
+    }
+  },
+  {
+    _id: 10045,
+    idProgramacion: 1,
+    idPrograma: 10,
+    asistio: false,
+    fechaDeAsistencia: null,
+    evaluacionCapacitador: null,
+    comentariosCapacitacion: null,
+    trabajador: {
+      _id: 45,
+      nombreTrabajador: "Juliana Andrea Castillo Mora",
+      documentoTrabajador: "1056012345",
+      idCargo: 6,
+      idCentroTrabajo: 1,
+      ciudad: "Bogotá"
+    }
+  }
+])
+
+// RQF038: Añadir trabajadores al aforo de una programación por ciudad
+db.asistencias.insertMany([
+  {
+    _id: 10001,
+    idProgramacion: 1,
+    idPrograma: 10,
+    asistio: false,
+    fechaDeAsistencia: null,
+    evaluacionCapacitador: null,
+    comentariosCapacitacion: null,
+    trabajador: {
+      _id: 1,
+      nombreTrabajador: "Carlos Andres Peña Rios",
+      documentoTrabajador: "1045678901",
+      idCargo: 3,
+      idCentroTrabajo: 1,
+      ciudad: "Bogotá"
+    }
+  },
+  {
+    _id: 10002,
+    idProgramacion: 1,
+    idPrograma: 10,
+    asistio: false,
+    fechaDeAsistencia: null,
+    evaluacionCapacitador: null,
+    comentariosCapacitacion: null,
+    trabajador: {
+      _id: 2,
+      nombreTrabajador: "Maria Fernanda Lopez Arce",
+      documentoTrabajador: "1032456789",
+      idCargo: 12,
+      idCentroTrabajo: 1,
+      ciudad: "Bogotá"
+    }
+  },
+  {
+    _id: 10003,
+    idProgramacion: 1,
+    idPrograma: 10,
+    asistio: false,
+    fechaDeAsistencia: null,
+    evaluacionCapacitador: null,
+    comentariosCapacitacion: null,
+    trabajador: {
+      _id: 3,
+      nombreTrabajador: "Jorge Enrique Molina Vega",
+      documentoTrabajador: "79456123",
+      idCargo: 1,
+      idCentroTrabajo: 2,
+      ciudad: "Bogotá"
+    }
+  },
+  {
+    _id: 10004,
+    idProgramacion: 1,
+    idPrograma: 10,
+    asistio: false,
+    fechaDeAsistencia: null,
+    evaluacionCapacitador: null,
+    comentariosCapacitacion: null,
+    trabajador: {
+      _id: 4,
+      nombreTrabajador: "Luis Alfredo Torres Gomez",
+      documentoTrabajador: "80134567",
+      idCargo: 2,
+      idCentroTrabajo: 2,
+      ciudad: "Bogotá"
+    }
+  },
+  {
+    _id: 10043,
+    idProgramacion: 1,
+    idPrograma: 10,
+    asistio: false,
+    fechaDeAsistencia: null,
+    evaluacionCapacitador: null,
+    comentariosCapacitacion: null,
+    trabajador: {
+      _id: 43,
+      nombreTrabajador: "Sonia Esperanza Barrera Suarez",
+      documentoTrabajador: "52456789",
+      idCargo: 11,
+      idCentroTrabajo: 2,
+      ciudad: "Bogotá"
+    }
+  },
+  {
+    _id: 10045,
+    idProgramacion: 1,
+    idPrograma: 10,
+    asistio: false,
+    fechaDeAsistencia: null,
+    evaluacionCapacitador: null,
+    comentariosCapacitacion: null,
+    trabajador: {
+      _id: 45,
+      nombreTrabajador: "Juliana Andrea Castillo Mora",
+      documentoTrabajador: "1056012345",
+      idCargo: 6,
+      idCentroTrabajo: 1,
+      ciudad: "Bogotá"
+    }
+  },
+  {
+    _id: 10066,
+    idProgramacion: 1,
+    idPrograma: 10,
+    asistio: false,
+    fechaDeAsistencia: null,
+    evaluacionCapacitador: null,
+    comentariosCapacitacion: null,
+    trabajador: {
+      _id: 66,
+      nombreTrabajador: "Laura Vanessa Moreno Pena",
+      documentoTrabajador: "1043098765",
+      idCargo: 4,
+      idCentroTrabajo: 2,
+      ciudad: "Bogotá"
+    }
+  }
+])
+
+// RQF039: Añadir trabajadores al aforo de una programación por cargo
+db.asistencias.insertMany([
+  {
+    _id: 10001,
+    idProgramacion: 1,
+    idPrograma: 10,
+    asistio: false,
+    fechaDeAsistencia: null,
+    evaluacionCapacitador: null,
+    comentariosCapacitacion: null,
+    trabajador: {
+      _id: 1,
+      nombreTrabajador: "Carlos Andres Peña Rios",
+      documentoTrabajador: "1045678901",
+      idCargo: 3,
+      idCentroTrabajo: 1,
+      ciudad: "Bogotá"
+    }
+  },
+  {
+    _id: 10008,
+    idProgramacion: 1,
+    idPrograma: 10,
+    asistio: false,
+    fechaDeAsistencia: null,
+    evaluacionCapacitador: null,
+    comentariosCapacitacion: null,
+    trabajador: {
+      _id: 8,
+      nombreTrabajador: "Ricardo Emilio Suarez Leon",
+      documentoTrabajador: "71234890",
+      idCargo: 3,
+      idCentroTrabajo: 4,
+      ciudad: "Medellín"
+    }
+  },
+  {
+    _id: 10054,
+    idProgramacion: 1,
+    idPrograma: 10,
+    asistio: false,
+    fechaDeAsistencia: null,
+    evaluacionCapacitador: null,
+    comentariosCapacitacion: null,
+    trabajador: {
+      _id: 54,
+      nombreTrabajador: "Juan Camilo Ochoa Sanchez",
+      documentoTrabajador: "1045601234",
+      idCargo: 3,
+      idCentroTrabajo: 16,
+      ciudad: "Yopal"
+    }
+  }
+])
+
+// RQF040: Consultar número de asistentes citados a una programación
+db.asistencias.countDocuments({ idProgramacion: 1 })
+
+// RQF041: Consultar lista de trabajadores citados a una programación
+db.asistencias.find(
+  { idProgramacion: 1 },
+  { trabajador: 1, _id: 0 }
+)
+
+// =====================================================================
+// Programaciones por estado/fecha
+// =====================================================================
+// RQF042: Consultar programación por estado
+db.programaciones.find({ estadoProgramacion: "programada" })
+
+// RQF043: Consultar programaciones en rango de fecha
+db.programaciones.find({
+  fechaProgramada: { $gte: "2026-03-01", $lte: "2026-04-30" }
+})
+
+// =====================================================================
+// Asistencia real y comentarios
+// =====================================================================
+// RQF044: Modificar asistencia programada a una capacitación
+db.programaciones.updateOne({ _id: 1 }, { $set: { asistenciaProgramada: 30 } })
+
+// RQF045: Registrar asistencia a capacitación
+db.asistencias.updateOne(
+  { idProgramacion: 1, "trabajador._id": 5 },
+  { $set: {
+      asistio: true,
+      fechaDeAsistencia: new Date(),
+      evaluacionCapacitador: 4.5
+  }}
+)
+
+// RQF046: Registrar comentarios de trabajador a programación
+db.asistencias.updateOne(
+  { idProgramacion: 1, "trabajador._id": 5 },
+  { $set: { comentariosCapacitacion: "Excelente sesión, material claro y aplicable" } }
+)
+
+// =====================================================================
+// Métricas y agregaciones
+// =====================================================================
+// RQF047: Calcular número de capacitaciones programadas a un trabajador
+db.asistencias.countDocuments({ "trabajador._id": 1 })
+
+// RQF048: Calcular número de capacitaciones asistidas por un trabajador
+db.asistencias.countDocuments({ "trabajador._id": 1, asistio: true })
+
+// RQF049: Calcular porcentaje de cumplimiento a capacitaciones por trabajador
+db.asistencias.aggregate([
+  { $match: { "trabajador._id": 1 } },
+  { $group: {
+      _id: "$trabajador._id",
+      nombreTrabajador: { $first: "$trabajador.nombreTrabajador" },
+      totalCitados:    { $sum: 1 },
+      totalAsistieron: { $sum: { $cond: ["$asistio", 1, 0] } }
+  }},
+  { $project: {
+      _id: 0,
+      idTrabajador: "$_id",
+      nombreTrabajador: 1,
+      totalCitados: 1,
+      totalAsistieron: 1,
+      porcentajeCumplimiento: {
+        $round: [
+          { $multiply: [{ $divide: ["$totalAsistieron", "$totalCitados"] }, 100] },
+          2
+        ]
+      }
+  }}
+])
+
+// RQF050: Calcular promedio de evaluaciones de los trabajadores a capacitación
+db.asistencias.aggregate([
+  { $match: { idProgramacion: 1, evaluacionCapacitador: { $ne: null } } },
+  { $group: {
+      _id: "$idProgramacion",
+      promedioEvaluacion: { $avg: "$evaluacionCapacitador" },
+      totalEvaluaciones:  { $sum: 1 }
+  }},
+  { $project: {
+      _id: 0,
+      idProgramacion: "$_id",
+      promedioEvaluacion: { $round: ["$promedioEvaluacion", 2] },
+      totalEvaluaciones: 1
+  }}
+])
+
+// =====================================================================
+// Accidentes
+// =====================================================================
+// RQF051: Registrar accidente de trabajo asociado a capacitación
+db.capacitaciones.updateOne({ _id: 1 }, { $inc: { accidentesAsociados: 1 } })
+
+// RQF052: Consultar número de accidentes asociados a capacitación
+db.capacitaciones.findOne({ _id: 1 }, { accidentesAsociados: 1, tema: 1 })
+
+// =====================================================================
+// Cumplimiento por programa y reportería
+// =====================================================================
+// RQF053: Calcular porcentaje de cumplimiento de asistencia por rango de fecha en las capacitaciones de un programa
+db.asistencias.aggregate([
+  { $match: { idPrograma: 1 } },
+  { $lookup: {
+      from: "programaciones",
+      localField: "idProgramacion",
+      foreignField: "_id",
+      as: "_prgm"
+  }},
+  { $unwind: "$_prgm" },
+  { $match: {
+      "_prgm.fechaProgramada": { $gte: "2026-03-01", $lte: "2026-06-30" }
+  }},
+  { $group: {
+      _id: "$idPrograma",
+      totalCitados:    { $sum: 1 },
+      totalAsistieron: { $sum: { $cond: ["$asistio", 1, 0] } }
+  }},
+  { $lookup: {
+      from: "programas",
+      localField: "_id",
+      foreignField: "_id",
+      as: "programa"
+  }},
+  { $unwind: "$programa" },
+  { $project: {
+      _id: 0,
+      idPrograma: "$_id",
+      nombrePrograma: "$programa.nombrePrograma",
+      totalCitados: 1,
+      totalAsistieron: 1,
+      porcentajeCumplimiento: {
+        $round: [
+          { $multiply: [{ $divide: ["$totalAsistieron", "$totalCitados"] }, 100] },
+          2
+        ]
+      }
+  }}
+])
+
+// RQF054: Consultar trabajadores que no pertenecen a TGI
+db.trabajadores.find({ empresaDondeTrabaja: { $ne: "TGI" } })
+
+// RQF055: Modificar estado del ciclo PHVA del programa
+db.programas.updateOne({ _id: 1 }, { $set: { fasePHVA: "verificar" } })
+db.capacitaciones.updateMany(
+  { "programa._id": 1 },
+  { $set: { "programa.fasePHVA": "verificar" } }
+)
+
+// RQF056: Generar gráfico de asistencia en rango de fechas
+db.asistencias.aggregate([
+  { $lookup: {
+      from: "programaciones",
+      localField: "idProgramacion",
+      foreignField: "_id",
+      as: "_prgm"
+  }},
+  { $unwind: "$_prgm" },
+  { $match: {
+      "_prgm.fechaProgramada": { $gte: "2026-03-01", $lte: "2026-04-30" }
+  }},
+  { $group: {
+      _id: "$_prgm.fechaProgramada",
+      citados:    { $sum: 1 },
+      asistieron: { $sum: { $cond: ["$asistio", 1, 0] } }
+  }},
+  { $project: {
+      _id: 0,
+      fecha: "$_id",
+      citados: 1,
+      asistieron: 1,
+      porcentajeAsistencia: {
+        $round: [{ $multiply: [{ $divide: ["$asistieron", "$citados"] }, 100] }, 2]
+      }
+  }},
+  { $sort: { fecha: 1 } }
+])
+
+// RQF057: Generar reporte completo por rango de fechas
+db.programaciones.aggregate([
+  { $match: { fechaProgramada: { $gte: "2026-03-01", $lte: "2026-04-30" } } },
+  { $lookup: {
+      from: "capacitaciones",
+      localField: "idCapacitacion",
+      foreignField: "_id",
+      as: "capacitacion"
+  }},
+  { $unwind: "$capacitacion" },
+  { $lookup: {
+      from: "asistencias",
+      localField: "_id",
+      foreignField: "idProgramacion",
+      as: "asistencias"
+  }},
+  { $project: {
+      _id: 0,
+      idProgramacion: "$_id",
+      fechaProgramada: 1,
+      horaProgramada: 1,
+      lugarProgramado: 1,
+      modalidadProgramada: 1,
+      estadoProgramacion: 1,
+      tema: "$capacitacion.tema",
+      programa: "$capacitacion.programa.nombrePrograma",
+      fasePHVA: "$capacitacion.programa.fasePHVA",
+      responsables: "$capacitacion.responsables.nombreResponsable",
+      accidentesAsociados: "$capacitacion.accidentesAsociados",
+      aforoProgramado: "$asistenciaProgramada",
+      totalCitados:    { $size: "$asistencias" },
+      totalAsistieron: {
+        $size: { $filter: { input: "$asistencias", as: "a", cond: "$$a.asistio" } }
+      },
+      porcentajeCumplimiento: {
+        $cond: [
+          { $eq: [{ $size: "$asistencias" }, 0] },
+          0,
+          { $round: [
+              { $multiply: [
+                  { $divide: [
+                      { $size: { $filter: { input: "$asistencias", as: "a", cond: "$$a.asistio" } } },
+                      { $size: "$asistencias" }
+                  ]},
+                  100
+              ]},
+              2
+          ]}
+        ]
+      }
+  }},
+  { $sort: { fechaProgramada: 1 } }
+])
