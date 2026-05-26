@@ -4,27 +4,29 @@ Esto incluye la adición de nuevas funciones, la reorganización de otras, y el 
 Objetivo: Mejorar la facilidad de uso de toda la plataforma. Priorizar una excelente UX que no requiera de entrenamiento previo.
 
 <primer-paso>
-1. Necesitamos que esta aplicación sea traducida / recreada a Typescript con React para una aplicación desktop, pensando en los elementos inicialmente para escritorio pero teniendo en cuenta otras plataformas.
+1. Necesitamos que esta aplicación sea traducida / recreada en su totalidad en Typescript con React para una aplicación desktop, pensando en los elementos inicialmente para escritorio pero teniendo en cuenta otras plataformas.
 </primer-paso>
 <instrucciones-reorganizacion>
 2. Necesitamos cambiar el orden de la barra de tareas lateral. Necesitamos que siga el siguiente orden estrictamente:
 "..."
-3. Necesitamos, como adicional a la forma de añadir trabajadores por el botón "Registrar trabajador" en el panel de trabajadores, necesitamos una forma de cargar trabajadores masivamente mediante un archivo csv o xlsx. Esto busca complementar el hecho de cargar masivamente trabajadores aparte de cuando se añaden por medio del xlsx de asistencia. Este nuevo botón deberá estar ubicado en …
-4. Necesitamos una forma de ver todas las asistencias. Esta es la consulta general que corresponde al "SELECT * FROM asistencia" en el caso de MySQL. Adicional a esto, necesitamos una forma de buscar las asistencias que ha llenado un trabajador en específico. dado su documento. 
-5. lo de que se corta verticalmente
-6. cambiar de dashboard a CONTROL DE MANDO
+3. Necesitamos, como adicional a la forma de añadir trabajadores por el botón "Registrar trabajador" en el panel de trabajadores, necesitamos una forma de cargar trabajadores masivamente mediante un archivo csv o xlsx. Esto busca complementar el hecho de cargar masivamente trabajadores aparte de cuando se añaden por medio del xlsx de asistencia. Este nuevo botón deberá estar ubicado en el popup de añadir trabajador. Ajunta una referencia: [Archivo PNG adjunto: diseño_nuevo_añadir.png]
+4. Necesitamos una forma de ver todas las asistencias. Esta es la consulta general que corresponde al "SELECT * FROM asistencia" en el caso de MySQL. Adicional a esto, necesitamos una forma de buscar las asistencias que ha llenado un trabajador en específico, dado su documento. Puedes crear las funciones sql o mongosh o python que necesites para cumplir esto.
+5. Un error visual en la ventana de Usuarios, los estados tienen una altura vertical superior al margen que está definido y se ve recortado en todas las resoluciones. Aumentar este padding o algo similar para arreglar este error visual. No importa si esta tabla termina con una altura de fila mayor a las demás, pues es más importante que se vea el estado del usuario.
+6. Cambiar el texto "Dashboard" a "Inicio" y su respectivo cambio en la barra lateral y el título de la ventana. Esto para hacerlo sonar menos técnico y más amigable.
 </instrucciones-reorganizacion>
 <instrucciones-replanteamiento>
-4. Necesitamos un replanteamiento de la forma en la que se seleccionan los elementos en una tabla (ej: seleccionar programación para después clickear el botón "ver/editar" aforo).
-Este método de selección debe cambiarse por completo. Para la consulta específica de los detalles de fila de una tabla (un usuario, una programación, una capacitación, etc.), ese pop-up debe aparecer a través de DOS clicks sobre la fila que se quiere inspeccionar. Una idea general de esto es ilustrado en un adjunto [Archivo PNG adjunto: ….png].
-6. Las consultas específicas, por ejemplo "Ver aforo de una programación", dentro del pop-up deberían poder visualizarse todos los detalles de la programación en específico, además del aforo. Es decir, que cuando abra el pop-up, el usuario sepa inmediatamente que programación/capacitación/trabajador/etc. está consultando. Dentro de este pop-up debe agregarse una nueva funcionalidad que se describirá a continuación:
-6.1. Ahora al momento de ver el aforo de una programación (que ahora cuenta con todos los detalles de una programación) deben poderse filtrar aquellos trabajadores que si asistieron y los que no asistieron. Además, ahora se podrá crear una programación nueva de la capacitación seleccionada que cite (añada al aforo) automáticamente a todos los trabajadores que NO llenaron la asistencia (ver capacitados y no capacitados). 
-7. Para todos los casos, separar las funciones de consulta (Ver, detalle, etc.) de las de edición/actualización (Editar, modificar, etc.)
-
+7. Necesitamos un replanteamiento de la forma en la que se seleccionan los elementos en una tabla (ej: seleccionar programación para después clickear el botón "ver/editar" aforo).
+Este método de selección debe cambiarse por completo. Para la consulta específica de los detalles de fila de una tabla (un usuario, una programación, una capacitación, etc.), ese pop-up debe aparecer a través de DOS clicks sobre la fila que se quiere inspeccionar. Una idea general de esto es ilustrado en un adjunto [Archivo PNG adjunto: diseño_ejemplo_seleccionado.png, como se vería en la ventana principal el seleccionar], [Archivo PNG adjunto: diseño_popup_consulta_especifica.png, la ventana emergente que aparece cuando se haga doble click sobre cualquier parte de una fila en particular].
+8. Las consultas específicas, por ejemplo "Ver aforo de una programación", dentro del pop-up deberían poder visualizarse todos los detalles de la programación en específico, además del aforo. Es decir, que cuando abra el pop-up, el usuario sepa inmediatamente que programación/capacitación/trabajador/etc. está consultando. Este cambio debe verse en todos los lugares que contengan en principio una consulta general, tal que los detalles sean de enfocarse en los campos de un registro determinado. Así que aplica para trabajadores, capacitaciones, programaciones, asistencias, etc. Dentro de este pop-up, en el caso de programación, debe agregarse una nueva funcionalidad que se describirá a continuación:
+8.1. Ahora al momento de ver el aforo de una programación (que ahora cuenta con todos los detalles de una programación) deben poderse filtrar aquellos trabajadores que si asistieron y los que no asistieron. Además, ahora se podrá crear una programación nueva de la capacitación seleccionada que cite (añada al aforo) automáticamente a todos los trabajadores que NO llenaron la asistencia (ver capacitados y no capacitados). 
+9. Para todos los casos, separar las funciones de consulta (Ver, detalle, etc.) de las de edición/actualización (Editar, modificar, etc.)
+10. En la pantalla de inicio de sesión no podemos mantener la selección de la conexión para que el usuario la elija. En general, el usuario no debe saber nunca si está conectado a una base de datos relacional SQL o una no relacional NoSQL. Por lo tanto, deberá cargar las funcionalidades dependiendo de la conexión que se establezca.
 </instrucciones-replanteamiento>
 <tener-en-mente>
 Todos los nuevos diseños visuales de la plataforma deben ser visualmente consistentes, manteniendo la esencia que se ha venido trabajando.
-Nuevamente, eres libre de editar las consultas sql y los comandos de mongosh para garantizar que todo funcione. 
-Es fundamental garantizar la consistencia visual para maximizar la experiencia del usuario, la intuivididad y la facilidad de uso del tablero.
+Nuevamente, eres libre de editar las consultas sql y los comandos de mongosh para garantizar que todo funcione. También te puedes tomar libertad de organización de los elementos visuales a conveniencia, siguiendo con las instrucciones dadas. 
+Es fundamental garantizar la consistencia visual para maximizar la experiencia del usuario, la intuivididad y la facilidad de uso del tablero. Súper importante tener en cuenta también la consistencia de la nueva forma de seleccionar los registros de una tabla para interactuar con ellos.
 Tener en cuenta que después de tus correcciones perfectas y nosotros rectificar que todo está excelente, se hará un deploy a un archivo .exe, pues ese es el siguiente y último paso en este desarrollo.
 </tener-en-mente>
+
+Con todo esto, sigue las instrucciones que te hemos dado para que finalices el desarrollo necesario. Todo debe quedar perfecto, evitando correciones futuras.
