@@ -1,0 +1,974 @@
+// ==============================================================================
+// PROYECTO: Sistema de Capacitaciones SST - TGI
+// Base de datos MongoDB (mongosh)
+// Trazabilidad de Requerimientos Funcionales (RQF 3 al 55)
+// ==============================================================================
+
+// 1. CONFIGURACION DE LA BASE DE DATOS (Usando sintaxis pura de JS)
+db = db.getSiblingDB('sst_tgi_cli');
+db.dropDatabase();
+db = db.getSiblingDB('sst_tgi_cli');
+
+// 2. INSERCION DE COLECCIONES BASE (Datos semilla para pruebas)
+
+db.programas.insertMany([
+  { _id: 1, nombrePrograma: 'Trabajo en Alturas', fasePHVA: 'hacer' },
+  { _id: 2, nombrePrograma: 'Plan Estratégico de Seguridad Vial', fasePHVA: 'planear' },
+  { _id: 3, nombrePrograma: 'Riesgo Eléctrico', fasePHVA: 'hacer' },
+  { _id: 4, nombrePrograma: 'Espacios Confinados', fasePHVA: 'hacer' },
+  { _id: 5, nombrePrograma: 'Riesgo Cardiovascular', fasePHVA: 'verificar' },
+  { _id: 6, nombrePrograma: 'Manejo de Sustancias Químicas', fasePHVA: 'planear' },
+  { _id: 7, nombrePrograma: 'Protección Contra Caídas', fasePHVA: 'actuar' },
+  { _id: 8, nombrePrograma: 'Primeros Auxilios y Emergencias', fasePHVA: 'hacer' },
+  { _id: 9, nombrePrograma: 'Control de Incendios', fasePHVA: 'verificar' },
+  { _id: 10, nombrePrograma: 'Ergonomía y Carga Física', fasePHVA: 'planear' }
+]);
+
+db.cargos.insertMany([
+  { _id: 1, nombreCargo: 'Líder Mecánico' },
+  { _id: 2, nombreCargo: 'Ayudante Mecánico' },
+  { _id: 3, nombreCargo: 'Técnico en Instrumentación' },
+  { _id: 4, nombreCargo: 'Técnico Electricista' },
+  { _id: 5, nombreCargo: 'Operador de Planta' },
+  { _id: 6, nombreCargo: 'Supervisor HSE' },
+  { _id: 7, nombreCargo: 'Coordinador SST' },
+  { _id: 8, nombreCargo: 'Inspector de Integridad' },
+  { _id: 9, nombreCargo: 'Conductor de Vehículo Liviano' },
+  { _id: 10, nombreCargo: 'Conductor de Vehículo Pesado' },
+  { _id: 11, nombreCargo: 'Brigadista' },
+  { _id: 12, nombreCargo: 'Auxiliar Administrativo' },
+  { _id: 13, nombreCargo: 'Analista de Operaciones' },
+  { _id: 14, nombreCargo: 'Ingeniero de Producción' },
+  { _id: 15, nombreCargo: 'Ingeniero de Confiabilidad' },
+  { _id: 16, nombreCargo: 'Técnico en Telecomunicaciones' },
+  { _id: 17, nombreCargo: 'Auxiliar de Campo' },
+  { _id: 18, nombreCargo: 'Operador de Compresor' },
+  { _id: 19, nombreCargo: 'Supervisor de Mantenimiento' },
+  { _id: 20, nombreCargo: 'Inspector de Calidad' },
+  { _id: 21, nombreCargo: 'Almacenista' },
+  { _id: 22, nombreCargo: 'Soldador Certificado' },
+  { _id: 23, nombreCargo: 'Operador de Válvulas' },
+  { _id: 24, nombreCargo: 'Jefe de Turno' },
+  { _id: 25, nombreCargo: 'Médico Ocupacional' },
+  { _id: 26, nombreCargo: 'Auxiliar de Enfermería' },
+  { _id: 27, nombreCargo: 'Psicólogo Organizacional' },
+  { _id: 28, nombreCargo: 'Gestor Ambiental' },
+  { _id: 29, nombreCargo: 'Coordinador Logístico' },
+  { _id: 30, nombreCargo: 'Asesor Jurídico' }
+]);
+
+db.responsables.insertMany([
+  { _id: 1, nombreResponsable: 'Germán Adolfo Parra Londoño' },
+  { _id: 2, nombreResponsable: 'Catalina Esperanza Reyes Mora' },
+  { _id: 3, nombreResponsable: 'Hernando José Vargas Cano' },
+  { _id: 4, nombreResponsable: 'Luisa Fernanda Arango Diaz' },
+  { _id: 5, nombreResponsable: 'Ricardo Camilo Torres Blanco' },
+  { _id: 6, nombreResponsable: 'Sandra Milena Ospina Ruiz' },
+  { _id: 7, nombreResponsable: 'Fabio Ernesto Nieto Garzon' },
+  { _id: 8, nombreResponsable: 'Monica Patricia Suarez Vega' },
+  { _id: 9, nombreResponsable: 'Alejandro Ivan Rojas Puentes' },
+  { _id: 10, nombreResponsable: 'Isabel Cristina Bernal Perez' },
+  { _id: 11, nombreResponsable: 'Juan Manuel Guzman Hoyos' },
+  { _id: 12, nombreResponsable: 'Patricia Elena Serrano Castro' },
+  { _id: 13, nombreResponsable: 'Rodrigo Felipe Acosta Melo' },
+  { _id: 14, nombreResponsable: 'Yaneth Lorena Cano Villamil' },
+  { _id: 15, nombreResponsable: 'Mauricio Alberto Mejia Leon' },
+  { _id: 16, nombreResponsable: 'Claudia Sofia Rincon Mora' },
+  { _id: 17, nombreResponsable: 'Henry Mauricio Lara Pineda' },
+  { _id: 18, nombreResponsable: 'Gloria Amparo Herrera Duque' },
+  { _id: 19, nombreResponsable: 'Julio Cesar Medina Salcedo' },
+  { _id: 20, nombreResponsable: 'Andres Guillermo Velez Montoya' }
+]);
+
+db.centrosTrabajo.insertMany([
+  { _id: 1, nombreCentroTrabajo: 'Sede Administrativa Central', ciudad: 'Bogotá' },
+  { _id: 2, nombreCentroTrabajo: 'Sede Operacional Norte', ciudad: 'Bogotá' },
+  { _id: 3, nombreCentroTrabajo: 'Sede Administrativa II', ciudad: 'Medellín' },
+  { _id: 4, nombreCentroTrabajo: 'Planta Compresora Oriente', ciudad: 'Medellín' },
+  { _id: 5, nombreCentroTrabajo: 'Sede Operacional Barrancabermeja', ciudad: 'Barrancabermeja' },
+  { _id: 6, nombreCentroTrabajo: 'Centro de Control Barrancabermeja', ciudad: 'Barrancabermeja' },
+  { _id: 7, nombreCentroTrabajo: 'Estación Cogua', ciudad: 'Cogua' },
+  { _id: 8, nombreCentroTrabajo: 'Planta Vasconia', ciudad: 'Barrancabermeja' },
+  { _id: 9, nombreCentroTrabajo: 'Sede Operacional Sur', ciudad: 'Cali' },
+  { _id: 10, nombreCentroTrabajo: 'Sede Administrativa Cali', ciudad: 'Cali' },
+  { _id: 11, nombreCentroTrabajo: 'Estación El Pozo', ciudad: 'Bucaramanga' },
+  { _id: 12, nombreCentroTrabajo: 'Sede Técnica Bucaramanga', ciudad: 'Bucaramanga' },
+  { _id: 13, nombreCentroTrabajo: 'Centro Logístico Cartagena', ciudad: 'Cartagena' },
+  { _id: 14, nombreCentroTrabajo: 'Sede Portuaria', ciudad: 'Cartagena' },
+  { _id: 15, nombreCentroTrabajo: 'Estación La Belleza', ciudad: 'Yopal' },
+  { _id: 16, nombreCentroTrabajo: 'Sede Campo Yopal', ciudad: 'Yopal' },
+  { _id: 17, nombreCentroTrabajo: 'Planta Compresora Occidente', ciudad: 'Pereira' },
+  { _id: 18, nombreCentroTrabajo: 'Sede Operacional Eje Cafetero', ciudad: 'Manizales' },
+  { _id: 19, nombreCentroTrabajo: 'Centro de Mantenimiento Villavicencio', ciudad: 'Villavicencio' },
+  { _id: 20, nombreCentroTrabajo: 'Sede Campo Meta', ciudad: 'Villavicencio' }
+]);
+
+db.usuarios.insertMany([
+  { _id: 1, nombreUsuario: 'Diana Carolina Munévar Murillo', rolUsuario: 'admin', correoUsuario: 'diana.munevar@tgi.com.co', 'contraseñaUsuario': 'ConfioEnLos3Ninos', estadoUsuario: 'activo' },
+  { _id: 2, nombreUsuario: 'Xavier Enrique Naar Amaris', rolUsuario: 'admin', correoUsuario: 'xavier.naar@tgi.com.co', 'contraseñaUsuario': 'meHanAscendidoGente', estadoUsuario: 'activo' },
+  { _id: 3, nombreUsuario: 'Ana Lucia Bernal Perez', rolUsuario: 'admin', correoUsuario: 'ana.bernal@tgi.com.co', 'contraseñaUsuario': 'Admin2026*', estadoUsuario: 'inactivo' },
+  { _id: 4, nombreUsuario: 'Carlos Hernan Mejia Rios', rolUsuario: 'ayudante', correoUsuario: 'carlos.mejia@tgi.com.co', 'contraseñaUsuario': 'Ayuda123#', estadoUsuario: 'inactivo' }
+]);
+
+var cargosMap = {};
+db.cargos.find().forEach(function(c) { cargosMap[c._id] = c; });
+
+var centrosMap = {};
+db.centrosTrabajo.find().forEach(function(ct) { centrosMap[ct._id] = ct; });
+
+var trabData = [
+  [1, 'Carlos Andres Peña Rios', 'TGI', '1045678901', 1, 3],
+  [2, 'Maria Fernanda Lopez Arce', 'TGI', '1032456789', 1, 12],
+  [3, 'Jorge Enrique Molina Vega', 'TGI', '79456123', 2, 1],
+  [4, 'Luis Alfredo Torres Gomez', 'TGI', '80134567', 2, 2],
+  [5, 'Diana Marcela Ruiz Herrera', 'TGI', '1076543210', 3, 7],
+  [6, 'Andres Felipe Castro Mora', 'TGI', '1023456789', 3, 6],
+  [7, 'Sandra Patricia Vargas Diaz', 'TGI', '52678901', 4, 8],
+  [8, 'Ricardo Emilio Suarez Leon', 'TGI', '71234890', 4, 3],
+  [9, 'Paula Andrea Jimenez Cruz', 'TGI', '1098765432', 5, 9],
+  [10, 'John Freddy Ramirez Pinto', 'TGI', '91234567', 5, 10],
+  [11, 'Angela Maria Ospina Soto', 'TGI', '1065432198', 6, 11],
+  [12, 'Hector Fabio Mendoza Ruiz', 'TGI', '79012345', 6, 18],
+  [13, 'Viviana Paola Guerrero Alba', 'TGI', '1054321987', 7, 5],
+  [14, 'Camilo Augusto Nieto Ramos', 'TGI', '80876543', 7, 23],
+  [15, 'Beatriz Elena Cardona Meza', 'TGI', '43876543', 8, 19],
+  [16, 'Oscar Ivan Calderon Pena', 'TGI', '79543210', 8, 22],
+  [17, 'Liliana Marcela Reyes Cano', 'TGI', '1087654321', 9, 4],
+  [18, 'Ferney Andres Aguilar Leal', 'TGI', '91876543', 9, 1],
+  [19, 'Natalia Esperanza Vidal Torres', 'TGI', '1043219876', 10, 7],
+  [20, 'Juan Pablo Morales Blanco', 'TGI', '80654321', 10, 13],
+  [21, 'Gloria Ines Acosta Pineda', 'TGI', '43210987', 11, 24],
+  [22, 'Manuel Eduardo Florez Rangel', 'TGI', '91654321', 11, 16],
+  [23, 'Adriana Cecilia Sepulveda Marin', 'TGI', '52109876', 12, 12],
+  [24, 'Roberto Carlos Gomez Alvarado', 'TGI', '79876543', 12, 20],
+  [25, 'Paola Milena Sanchez Duarte', 'TGI', '1076512345', 13, 29],
+  [26, 'Eduardo Antonio Parra Quintero', 'TGI', '80321098', 13, 21],
+  [27, 'Claudia Patricia Bermudez Perez', 'TGI', '52876543', 14, 11],
+  [28, 'Nicolas Arturo Velez Castillo', 'TGI', '1067891234', 14, 15],
+  [29, 'Marcela Johana Rojas Contreras', 'TGI', '1089012345', 15, 5],
+  [30, 'Felipe Ernesto Arango Salcedo', 'TGI', '91012345', 15, 2],
+  [31, 'Yesenia Carolina Gutierrez Franco', 'TGI', '1023487650', 16, 25],
+  [32, 'Mauricio Hernan Cano Naranjo', 'TGI', '80567890', 16, 26],
+  [33, 'Sergio Alejandro Blanco Montes', 'TGI', '1056789012', 17, 1],
+  [34, 'Maria Alejandra Quintero Hoyos', 'TGI', '1098012345', 17, 4],
+  [35, 'Jairo Andres Montoya Rivera', 'TGI', '79098765', 18, 23],
+  [36, 'Leidy Tatiana Cortes Pedraza', 'TGI', '1034567809', 18, 12],
+  [37, 'Giovanny Andres Muñoz Mora', 'TGI', '80789012', 19, 19],
+  [38, 'Luz Marina Olarte Bautista', 'TGI', '51234567', 19, 8],
+  [39, 'Daniel Fernando Posada Arias', 'TGI', '1045312678', 20, 10],
+  [40, 'Alba Lucia Pineda Ceballos', 'TGI', '43678901', 20, 7],
+  [41, 'Rodrigo Enrique Pacheco Garzon', 'Contratista Externo', '80012345', 5, 9],
+  [42, 'Javier Mauricio Lozano Arias', 'Contratista Externo', '79345678', 8, 22],
+  [43, 'Sonia Esperanza Barrera Suarez', 'Contratista Externo', '52456789', 2, 11],
+  [44, 'Henry Eliecer Zapata Torres', 'Contratista Externo', '91456789', 13, 2],
+  [45, 'Juliana Andrea Castillo Mora', 'Contratista Externo', '1056012345', 1, 6],
+  [46, 'Ivan Dario Herrera Ceron', 'TGI', '80234567', 6, 14],
+  [47, 'Tatiana Lorena Bedoya Monsalve', 'TGI', '1078901234', 7, 25],
+  [48, 'Gabriel Andres Silva Palacios', 'TGI', '79901234', 3, 16],
+  [49, 'Pilar Constanza Orjuela Medina', 'TGI', '43901234', 9, 27],
+  [50, 'Andres Camilo Garzon Velasquez', 'TGI', '1067012345', 4, 17],
+  [51, 'Yuri Alexandra Cardenas Blanco', 'TGI', '1089123456', 10, 5],
+  [52, 'Carlos Mario Acevedo Torres', 'TGI', '80456781', 11, 20],
+  [53, 'Lina Maria Buritica Lopez', 'TGI', '1021234569', 14, 29],
+  [54, 'Juan Camilo Ochoa Sanchez', 'TGI', '1045601234', 16, 3],
+  [55, 'Dario Hernando Vasquez Pinto', 'TGI', '79234561', 17, 23],
+  [56, 'Ana Milena Chaparro Rincon', 'TGI', '52789015', 12, 8],
+  [57, 'Omar Ferney Quintero Diaz', 'TGI', '91789012', 18, 10],
+  [58, 'Esperanza Margarita Leon Avila', 'TGI', '43123459', 19, 24],
+  [59, 'William Andres Ramirez Calderon', 'Contratista Externo', '80901238', 20, 1],
+  [60, 'Diana Carolina Trujillo Ospina', 'Contratista Externo', '1032109876', 6, 15],
+  [61, 'Alexander Javier Rios Bermudez', 'TGI', '79678903', 7, 18],
+  [62, 'Claudia Ximena Montano Herrera', 'TGI', '52345671', 15, 12],
+  [63, 'Santiago Andres Pinto Guerrero', 'TGI', '1056892345', 3, 6],
+  [64, 'Maria Camila Suarez Nieto', 'TGI', '1098234567', 5, 7],
+  [65, 'Victor Hugo Zuluaga Marin', 'TGI', '91123456', 13, 21],
+  [66, 'Laura Vanessa Moreno Pena', 'TGI', '1043098765', 2, 4],
+  [67, 'Nicolas Esteban Diaz Uribe', 'TGI', '1078012349', 17, 13],
+  [68, 'Zulema Patricia Vargas Cano', 'TGI', '43456790', 8, 26]
+];
+
+trabData.forEach(function(t) {
+  var cargo = cargosMap[t[5]];
+  var centro = centrosMap[t[4]];
+  db.trabajadores.insertOne({
+    _id: t[0],
+    nombreTrabajador: t[1],
+    documentoTrabajador: t[3],
+    empresaDondeTrabaja: t[2],
+    cargo: { _id: cargo._id, nombreCargo: cargo.nombreCargo },
+    centroTrabajo: { _id: centro._id, nombreCentroTrabajo: centro.nombreCentroTrabajo, ciudad: centro.ciudad }
+  });
+});
+
+var programasMap = {};
+db.programas.find().forEach(function(p) { programasMap[p._id] = p; });
+
+var responsablesMap = {};
+db.responsables.find().forEach(function(r) { responsablesMap[r._id] = r; });
+
+var detalleCapacitacion = [
+  [11, 1], [14, 2], [17, 3], [20, 4], [3, 5],
+  [6, 6], [9, 7], [12, 8], [15, 9], [18, 10],
+  [1, 11], [4, 12], [7, 13], [10, 14], [13, 15],
+  [16, 16], [19, 17], [2, 18], [5, 19], [8, 20],
+  [11, 21], [14, 22], [17, 23], [20, 24], [3, 25],
+  [6, 26], [9, 27], [12, 28], [15, 29], [18, 30],
+  [1, 31], [4, 32], [7, 33], [10, 34], [13, 35],
+  [16, 36], [19, 37], [2, 38], [5, 39], [8, 40],
+  [11, 41], [14, 42], [17, 43], [20, 44], [3, 45],
+  [6, 46], [9, 47], [12, 48], [15, 49], [18, 50],
+  [8, 1], [16, 2], [3, 3], [10, 4], [18, 5],
+  [5, 6], [13, 7], [20, 8], [7, 9], [14, 10],
+  [3, 11], [10, 12], [17, 13], [4, 14], [11, 15],
+  [19, 16], [6, 17], [14, 18], [1, 19], [9, 20]
+];
+
+var respPorCap = {};
+detalleCapacitacion.forEach(function(d) {
+  var idResp = d[0];
+  var idCap = d[1];
+  if (!respPorCap[idCap]) respPorCap[idCap] = [];
+  respPorCap[idCap].push(idResp);
+});
+
+var capData = [
+  [1, 8.0, 'Uso y verificación de EPP para alturas', 'Revisión de equipos de protección personal', 20, 0, 1, 1],
+  [2, 16.0, 'Trabajo en cuerdas y sistemas de anclaje', 'Entrenamiento en técnicas de ascenso y descenso', 15, 0, 1, 1],
+  [3, 4.0, 'Rescate en alturas', 'Simulacro de rescate en estructura elevada', 12, 1, 2, 1],
+  [4, 6.0, 'Manejo defensivo en vías rurales', 'Conducción segura en terrenos difíciles', 18, 0, 1, 2],
+  [5, 4.0, 'Normativa de tránsito para conductores', 'Revisión de código nacional de tránsito', 25, 0, 2, 2],
+  [6, 8.0, 'Fatiga al volante y factores de riesgo', 'Análisis de accidentes por fatiga', 10, 0, 1, 2],
+  [7, 6.0, 'Riesgo eléctrico en baja tensión', 'Identificación de peligros eléctricos domésticos', 30, 0, 2, 3],
+  [8, 8.0, 'Bloqueo y etiquetado LOTO', 'Procedimiento estándar LOTO en campo', 14, 0, 1, 3],
+  [9, 4.0, 'Primeros auxilios en electrocución', 'Atención inmediata ante contacto eléctrico', 22, 2, 2, 3],
+  [10, 12.0, 'Entrenamiento trabajador entrante', 'Procedimientos de ingreso a espacio confinado', 16, 0, 1, 4],
+  [11, 8.0, 'Entrenamiento vigías', 'Funciones y responsabilidades del vigía', 16, 0, 2, 4],
+  [12, 6.0, 'Equipos de rescate en espacios confinados', 'Uso de trípode y arnés en extracción', 10, 1, 1, 4],
+  [13, 4.0, 'Hábitos de vida saludable', 'Actividad física y descanso adecuado', 35, 0, 2, 5],
+  [14, 3.0, 'Alimentación saludable en campo', 'Nutrición básica para trabajadores en turno', 28, 0, 1, 5],
+  [15, 2.0, 'Riesgo cardiovascular y estrés laboral', 'Control del estrés y signos de alerta', 40, 0, 2, 5],
+  [16, 8.0, 'Almacenamiento seguro de químicos', 'Clasificación SGA y fichas de seguridad', 18, 0, 1, 6],
+  [17, 6.0, 'Uso de EPP químico', 'Selección y mantenimiento de EPP para químicos', 15, 0, 2, 6],
+  [18, 4.0, 'Respuesta ante derrames', 'Plan de acción ante derrame de sustancias', 20, 0, 1, 6],
+  [19, 10.0, 'Sistemas de detención de caídas', 'Tipos de arnés y puntos de anclaje', 22, 0, 2, 7],
+  [20, 6.0, 'Inspección de líneas de vida', 'Criterios de retiro y mantenimiento', 17, 0, 1, 7],
+  [21, 4.0, 'Caídas al mismo nivel', 'Identificación de superficies resbaladizas', 30, 0, 2, 7],
+  [22, 8.0, 'RCP y desfibrilación', 'Técnica de RCP y uso del DEA', 25, 0, 1, 8],
+  [23, 6.0, 'Manejo de heridas y quemaduras', 'Curación básica y clasificación de quemaduras', 20, 0, 2, 8],
+  [24, 4.0, 'Triaje en campo', 'Clasificación de víctimas en emergencias masivas', 12, 0, 1, 8],
+  [25, 10.0, 'Uso y mantenimiento de extintores', 'Tipos de fuego y agentes extintores', 28, 0, 2, 9],
+  [26, 8.0, 'Evacuación y brigada contra incendios', 'Plan de evacuación y roles de la brigada', 32, 0, 1, 9],
+  [27, 6.0, 'Sistemas fijos de supresión', 'Fundamentos de rociadores y CO2', 14, 0, 2, 9],
+  [28, 4.0, 'Higiene postural en oficina', 'Ajuste de puesto de trabajo y pausas activas', 45, 0, 1, 10],
+  [29, 6.0, 'Manejo manual de cargas', 'Técnica segura de levantamiento y transporte', 38, 0, 2, 10],
+  [30, 8.0, 'Desórdenes musculoesqueléticos', 'Identificación y prevención de DME en campo', 22, 0, 1, 10],
+  [31, 5.0, 'Señalización y demarcación en alturas', 'Zonas de peligro y acceso restringido', 18, 0, 2, 1],
+  [32, 3.0, 'Check-list de inspección preoperacional', 'Diligenciamiento de formatos de pre-op', 20, 0, 1, 2],
+  [33, 6.0, 'Riesgo eléctrico en alta tensión', 'Distancias de seguridad y permisos de trabajo', 10, 0, 2, 3],
+  [34, 4.0, 'Atmosferas peligrosas en espacios confinados', 'Medición de gases y niveles permisibles', 14, 0, 1, 4],
+  [35, 3.0, 'Pausas activas y bienestar', 'Ejercicios de estiramiento para jornada laboral', 50, 0, 2, 5],
+  [36, 8.0, 'Gestión de residuos químicos peligrosos', 'Disposición final y manifiestos de residuos', 16, 0, 1, 6],
+  [37, 6.0, 'Protección de bordes y perímetros', 'Instalación de barandas y mallas de seguridad', 12, 0, 2, 7],
+  [38, 4.0, 'Botiquín de primeros auxilios', 'Inventario y uso correcto de insumos', 30, 0, 1, 8],
+  [39, 10.0, 'Plan de emergencia contra incendio', 'Simulacro integral de emergencia', 20, 0, 2, 9],
+  [40, 6.0, 'Vibración y ruido ocupacional', 'Efectos en salud y medidas de control', 25, 0, 1, 10],
+  [41, 4.0, 'Investigación de incidentes', 'Metodología de árbol de causas', 18, 0, 2, 1],
+  [42, 8.0, 'Conducción en vías de alto riesgo', 'Manejo en zonas de conflicto y clima adverso', 14, 0, 1, 2],
+  [43, 3.0, 'Medidas de prevención de arco eléctrico', 'Equipos de protección contra arco', 10, 0, 2, 3],
+  [44, 6.0, 'Permisos de trabajo en espacios confinados', 'Diligenciamiento y aprobación de permisos', 15, 0, 1, 4],
+  [45, 4.0, 'Tabaquismo y consumo de alcohol en trabajo', 'Política de sustancias psicoactivas', 35, 0, 2, 5],
+  [46, 6.0, 'Fichas de datos de seguridad FDS', 'Lectura e interpretación de FDS', 20, 0, 1, 6],
+  [47, 8.0, 'Trabajo en andamios', 'Montaje seguro y puntos críticos de andamios', 12, 0, 2, 7],
+  [48, 4.0, 'Hipotermia e insolación en campo', 'Reconocimiento y atención de emergencias térmicas', 18, 0, 1, 8],
+  [49, 10.0, 'Detección temprana de incendios', 'Sistemas de detección y alarma', 22, 0, 2, 9],
+  [50, 6.0, 'Iluminación y confort visual', 'Condiciones lumínicas en puesto de trabajo', 28, 0, 1, 10]
+];
+
+capData.forEach(function(c) {
+  var prog = programasMap[c[7]];
+  var idsResp = respPorCap[c[0]] || [];
+  var responsablesEmb = idsResp.map(function(idR) {
+    var r = responsablesMap[idR];
+    return { _id: r._id, nombreResponsable: r.nombreResponsable };
+  });
+  db.capacitaciones.insertOne({
+    _id: c[0],
+    duracion: c[1],
+    tema: c[2],
+    actividad: c[3],
+    accidentesAsociados: c[5],
+    capacitador: '',
+    idUsuario: c[6],
+    programa: { _id: prog._id, nombrePrograma: prog.nombrePrograma, fasePHVA: prog.fasePHVA },
+    responsables: responsablesEmb
+  });
+});
+
+var capMap = {};
+db.capacitaciones.find().forEach(function(c) { capMap[c._id] = c; });
+
+var progData = [
+  [1, '2026-03-25', '07:00:00', 'Sede Administrativa Central - Sala A', 'presencial', 29, 'realizada'],
+  [2, '2026-03-26', '07:30:00', 'Sala de Capacitaciones Barrancabermeja', 'virtual', 30, 'realizada'],
+  [3, '2026-03-27', '08:00:00', 'Auditorio Sede Norte Bogota', 'presencial', 31, 'realizada'],
+  [4, '2026-03-28', '08:30:00', 'Centro de Entrenamiento Vasconia', 'virtual', 32, 'realizada'],
+  [5, '2026-03-29', '09:00:00', 'Sala Virtual - Teams', 'presencial', 33, 'realizada'],
+  [6, '2026-03-30', '09:30:00', 'Campo Cogua - Area Externa', 'virtual', 34, 'realizada'],
+  [7, '2026-03-31', '10:00:00', 'Sala de Juntas Cali', 'presencial', 35, 'realizada'],
+  [8, '2026-04-01', '13:00:00', 'Auditorio Sede Medellin', 'virtual', 36, 'realizada'],
+  [9, '2026-04-02', '13:30:00', 'Centro Logistico Cartagena - Sala B', 'presencial', 38, 'realizada'],
+  [10, '2026-04-03', '14:00:00', 'Sede Campo Yopal - Carpa Principal', 'virtual', 39, 'realizada'],
+  [11, '2026-04-04', '14:30:00', 'Planta Compresora Occidente - Sala Tecnica', 'presencial', 40, 'realizada'],
+  [12, '2026-04-05', '15:00:00', 'Sala Virtual - Zoom', 'virtual', 41, 'realizada'],
+  [13, '2026-04-06', '15:30:00', 'Sede Bucaramanga - Aula 2', 'presencial', 42, 'realizada'],
+  [14, '2026-04-07', '16:00:00', 'Area de Entrenamiento Meta', 'virtual', 43, 'cancelada'],
+  [15, '2026-04-08', '17:00:00', 'Sede Administrativa Central - Sala A', 'presencial', 45, 'realizada'],
+  [16, '2026-04-09', '17:30:00', 'Sala de Capacitaciones Barrancabermeja', 'virtual', 46, 'realizada'],
+  [17, '2026-04-10', '07:00:00', 'Auditorio Sede Norte Bogota', 'presencial', 47, 'realizada'],
+  [18, '2026-04-11', '07:30:00', 'Centro de Entrenamiento Vasconia', 'virtual', 48, 'cancelada'],
+  [19, '2026-04-12', '08:00:00', 'Sala Virtual - Teams', 'presencial', 49, 'realizada'],
+  [20, '2026-04-13', '08:30:00', 'Campo Cogua - Area Externa', 'virtual', 50, 'realizada'],
+  [21, '2026-04-14', '09:00:00', 'Sala de Juntas Cali', 'presencial', 1, 'cancelada'],
+  [22, '2026-04-15', '09:30:00', 'Auditorio Sede Medellin', 'virtual', 1, 'realizada'],
+  [23, '2026-04-16', '10:00:00', 'Centro Logistico Cartagena - Sala B', 'presencial', 2, 'cancelada'],
+  [24, '2026-04-17', '13:00:00', 'Sede Campo Yopal - Carpa Principal', 'virtual', 2, 'realizada'],
+  [25, '2026-04-18', '13:30:00', 'Planta Compresora Occidente - Sala Tecnica', 'presencial', 3, 'realizada'],
+  [26, '2026-04-19', '14:00:00', 'Sala Virtual - Zoom', 'virtual', 3, 'realizada'],
+  [27, '2026-04-20', '14:30:00', 'Sede Bucaramanga - Aula 2', 'presencial', 4, 'realizada'],
+  [28, '2026-04-21', '15:00:00', 'Area de Entrenamiento Meta', 'virtual', 4, 'realizada'],
+  [29, '2026-03-25', '15:30:00', 'Sede Administrativa Central - Sala A', 'presencial', 5, 'realizada'],
+  [30, '2026-03-26', '16:00:00', 'Sala de Capacitaciones Barrancabermeja', 'virtual', 5, 'realizada'],
+  [31, '2026-03-27', '17:00:00', 'Auditorio Sede Norte Bogota', 'presencial', 6, 'realizada'],
+  [32, '2026-03-28', '17:30:00', 'Centro de Entrenamiento Vasconia', 'virtual', 6, 'realizada'],
+  [33, '2026-03-29', '07:00:00', 'Sala Virtual - Teams', 'presencial', 8, 'realizada'],
+  [34, '2026-03-30', '07:30:00', 'Campo Cogua - Area Externa', 'virtual', 8, 'realizada'],
+  [35, '2026-03-31', '08:00:00', 'Sala de Juntas Cali', 'presencial', 9, 'realizada'],
+  [36, '2026-04-01', '08:30:00', 'Auditorio Sede Medellin', 'virtual', 9, 'realizada'],
+  [37, '2026-04-02', '09:00:00', 'Centro Logistico Cartagena - Sala B', 'presencial', 10, 'realizada'],
+  [38, '2026-04-03', '09:30:00', 'Sede Campo Yopal - Carpa Principal', 'virtual', 10, 'realizada'],
+  [39, '2026-04-04', '10:00:00', 'Planta Compresora Occidente - Sala Tecnica', 'presencial', 11, 'realizada'],
+  [40, '2026-04-05', '13:00:00', 'Sala Virtual - Zoom', 'virtual', 11, 'realizada'],
+  [41, '2026-04-06', '13:30:00', 'Sede Bucaramanga - Aula 2', 'presencial', 12, 'realizada'],
+  [42, '2026-04-07', '14:00:00', 'Area de Entrenamiento Meta', 'virtual', 12, 'realizada'],
+  [43, '2026-04-08', '14:30:00', 'Sede Administrativa Central - Sala A', 'presencial', 13, 'realizada'],
+  [44, '2026-04-09', '15:00:00', 'Sala de Capacitaciones Barrancabermeja', 'virtual', 13, 'realizada'],
+  [45, '2026-04-10', '15:30:00', 'Auditorio Sede Norte Bogota', 'presencial', 15, 'realizada'],
+  [46, '2026-04-11', '16:00:00', 'Centro de Entrenamiento Vasconia', 'virtual', 15, 'realizada'],
+  [47, '2026-04-12', '17:00:00', 'Sala Virtual - Teams', 'presencial', 16, 'realizada'],
+  [48, '2026-04-13', '17:30:00', 'Campo Cogua - Area Externa', 'virtual', 16, 'cancelada'],
+  [49, '2026-04-14', '07:00:00', 'Sala de Juntas Cali', 'presencial', 17, 'realizada'],
+  [50, '2026-04-15', '07:30:00', 'Auditorio Sede Medellin', 'virtual', 17, 'realizada'],
+  [51, '2026-04-16', '08:00:00', 'Centro Logistico Cartagena - Sala B', 'presencial', 18, 'cancelada'],
+  [52, '2026-04-17', '08:30:00', 'Sede Campo Yopal - Carpa Principal', 'virtual', 18, 'realizada'],
+  [53, '2026-04-23', '09:00:00', 'Planta Compresora Occidente - Sala Tecnica', 'presencial', 19, 'programada'],
+  [54, '2026-04-24', '09:30:00', 'Sala Virtual - Zoom', 'virtual', 19, 'programada'],
+  [55, '2026-04-25', '10:00:00', 'Sede Bucaramanga - Aula 2', 'presencial', 20, 'programada'],
+  [56, '2026-04-26', '13:00:00', 'Area de Entrenamiento Meta', 'virtual', 20, 'programada'],
+  [57, '2026-04-27', '13:30:00', 'Sede Administrativa Central - Sala A', 'presencial', 21, 'programada'],
+  [58, '2026-04-28', '14:00:00', 'Sala de Capacitaciones Barrancabermeja', 'virtual', 21, 'programada'],
+  [59, '2026-04-29', '14:30:00', 'Auditorio Sede Norte Bogota', 'presencial', 22, 'programada'],
+  [60, '2026-04-30', '15:00:00', 'Centro de Entrenamiento Vasconia', 'virtual', 22, 'programada'],
+  [61, '2026-05-01', '15:30:00', 'Sala Virtual - Teams', 'presencial', 24, 'programada'],
+  [62, '2026-05-02', '16:00:00', 'Campo Cogua - Area Externa', 'virtual', 24, 'programada'],
+  [63, '2026-05-03', '17:00:00', 'Sala de Juntas Cali', 'presencial', 25, 'programada'],
+  [64, '2026-05-04', '17:30:00', 'Auditorio Sede Medellin', 'virtual', 25, 'programada'],
+  [65, '2026-05-05', '07:00:00', 'Centro Logistico Cartagena - Sala B', 'presencial', 26, 'programada'],
+  [66, '2026-05-06', '07:30:00', 'Sede Campo Yopal - Carpa Principal', 'virtual', 26, 'programada'],
+  [67, '2026-05-07', '08:00:00', 'Planta Compresora Occidente - Sala Tecnica', 'presencial', 27, 'programada'],
+  [68, '2026-05-08', '08:30:00', 'Sala Virtual - Zoom', 'virtual', 27, 'cancelada'],
+  [69, '2026-05-09', '09:00:00', 'Sede Bucaramanga - Aula 2', 'presencial', 28, 'programada'],
+  [70, '2026-05-10', '09:30:00', 'Area de Entrenamiento Meta', 'virtual', 28, 'programada']
+];
+
+progData.forEach(function(p) {
+  var cap = capMap[p[5]];
+  db.programaciones.insertOne({
+    _id: p[0],
+    fechaProgramada: p[1],
+    horaProgramada: p[2],
+    lugarProgramado: p[3],
+    modalidadProgramada: p[4],
+    estadoProgramacion: p[6],
+    asistenciaProgramada: cap ? cap.accidentesAsociados : 0,
+    idCapacitacion: p[5],
+    tema: cap ? cap.tema : ''
+  });
+});
+
+var trabMap = {};
+db.trabajadores.find().forEach(function(t) { trabMap[t._id] = t; });
+
+var progMapForAsist = {};
+db.programaciones.find().forEach(function(p) { progMapForAsist[p._id] = p; });
+
+function obtenerIdPrograma(idProgramacion) {
+  var programacion = progMapForAsist[idProgramacion];
+  if (!programacion) return null;
+  var capacitacion = capMap[programacion.idCapacitacion];
+  if (!capacitacion) return null;
+  return capacitacion.programa ? capacitacion.programa._id : null;
+}
+
+var asistData = [
+  [1, true, '2026-04-04 14:36:00', 4, 'Excelente capacitador', 11, 1],
+  [2, false, null, null, null, 51, 2],
+  [3, true, '2026-04-11 16:12:00', 4, null, 46, 3],
+  [4, false, null, null, null, 19, 3],
+  [5, true, '2026-04-09 17:36:00', 5, null, 16, 4],
+  [6, true, '2026-04-08 14:41:00', 3, null, 43, 5],
+  [7, false, null, null, null, 56, 6],
+  [8, false, null, null, null, 18, 6],
+  [9, true, '2026-03-28 08:44:00', 4, null, 4, 7],
+  [10, false, null, null, null, 59, 8],
+  [11, true, '2026-04-05 15:16:00', 4, 'Muy bien explicado', 12, 9],
+  [12, true, '2026-03-29 07:00:00', 5, 'No quedo claro', 33, 10],
+  [13, true, '2026-04-06 15:36:00', 4, null, 13, 11],
+  [14, true, '2026-04-15 09:36:00', 1, null, 22, 12],
+  [15, true, '2026-03-30 09:44:00', 4, null, 6, 12],
+  [16, false, null, null, null, 57, 13],
+  [17, true, '2026-03-27 17:05:00', 5, 'Muy didactico', 31, 14],
+  [18, false, null, null, null, 3, 15],
+  [19, false, null, null, null, 62, 15],
+  [20, true, '2026-03-31 10:02:00', 5, null, 7, 16],
+  [21, true, '2026-04-14 07:04:00', 4, 'Deberias mejorar las instalaciones', 49, 17],
+  [22, true, '2026-03-27 17:14:00', 5, null, 31, 17],
+  [23, false, null, null, null, 58, 18],
+  [24, true, '2026-04-17 08:41:00', 2, null, 52, 19],
+  [25, false, null, null, null, 61, 20],
+  [26, false, null, null, null, 26, 20],
+  [27, true, '2026-04-18 13:49:00', 4, 'No quedo claro', 25, 21],
+  [28, false, null, null, null, 32, 21],
+  [29, false, null, null, null, 62, 22],
+  [30, false, null, null, null, 67, 23],
+  [31, false, null, null, null, 41, 23],
+  [32, true, '2026-04-15 07:35:00', 5, null, 50, 24],
+  [33, true, '2026-03-31 08:10:00', 4, null, 35, 24],
+  [34, true, '2026-04-06 13:33:00', 3, 'Falto mas practica en campo', 41, 25],
+  [35, true, '2026-04-02 09:18:00', 3, 'Buen manejo del grupo', 37, 25],
+  [36, true, '2026-04-05 13:12:00', 5, null, 40, 26],
+  [37, true, '2026-04-17 08:35:00', 3, null, 52, 26],
+  [38, false, null, null, null, 53, 27],
+  [39, false, null, null, null, 70, 28],
+  [40, true, '2026-04-09 15:12:00', 4, 'El tema no se profundizo suficiente', 44, 28],
+  [41, true, '2026-04-19 14:09:00', 5, null, 26, 29],
+  [42, true, '2026-04-13 08:37:00', 5, null, 20, 30],
+  [43, true, '2026-04-20 14:44:00', 5, null, 27, 31],
+  [44, false, null, null, null, 47, 31],
+  [45, true, '2026-04-07 14:10:00', 3, null, 42, 32],
+  [46, true, '2026-04-01 13:08:00', 5, 'El instructor llego tarde', 8, 33],
+  [47, true, '2026-04-11 16:12:00', 4, null, 46, 33],
+  [48, false, null, null, null, 21, 34],
+  [49, true, '2026-03-29 09:14:00', 5, 'Muy bien explicado', 5, 35],
+  [50, false, null, null, null, 64, 36],
+  [51, true, '2026-04-10 15:39:00', 1, 'El proyector fallo a mitad', 45, 37],
+  [52, true, '2026-04-02 09:08:00', 4, null, 37, 38],
+  [53, true, '2026-04-01 08:37:00', 5, null, 36, 39],
+  [54, true, '2026-04-04 10:00:00', 5, null, 39, 39],
+  [55, false, null, null, null, 32, 40],
+  [56, true, '2026-04-08 17:05:00', 4, null, 15, 41],
+  [57, false, null, null, null, 63, 41],
+  [58, false, null, null, null, 23, 42],
+  [59, true, '2026-04-12 17:08:00', 4, null, 47, 43],
+  [60, true, '2026-04-18 13:46:00', 4, null, 25, 43],
+  [61, false, null, null, null, 54, 44],
+  [62, false, null, null, null, 60, 45],
+  [63, false, null, null, null, 65, 46],
+  [64, true, '2026-03-30 07:49:00', 4, 'Excelente capacitador', 34, 46],
+  [65, true, '2026-04-10 07:02:00', 4, null, 17, 47],
+  [66, true, '2026-04-15 07:41:00', 1, null, 50, 47],
+  [67, true, '2026-03-30 09:48:00', 5, null, 6, 48],
+  [68, true, '2026-04-03 14:12:00', 5, 'Sigue asi', 10, 49],
+  [69, false, null, null, null, 18, 50],
+  [70, true, '2026-04-08 14:44:00', 3, null, 43, 50],
+  [71, true, '2026-03-25 07:17:00', 1, 'Aprendi mucho', 1, 51],
+  [72, true, '2026-04-04 10:12:00', 5, null, 39, 52],
+  [73, true, '2026-04-09 15:18:00', 3, null, 44, 53],
+  [74, false, null, null, null, 23, 53],
+  [75, false, null, null, null, 63, 54],
+  [76, true, '2026-04-21 15:05:00', 1, null, 28, 55],
+  [77, true, '2026-04-03 14:16:00', 5, 'Buen manejo del grupo', 10, 55],
+  [78, true, '2026-03-26 07:30:00', 4, null, 2, 56],
+  [79, true, '2026-04-10 07:18:00', 5, 'Muy bien explicado', 17, 56],
+  [80, false, null, null, null, 66, 57],
+  [81, false, null, null, null, 48, 58],
+  [82, false, null, null, null, 14, 59],
+  [83, true, '2026-04-01 13:01:00', 5, 'El proyector fallo a mitad', 8, 59],
+  [84, false, null, null, null, 55, 60],
+  [85, true, '2026-03-27 08:01:00', 4, null, 3, 60],
+  [86, true, '2026-03-31 08:03:00', 5, 'Deberias mejorar las instalaciones', 35, 61],
+  [87, true, '2026-03-28 08:36:00', 4, 'Deberias compartir el material', 4, 61],
+  [88, false, null, null, null, 5, 62],
+  [89, true, '2026-04-02 13:34:00', 3, 'Deberias compartir el material', 9, 63],
+  [90, false, null, null, null, 68, 64],
+  [91, true, '2026-03-25 15:35:00', 5, null, 29, 65],
+  [92, true, '2026-04-12 08:19:00', 4, null, 19, 66],
+  [93, true, '2026-03-26 16:01:00', 3, null, 30, 67],
+  [94, false, null, null, null, 51, 67],
+  [95, true, '2026-04-17 13:09:00', 5, 'Deberias compartir el material', 24, 68]
+];
+
+asistData.forEach(function(a) {
+  var trab = trabMap[a[6]];
+  var idProg = obtenerIdPrograma(a[5]);
+  db.asistencias.insertOne({
+    _id: a[0],
+    idProgramacion: a[5],
+    idPrograma: idProg,
+    asistio: a[1],
+    fechaDeAsistencia: a[2] ? new Date(a[2]) : null,
+    evaluacionCapacitador: a[3],
+    comentariosCapacitacion: a[4],
+    trabajador: {
+      _id: trab._id,
+      nombreTrabajador: trab.nombreTrabajador,
+      documentoTrabajador: trab.documentoTrabajador,
+      idCargo: trab.cargo._id,
+      idCentroTrabajo: trab.centroTrabajo._id,
+      ciudad: trab.centroTrabajo.ciudad
+    }
+  });
+});
+
+// 7. CONSULTAS Y OPERACIONES FUNCIONALES
+
+// ------------------------------------------------------------------------------
+// 7.1 CONSULTAS BASICAS
+// ------------------------------------------------------------------------------
+
+// [RQF 4] Consultar información de Usuario (Se excluye la contraseña por seguridad)
+db.usuarios.find({}, { 'contraseñaUsuario': 0 }).pretty();
+
+// [RQF 9] Mostrar lista completa de programas
+db.programas.find().pretty();
+
+// [RQF 11] Consultar lista completa de responsables
+db.responsables.find().pretty();
+
+// [RQF 14] Mostrar lista completa de capacitaciones
+db.capacitaciones.find().pretty();
+
+// [RQF 25] Consultar cargo
+db.cargos.find().pretty();
+
+// [RQF 27] Consultar centro trabajo
+db.centrosTrabajo.find().pretty();
+
+// [RQF 29] Consultar información de trabajadores
+db.trabajadores.find({}, {
+  documentoTrabajador: 1,
+  nombreTrabajador: 1,
+  empresaDondeTrabaja: 1,
+  'cargo.nombreCargo': 1,
+  'centroTrabajo.nombreCentroTrabajo': 1,
+  'centroTrabajo.ciudad': 1
+}).pretty();
+
+
+// ------------------------------------------------------------------------------
+// 7.2 CONSULTAS ESPECIFICAS Y AGREGACIONES LIGERAS
+// ------------------------------------------------------------------------------
+
+// [RQF 13] Consultar información general de una capacitación
+db.capacitaciones.findOne({ _id: 1 }, { tema: 1, actividad: 1, 'programa.nombrePrograma': 1 });
+
+// [RQF 19] Consultar información de programación
+db.programaciones.findOne({ _id: 1 }, { fechaProgramada: 1, horaProgramada: 1, tema: 1 });
+
+// [RQF 33] Consultar trabajadores que ejercen un cargo
+db.trabajadores.find({ 'cargo._id': 1 }, { nombreTrabajador: 1, documentoTrabajador: 1, 'cargo.nombreCargo': 1 }).pretty();
+
+// [RQF 34] Consultar trabajadores de un centro de trabajo
+db.trabajadores.find({ 'centroTrabajo._id': 1 }, { nombreTrabajador: 1, documentoTrabajador: 1, 'centroTrabajo.nombreCentroTrabajo': 1 }).pretty();
+
+// [RQF 35] Consultar trabajadores por ciudad
+db.trabajadores.find({ 'centroTrabajo.ciudad': 'Barrancabermeja' }, { nombreTrabajador: 1, documentoTrabajador: 1, 'centroTrabajo.ciudad': 1 }).pretty();
+
+// [RQF 40] Consultar número de asistentes citados a una programación
+db.asistencias.countDocuments({ idProgramacion: 1 });
+
+// [RQF 41] Consultar lista de trabajadores citados a una programación
+db.asistencias.find({ idProgramacion: 1 }, { 'trabajador.nombreTrabajador': 1, 'trabajador.documentoTrabajador': 1, _id: 0 }).pretty();
+
+// [RQF 42] Consultar programación por estado
+db.programaciones.find({ estadoProgramacion: 'programada' }).pretty();
+
+// [RQF 43] Consultar programaciones en rango de fecha
+db.programaciones.find({ fechaProgramada: { $gte: '2026-03-25', $lte: '2026-05-10' } }).sort({ fechaProgramada: 1 }).pretty();
+
+// [RQF 47] Calcular número capacitaciones programadas a un trabajador
+db.asistencias.countDocuments({ 'trabajador._id': 1 });
+
+// [RQF 48] Calcular número de capacitaciones asistidas por un trabajador
+db.asistencias.countDocuments({ 'trabajador._id': 1, asistio: true });
+
+// [RQF 49] Calcular porcentaje de cumplimiento a capacitaciones por trabajador
+db.asistencias.aggregate([
+  { $match: { 'trabajador._id': 1 } },
+  { $group: { _id: '$trabajador._id', totalProgramadas: { $sum: 1 }, totalAsistidas: { $sum: { $cond: ['$asistio', 1, 0] } } } },
+  { $project: { _id: 0, totalProgramadas: 1, totalAsistidas: 1, porcentaje: { $cond: [ { $eq: ['$totalProgramadas', 0] }, 0, { $round: [{ $multiply: [{ $divide: ['$totalAsistidas', '$totalProgramadas'] }, 100] }, 1] } ] } } }
+]);
+
+// [RQF 50] Calcular promedio de evaluaciones de los trabajadores a capacitación
+db.asistencias.aggregate([
+  { $match: { idProgramacion: 1, evaluacionCapacitador: { $ne: null } } },
+  { $group: { _id: '$idProgramacion', promedioEvaluacion: { $avg: '$evaluacionCapacitador' } } }
+]);
+
+// [RQF 52] Consultar número de accidentes asociados a capacitación
+db.capacitaciones.findOne({ _id: 1 }, { accidentesAsociados: 1, tema: 1 });
+
+// [RQF 54] Consultar trabajadores que no pertenecen a TGI
+db.trabajadores.find({ empresaDondeTrabaja: { $ne: 'TGI' } }).pretty();
+
+
+// ------------------------------------------------------------------------------
+// 7.3 INSERCIONES
+// ------------------------------------------------------------------------------
+
+// [RQF 3] Crear Usuario
+var nuevoIdUsuario = db.usuarios.find().sort({ _id: -1 }).limit(1).next()._id + 1;
+db.usuarios.insertOne({ _id: nuevoIdUsuario, nombreUsuario: 'Pedro Pablo Martinez Luna', rolUsuario: 'ayudante', correoUsuario: 'pedro.martinez@tgi.com.co', 'contraseñaUsuario': 'PedroPass2026!', estadoUsuario: 'activo' });
+
+// [RQF 8] Crear programa
+var nuevoIdPrograma = db.programas.find().sort({ _id: -1 }).limit(1).next()._id + 1;
+db.programas.insertOne({ _id: nuevoIdPrograma, nombrePrograma: 'Riesgo Biologico', fasePHVA: 'planear' });
+
+// [RQF 10] Registrar responsable
+var nuevoIdResponsable = db.responsables.find().sort({ _id: -1 }).limit(1).next()._id + 1;
+db.responsables.insertOne({ _id: nuevoIdResponsable, nombreResponsable: 'Fernando Jose Gutierrez Rojas' });
+
+// [RQF 24] Registrar cargo
+var nuevoIdCargo = db.cargos.find().sort({ _id: -1 }).limit(1).next()._id + 1;
+db.cargos.insertOne({ _id: nuevoIdCargo, nombreCargo: 'Ingeniero Ambiental' });
+
+// [RQF 26] Registrar centro trabajo
+var nuevoIdCentro = db.centrosTrabajo.find().sort({ _id: -1 }).limit(1).next()._id + 1;
+db.centrosTrabajo.insertOne({ _id: nuevoIdCentro, nombreCentroTrabajo: 'Sede Operacional Norte Santander', ciudad: 'Cucuta' });
+
+// [RQF 28] Registrar trabajador en sistema
+var cargoNuevoTrab = db.cargos.findOne({ _id: 3 });
+var centroNuevoTrab = db.centrosTrabajo.findOne({ _id: 1 });
+var nuevoIdTrabajador = db.trabajadores.find().sort({ _id: -1 }).limit(1).next()._id + 1;
+db.trabajadores.insertOne({
+  _id: nuevoIdTrabajador,
+  nombreTrabajador: 'Andrea Patricia Vargas Leon',
+  documentoTrabajador: '1098123456',
+  empresaDondeTrabaja: 'TGI',
+  cargo: { _id: cargoNuevoTrab._id, nombreCargo: cargoNuevoTrab.nombreCargo },
+  centroTrabajo: { _id: centroNuevoTrab._id, nombreCentroTrabajo: centroNuevoTrab.nombreCentroTrabajo, ciudad: centroNuevoTrab.ciudad }
+});
+
+// [RQF 12] Crear capacitación
+var progCap = db.programas.findOne({ _id: 1 });
+var respCap = db.responsables.find({ _id: { $in: [1, 5] } }).toArray();
+var nuevoIdCapacitacion = db.capacitaciones.find().sort({ _id: -1 }).limit(1).next()._id + 1;
+db.capacitaciones.insertOne({
+  _id: nuevoIdCapacitacion,
+  duracion: 6.0,
+  tema: 'Trabajo seguro en plataformas elevadoras',
+  actividad: 'Practica en operacion de plataformas tipo tijera',
+  accidentesAsociados: 0,
+  capacitador: '',
+  idUsuario: 1,
+  programa: { _id: progCap._id, nombrePrograma: progCap.nombrePrograma, fasePHVA: progCap.fasePHVA },
+  responsables: respCap.map(function(r) { return { _id: r._id, nombreResponsable: r.nombreResponsable }; })
+});
+
+// [RQF 18] Crear programación para capacitación
+var capProg = db.capacitaciones.findOne({ _id: 1 });
+var nuevoIdProgramacion = db.programaciones.find().sort({ _id: -1 }).limit(1).next()._id + 1;
+db.programaciones.insertOne({
+  _id: nuevoIdProgramacion,
+  fechaProgramada: '2026-06-15',
+  horaProgramada: '08:00:00',
+  lugarProgramado: 'Auditorio Sede Norte Bogota',
+  modalidadProgramada: 'presencial',
+  estadoProgramacion: 'programada',
+  asistenciaProgramada: 20,
+  idCapacitacion: capProg._id,
+  tema: capProg.tema
+});
+
+// [RQF 36] Añadir trabajador al aforo de una programación de capacitación
+var trabAforo = db.trabajadores.findOne({ _id: 5 });
+var idProgProg = (function() {
+  var pr = db.programaciones.findOne({ _id: 53 });
+  if (!pr) return null;
+  var ca = db.capacitaciones.findOne({ _id: pr.idCapacitacion });
+  return ca && ca.programa ? ca.programa._id : null;
+})();
+var existeYa = db.asistencias.findOne({ idProgramacion: 53, 'trabajador._id': 5 });
+if (!existeYa) {
+  var nuevoIdAsist = db.asistencias.find().sort({ _id: -1 }).limit(1).next()._id + 1;
+  db.asistencias.insertOne({
+    _id: nuevoIdAsist,
+    idProgramacion: 53,
+    idPrograma: idProgProg,
+    asistio: false,
+    fechaDeAsistencia: null,
+    evaluacionCapacitador: null,
+    comentariosCapacitacion: null,
+    trabajador: {
+      _id: trabAforo._id,
+      nombreTrabajador: trabAforo.nombreTrabajador,
+      documentoTrabajador: trabAforo.documentoTrabajador,
+      idCargo: trabAforo.cargo._id,
+      idCentroTrabajo: trabAforo.centroTrabajo._id,
+      ciudad: trabAforo.centroTrabajo.ciudad
+    }
+  });
+  print('Trabajador anadido correctamente');
+} else {
+  print('El trabajador ya esta convocado');
+}
+
+// [RQF 37] Añadir trabajadores al aforo de una programación por centro de trabajo
+var idProgParaCentro = 1;
+var idCentroFiltro = 2;
+var idProgramaCentro = (function() {
+  var pr = db.programaciones.findOne({ _id: idProgParaCentro });
+  if (!pr) return null;
+  var ca = db.capacitaciones.findOne({ _id: pr.idCapacitacion });
+  return ca && ca.programa ? ca.programa._id : null;
+})();
+var trabsCentro = db.trabajadores.find({ 'centroTrabajo._id': idCentroFiltro }).toArray();
+var proximoId = db.asistencias.find().sort({ _id: -1 }).limit(1).next()._id + 1;
+trabsCentro.forEach(function(t) {
+  var yaExiste = db.asistencias.findOne({ idProgramacion: idProgParaCentro, 'trabajador._id': t._id });
+  if (!yaExiste) {
+    db.asistencias.insertOne({
+      _id: proximoId,
+      idProgramacion: idProgParaCentro,
+      idPrograma: idProgramaCentro,
+      asistio: false,
+      fechaDeAsistencia: null,
+      evaluacionCapacitador: null,
+      comentariosCapacitacion: null,
+      trabajador: {
+        _id: t._id,
+        nombreTrabajador: t.nombreTrabajador,
+        documentoTrabajador: t.documentoTrabajador,
+        idCargo: t.cargo._id,
+        idCentroTrabajo: t.centroTrabajo._id,
+        ciudad: t.centroTrabajo.ciudad
+      }
+    });
+    proximoId++;
+  }
+});
+
+// [RQF 38] Añadir trabajadores al aforo de una programación por ciudad
+var idProgParaCiudad = 1;
+var ciudadFiltro = 'Barrancabermeja';
+var idProgramaCiudad = (function() {
+  var pr = db.programaciones.findOne({ _id: idProgParaCiudad });
+  if (!pr) return null;
+  var ca = db.capacitaciones.findOne({ _id: pr.idCapacitacion });
+  return ca && ca.programa ? ca.programa._id : null;
+})();
+var trabsCiudad = db.trabajadores.find({ 'centroTrabajo.ciudad': ciudadFiltro }).toArray();
+var proximoIdCiudad = db.asistencias.find().sort({ _id: -1 }).limit(1).next()._id + 1;
+trabsCiudad.forEach(function(t) {
+  var yaExiste = db.asistencias.findOne({ idProgramacion: idProgParaCiudad, 'trabajador._id': t._id });
+  if (!yaExiste) {
+    db.asistencias.insertOne({
+      _id: proximoIdCiudad,
+      idProgramacion: idProgParaCiudad,
+      idPrograma: idProgramaCiudad,
+      asistio: false,
+      fechaDeAsistencia: null,
+      evaluacionCapacitador: null,
+      comentariosCapacitacion: null,
+      trabajador: {
+        _id: t._id,
+        nombreTrabajador: t.nombreTrabajador,
+        documentoTrabajador: t.documentoTrabajador,
+        idCargo: t.cargo._id,
+        idCentroTrabajo: t.centroTrabajo._id,
+        ciudad: t.centroTrabajo.ciudad
+      }
+    });
+    proximoIdCiudad++;
+  }
+});
+
+// [RQF 39] Añadir trabajadores al aforo de una programación por cargo
+var idProgParaCargo = 1;
+var idCargoFiltro = 2;
+var idProgramaCargo = (function() {
+  var pr = db.programaciones.findOne({ _id: idProgParaCargo });
+  if (!pr) return null;
+  var ca = db.capacitaciones.findOne({ _id: pr.idCapacitacion });
+  return ca && ca.programa ? ca.programa._id : null;
+})();
+var trabsCargo = db.trabajadores.find({ 'cargo._id': idCargoFiltro }).toArray();
+var proximoIdCargo = db.asistencias.find().sort({ _id: -1 }).limit(1).next()._id + 1;
+trabsCargo.forEach(function(t) {
+  var yaExiste = db.asistencias.findOne({ idProgramacion: idProgParaCargo, 'trabajador._id': t._id });
+  if (!yaExiste) {
+    db.asistencias.insertOne({
+      _id: proximoIdCargo,
+      idProgramacion: idProgParaCargo,
+      idPrograma: idProgramaCargo,
+      asistio: false,
+      fechaDeAsistencia: null,
+      evaluacionCapacitador: null,
+      comentariosCapacitacion: null,
+      trabajador: {
+        _id: t._id,
+        nombreTrabajador: t.nombreTrabajador,
+        documentoTrabajador: t.documentoTrabajador,
+        idCargo: t.cargo._id,
+        idCentroTrabajo: t.centroTrabajo._id,
+        ciudad: t.centroTrabajo.ciudad
+      }
+    });
+    proximoIdCargo++;
+  }
+});
+
+
+// ------------------------------------------------------------------------------
+// 7.4 MODIFICACIONES
+// ------------------------------------------------------------------------------
+
+// [RQF 5] Modificar rol de Usuario
+db.usuarios.updateOne({ _id: 4 }, { $set: { rolUsuario: 'admin' } });
+
+// [RQF 6] Modificar estado de Usuario
+db.usuarios.updateOne({ _id: 1 }, { $set: { estadoUsuario: 'inactivo' } });
+
+// [RQF 7] Cambiar contraseña de usuario
+db.usuarios.updateOne({ _id: 2 }, { $set: { 'contraseñaUsuario': 'voyARetirar' } });
+
+// [RQF 15] Modificar tema y actividad de capacitación
+db.capacitaciones.updateOne({ _id: 1 }, { $set: { tema: 'Nuevo enfoque en Trabajo en Alturas', actividad: 'Simulacro avanzado en andamios' } });
+db.programaciones.updateMany({ idCapacitacion: 1 }, { $set: { tema: 'Nuevo enfoque en Trabajo en Alturas' } });
+
+// [RQF 16] Modificar lista de responsables de una capacitación (Agregar)
+var capParaResp = db.capacitaciones.findOne({ _id: 16 });
+var yaAsignado = capParaResp.responsables.some(function(r) { return r._id === 16; });
+if (!yaAsignado) {
+  var respNuevo = db.responsables.findOne({ _id: 16 });
+  db.capacitaciones.updateOne({ _id: 16 }, { $push: { responsables: { _id: respNuevo._id, nombreResponsable: respNuevo.nombreResponsable } } });
+  print('Responsable agregado a la capacitacion correctamente');
+} else {
+  print('El responsable ya estaba asignado');
+}
+
+// [RQF 16] Modificar lista de responsables de una capacitación (Eliminar)
+db.capacitaciones.updateOne({ _id: 16 }, { $pull: { responsables: { _id: 16 } } });
+
+// [RQF 17] Modificar nombre de responsable
+db.responsables.updateOne({ _id: 3 }, { $set: { nombreResponsable: 'Dayro Castellanos Sanchez' } });
+db.capacitaciones.updateMany({ 'responsables._id': 3 }, { $set: { 'responsables.$.nombreResponsable': 'Dayro Castellanos Sanchez' } });
+
+// [RQF 20] Modificar estado de Programación
+db.programaciones.updateOne({ _id: 15 }, { $set: { estadoProgramacion: 'cancelada' } });
+
+// [RQF 21] Modificar fecha y hora de programación
+db.programaciones.updateOne({ _id: 5 }, { $set: { fechaProgramada: '2026-08-15', horaProgramada: '14:00:00' } });
+
+// [RQF 22] Cambiar modalidad de programación
+db.programaciones.updateOne({ _id: 12 }, { $set: { modalidadProgramada: 'virtual' } });
+
+// [RQF 23] Modificar lugar de realización de programación
+db.programaciones.updateOne({ _id: 5 }, { $set: { lugarProgramado: 'Cementerio' } });
+
+// [RQF 30] Modificar información de trabajador
+db.trabajadores.updateOne({ _id: 6 }, { $set: { empresaDondeTrabaja: 'TGI', nombreTrabajador: 'Carlos Andres Peña Modificado' } });
+db.asistencias.updateMany({ 'trabajador._id': 6 }, { $set: { 'trabajador.nombreTrabajador': 'Carlos Andres Peña Modificado' } });
+
+// [RQF 31] Modificar cargo de trabajador
+var nuevoCargo = db.cargos.findOne({ _id: 4 });
+var trabParaCargo = db.trabajadores.findOne({ documentoTrabajador: '1045678901' });
+db.trabajadores.updateOne({ documentoTrabajador: '1045678901' }, { $set: { cargo: { _id: nuevoCargo._id, nombreCargo: nuevoCargo.nombreCargo } } });
+if (trabParaCargo) {
+  db.asistencias.updateMany({ 'trabajador._id': trabParaCargo._id }, { $set: { 'trabajador.idCargo': 4 } });
+}
+
+// [RQF 32] Modificar centro de trabajo de trabajador
+var nuevoCentro = db.centrosTrabajo.findOne({ _id: 2 });
+var trabParaCentro = db.trabajadores.findOne({ documentoTrabajador: '1045678901' });
+db.trabajadores.updateOne({ documentoTrabajador: '1045678901' }, { $set: { centroTrabajo: { _id: nuevoCentro._id, nombreCentroTrabajo: nuevoCentro.nombreCentroTrabajo, ciudad: nuevoCentro.ciudad } } });
+if (trabParaCentro) {
+  db.asistencias.updateMany({ 'trabajador._id': trabParaCentro._id }, { $set: { 'trabajador.idCentroTrabajo': 2, 'trabajador.ciudad': nuevoCentro.ciudad } });
+}
+
+// [RQF 44] Modificar asistencia programada a una capacitación
+db.programaciones.updateOne({ _id: 1 }, { $set: { asistenciaProgramada: 25 } });
+
+// [RQF 45] Registrar asistencia a capacitación
+var asistParaRegistrar = db.asistencias.findOne({ idProgramacion: 53, 'trabajador._id': 5 });
+if (asistParaRegistrar && !asistParaRegistrar.asistio) {
+  db.asistencias.updateOne({ _id: asistParaRegistrar._id }, { $set: { asistio: true, fechaDeAsistencia: new Date('2026-04-23 09:15:00'), evaluacionCapacitador: 5, comentariosCapacitacion: 'Muy buen servicio' } });
+  print('Fue registrada la asistencia');
+} else if (asistParaRegistrar && asistParaRegistrar.asistio) {
+  print('Esta asistencia ya estaba registrada');
+} else {
+  print('El trabajador no fue citado a esta programacion');
+}
+
+// [RQF 46] Registrar comentarios de trabajador a programación
+db.asistencias.updateOne({ idProgramacion: 2, 'trabajador._id': 1 }, { $set: { evaluacionCapacitador: 5, comentariosCapacitacion: 'Muy buen servicio' } });
+
+// [RQF 51] Registrar accidente de trabajo asociado a capacitación
+db.capacitaciones.updateOne({ _id: 1 }, { $inc: { accidentesAsociados: 1 } });
+
+// [RQF 55] Modificar estado del ciclo PHVA del programa
+db.programas.updateOne({ _id: 1 }, { $set: { fasePHVA: 'verificar' } });
+db.capacitaciones.updateMany({ 'programa._id': 1 }, { $set: { 'programa.fasePHVA': 'verificar' } });
+
+
+// ------------------------------------------------------------------------------
+// 7.5 ELIMINACION
+// ------------------------------------------------------------------------------
+
+db.asistencias.deleteOne({ idProgramacion: 45, 'trabajador._id': 3, asistio: false });
+
+
+// ------------------------------------------------------------------------------
+// 7.6 CALCULOS Y AGREGACIONES AVANZADAS
+// ------------------------------------------------------------------------------
+
+// [RQF 53] Calcular porcentaje de cumplimiento de asistencia por rango de fecha en las capacitaciones de un programa
+db.asistencias.aggregate([
+  { $match: { idPrograma: 7 } },
+  { $lookup: { from: 'programaciones', localField: 'idProgramacion', foreignField: '_id', as: '_prgm' } },
+  { $unwind: '$_prgm' },
+  { $match: { '_prgm.fechaProgramada': { $gte: '2026-01-01', $lte: '2026-12-31' } } },
+  { $group: { _id: '$idPrograma', numAsistentes: { $sum: { $cond: ['$asistio', 1, 0] } }, asistenciaProgramada: { $sum: 1 } } },
+  { $lookup: { from: 'programas', localField: '_id', foreignField: '_id', as: 'p' } },
+  { $unwind: '$p' },
+  { $project: { _id: 0, nombrePrograma: '$p.nombrePrograma', numAsistentes: 1, asistenciaProgramada: 1, porcentajeCumplimiento: { $cond: [ { $eq: ['$asistenciaProgramada', 0] }, 0, { $round: [{ $multiply: [{ $divide: ['$numAsistentes', '$asistenciaProgramada'] }, 100] }, 2] } ] } } }
+]);
+
+var anio = 2026;
+for (var trim = 1; trim <= 4; trim++) {
+  var mesInicio = (trim - 1) * 3 + 1;
+  var mesFin = trim * 3;
+  var inicio = anio + '-' + (mesInicio < 10 ? '0' : '') + mesInicio + '-01';
+  var ultimoDia = new Date(anio, mesFin, 0).getDate();
+  var fin = anio + '-' + (mesFin < 10 ? '0' : '') + mesFin + '-' + (ultimoDia < 10 ? '0' : '') + ultimoDia;
+
+  var progs = db.programaciones.find({ fechaProgramada: { $gte: inicio, $lte: fin } }).toArray();
+  var totalProgramadas = progs.length;
+  var totalRealizadas = progs.filter(function(p) { return p.estadoProgramacion === 'realizada'; }).length;
+
+  var idsCap = [];
+  progs.forEach(function(p) { if (idsCap.indexOf(p.idCapacitacion) === -1) idsCap.push(p.idCapacitacion); });
+
+  var totalAT = 0;
+  if (idsCap.length > 0) {
+    var caps = db.capacitaciones.find({ _id: { $in: idsCap } }).toArray();
+    caps.forEach(function(c) { totalAT += (c.accidentesAsociados || 0); });
+  }
+
+  var pctCumplimiento = totalProgramadas > 0 ? Math.round((totalRealizadas / totalProgramadas) * 10000) / 100 : 0;
+
+  print('--- Trimestre ' + trim + ' de ' + anio + ' ---');
+  print('  Total programadas: ' + totalProgramadas);
+  print('  Total realizadas: ' + totalRealizadas);
+  print('  Porcentaje cumplimiento: ' + pctCumplimiento + '%');
+  print('  Accidentes de trabajo asociados: ' + totalAT);
+}
