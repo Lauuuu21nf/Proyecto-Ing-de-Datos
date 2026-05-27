@@ -3,48 +3,38 @@
 // Base de datos MongoDB (mongosh)
 // ==============================================================================
 
-// ──────────────────────────────────────────────────────────────────────────────
 // 1. CONFIGURACION DE LA BASE DE DATOS
-// ──────────────────────────────────────────────────────────────────────────────
-
 use sst_tgi_cli;
 db.dropDatabase();
 use sst_tgi_cli;
 
-
-// ──────────────────────────────────────────────────────────────────────────────
 // 2. INSERCION DE COLECCIONES BASE
-// ──────────────────────────────────────────────────────────────────────────────
 
-// ========================================================
 // 2.1 Coleccion: programas (10 registros)
-// ========================================================
 db.programas.insertMany([
-  { _id: 1,  nombrePrograma: 'Trabajo en Alturas',                   fasePHVA: 'hacer' },
-  { _id: 2,  nombrePrograma: 'Plan Estratégico de Seguridad Vial',   fasePHVA: 'planear' },
-  { _id: 3,  nombrePrograma: 'Riesgo Eléctrico',                     fasePHVA: 'hacer' },
-  { _id: 4,  nombrePrograma: 'Espacios Confinados',                  fasePHVA: 'hacer' },
-  { _id: 5,  nombrePrograma: 'Riesgo Cardiovascular',                fasePHVA: 'verificar' },
-  { _id: 6,  nombrePrograma: 'Manejo de Sustancias Químicas',        fasePHVA: 'planear' },
-  { _id: 7,  nombrePrograma: 'Protección Contra Caídas',             fasePHVA: 'actuar' },
-  { _id: 8,  nombrePrograma: 'Primeros Auxilios y Emergencias',      fasePHVA: 'hacer' },
-  { _id: 9,  nombrePrograma: 'Control de Incendios',                 fasePHVA: 'verificar' },
-  { _id: 10, nombrePrograma: 'Ergonomía y Carga Física',             fasePHVA: 'planear' }
+  { _id: 1, nombrePrograma: 'Trabajo en Alturas', fasePHVA: 'hacer' },
+  { _id: 2, nombrePrograma: 'Plan Estratégico de Seguridad Vial', fasePHVA: 'planear' },
+  { _id: 3, nombrePrograma: 'Riesgo Eléctrico', fasePHVA: 'hacer' },
+  { _id: 4, nombrePrograma: 'Espacios Confinados', fasePHVA: 'hacer' },
+  { _id: 5, nombrePrograma: 'Riesgo Cardiovascular', fasePHVA: 'verificar' },
+  { _id: 6, nombrePrograma: 'Manejo de Sustancias Químicas', fasePHVA: 'planear' },
+  { _id: 7, nombrePrograma: 'Protección Contra Caídas', fasePHVA: 'actuar' },
+  { _id: 8, nombrePrograma: 'Primeros Auxilios y Emergencias', fasePHVA: 'hacer' },
+  { _id: 9, nombrePrograma: 'Control de Incendios', fasePHVA: 'verificar' },
+  { _id: 10, nombrePrograma: 'Ergonomía y Carga Física', fasePHVA: 'planear' }
 ]);
 
-// ========================================================
 // 2.2 Coleccion: cargos (30 registros)
-// ========================================================
 db.cargos.insertMany([
-  { _id: 1,  nombreCargo: 'Líder Mecánico' },
-  { _id: 2,  nombreCargo: 'Ayudante Mecánico' },
-  { _id: 3,  nombreCargo: 'Técnico en Instrumentación' },
-  { _id: 4,  nombreCargo: 'Técnico Electricista' },
-  { _id: 5,  nombreCargo: 'Operador de Planta' },
-  { _id: 6,  nombreCargo: 'Supervisor HSE' },
-  { _id: 7,  nombreCargo: 'Coordinador SST' },
-  { _id: 8,  nombreCargo: 'Inspector de Integridad' },
-  { _id: 9,  nombreCargo: 'Conductor de Vehículo Liviano' },
+  { _id: 1, nombreCargo: 'Líder Mecánico' },
+  { _id: 2, nombreCargo: 'Ayudante Mecánico' },
+  { _id: 3, nombreCargo: 'Técnico en Instrumentación' },
+  { _id: 4, nombreCargo: 'Técnico Electricista' },
+  { _id: 5, nombreCargo: 'Operador de Planta' },
+  { _id: 6, nombreCargo: 'Supervisor HSE' },
+  { _id: 7, nombreCargo: 'Coordinador SST' },
+  { _id: 8, nombreCargo: 'Inspector de Integridad' },
+  { _id: 9, nombreCargo: 'Conductor de Vehículo Liviano' },
   { _id: 10, nombreCargo: 'Conductor de Vehículo Pesado' },
   { _id: 11, nombreCargo: 'Brigadista' },
   { _id: 12, nombreCargo: 'Auxiliar Administrativo' },
@@ -68,19 +58,17 @@ db.cargos.insertMany([
   { _id: 30, nombreCargo: 'Asesor Jurídico' }
 ]);
 
-// ========================================================
 // 2.3 Coleccion: responsables (20 registros)
-// ========================================================
 db.responsables.insertMany([
-  { _id: 1,  nombreResponsable: 'Germán Adolfo Parra Londoño' },
-  { _id: 2,  nombreResponsable: 'Catalina Esperanza Reyes Mora' },
-  { _id: 3,  nombreResponsable: 'Hernando José Vargas Cano' },
-  { _id: 4,  nombreResponsable: 'Luisa Fernanda Arango Diaz' },
-  { _id: 5,  nombreResponsable: 'Ricardo Camilo Torres Blanco' },
-  { _id: 6,  nombreResponsable: 'Sandra Milena Ospina Ruiz' },
-  { _id: 7,  nombreResponsable: 'Fabio Ernesto Nieto Garzon' },
-  { _id: 8,  nombreResponsable: 'Monica Patricia Suarez Vega' },
-  { _id: 9,  nombreResponsable: 'Alejandro Ivan Rojas Puentes' },
+  { _id: 1, nombreResponsable: 'Germán Adolfo Parra Londoño' },
+  { _id: 2, nombreResponsable: 'Catalina Esperanza Reyes Mora' },
+  { _id: 3, nombreResponsable: 'Hernando José Vargas Cano' },
+  { _id: 4, nombreResponsable: 'Luisa Fernanda Arango Diaz' },
+  { _id: 5, nombreResponsable: 'Ricardo Camilo Torres Blanco' },
+  { _id: 6, nombreResponsable: 'Sandra Milena Ospina Ruiz' },
+  { _id: 7, nombreResponsable: 'Fabio Ernesto Nieto Garzon' },
+  { _id: 8, nombreResponsable: 'Monica Patricia Suarez Vega' },
+  { _id: 9, nombreResponsable: 'Alejandro Ivan Rojas Puentes' },
   { _id: 10, nombreResponsable: 'Isabel Cristina Bernal Perez' },
   { _id: 11, nombreResponsable: 'Juan Manuel Guzman Hoyos' },
   { _id: 12, nombreResponsable: 'Patricia Elena Serrano Castro' },
@@ -94,126 +82,114 @@ db.responsables.insertMany([
   { _id: 20, nombreResponsable: 'Andres Guillermo Velez Montoya' }
 ]);
 
-// ========================================================
 // 2.4 Coleccion: centrosTrabajo (20 registros)
-// ========================================================
 db.centrosTrabajo.insertMany([
-  { _id: 1,  nombreCentroTrabajo: 'Sede Administrativa Central',       ciudad: 'Bogotá' },
-  { _id: 2,  nombreCentroTrabajo: 'Sede Operacional Norte',            ciudad: 'Bogotá' },
-  { _id: 3,  nombreCentroTrabajo: 'Sede Administrativa II',            ciudad: 'Medellín' },
-  { _id: 4,  nombreCentroTrabajo: 'Planta Compresora Oriente',         ciudad: 'Medellín' },
-  { _id: 5,  nombreCentroTrabajo: 'Sede Operacional Barrancabermeja',  ciudad: 'Barrancabermeja' },
-  { _id: 6,  nombreCentroTrabajo: 'Centro de Control Barrancabermeja', ciudad: 'Barrancabermeja' },
-  { _id: 7,  nombreCentroTrabajo: 'Estación Cogua',                    ciudad: 'Cogua' },
-  { _id: 8,  nombreCentroTrabajo: 'Planta Vasconia',                   ciudad: 'Barrancabermeja' },
-  { _id: 9,  nombreCentroTrabajo: 'Sede Operacional Sur',              ciudad: 'Cali' },
-  { _id: 10, nombreCentroTrabajo: 'Sede Administrativa Cali',          ciudad: 'Cali' },
-  { _id: 11, nombreCentroTrabajo: 'Estación El Pozo',                  ciudad: 'Bucaramanga' },
-  { _id: 12, nombreCentroTrabajo: 'Sede Técnica Bucaramanga',          ciudad: 'Bucaramanga' },
-  { _id: 13, nombreCentroTrabajo: 'Centro Logístico Cartagena',        ciudad: 'Cartagena' },
-  { _id: 14, nombreCentroTrabajo: 'Sede Portuaria',                    ciudad: 'Cartagena' },
-  { _id: 15, nombreCentroTrabajo: 'Estación La Belleza',               ciudad: 'Yopal' },
-  { _id: 16, nombreCentroTrabajo: 'Sede Campo Yopal',                  ciudad: 'Yopal' },
-  { _id: 17, nombreCentroTrabajo: 'Planta Compresora Occidente',       ciudad: 'Pereira' },
-  { _id: 18, nombreCentroTrabajo: 'Sede Operacional Eje Cafetero',     ciudad: 'Manizales' },
+  { _id: 1, nombreCentroTrabajo: 'Sede Administrativa Central', ciudad: 'Bogotá' },
+  { _id: 2, nombreCentroTrabajo: 'Sede Operacional Norte', ciudad: 'Bogotá' },
+  { _id: 3, nombreCentroTrabajo: 'Sede Administrativa II', ciudad: 'Medellín' },
+  { _id: 4, nombreCentroTrabajo: 'Planta Compresora Oriente', ciudad: 'Medellín' },
+  { _id: 5, nombreCentroTrabajo: 'Sede Operacional Barrancabermeja', ciudad: 'Barrancabermeja' },
+  { _id: 6, nombreCentroTrabajo: 'Centro de Control Barrancabermeja', ciudad: 'Barrancabermeja' },
+  { _id: 7, nombreCentroTrabajo: 'Estación Cogua', ciudad: 'Cogua' },
+  { _id: 8, nombreCentroTrabajo: 'Planta Vasconia', ciudad: 'Barrancabermeja' },
+  { _id: 9, nombreCentroTrabajo: 'Sede Operacional Sur', ciudad: 'Cali' },
+  { _id: 10, nombreCentroTrabajo: 'Sede Administrativa Cali', ciudad: 'Cali' },
+  { _id: 11, nombreCentroTrabajo: 'Estación El Pozo', ciudad: 'Bucaramanga' },
+  { _id: 12, nombreCentroTrabajo: 'Sede Técnica Bucaramanga', ciudad: 'Bucaramanga' },
+  { _id: 13, nombreCentroTrabajo: 'Centro Logístico Cartagena', ciudad: 'Cartagena' },
+  { _id: 14, nombreCentroTrabajo: 'Sede Portuaria', ciudad: 'Cartagena' },
+  { _id: 15, nombreCentroTrabajo: 'Estación La Belleza', ciudad: 'Yopal' },
+  { _id: 16, nombreCentroTrabajo: 'Sede Campo Yopal', ciudad: 'Yopal' },
+  { _id: 17, nombreCentroTrabajo: 'Planta Compresora Occidente', ciudad: 'Pereira' },
+  { _id: 18, nombreCentroTrabajo: 'Sede Operacional Eje Cafetero', ciudad: 'Manizales' },
   { _id: 19, nombreCentroTrabajo: 'Centro de Mantenimiento Villavicencio', ciudad: 'Villavicencio' },
-  { _id: 20, nombreCentroTrabajo: 'Sede Campo Meta',                   ciudad: 'Villavicencio' }
+  { _id: 20, nombreCentroTrabajo: 'Sede Campo Meta', ciudad: 'Villavicencio' }
 ]);
 
-// ========================================================
 // 2.5 Coleccion: usuarios (4 registros)
-// Nota: las contraseñas se almacenan en texto plano
-// en el campo contraseñaUsuario (con ñ)
-// ========================================================
 db.usuarios.insertMany([
-  { _id: 1, nombreUsuario: 'Diana Carolina Munévar Murillo', rolUsuario: 'admin',    correoUsuario: 'diana.munevar@tgi.com.co', 'contraseñaUsuario': 'ConfioEnLos3Ninos',   estadoUsuario: 'activo' },
-  { _id: 2, nombreUsuario: 'Xavier Enrique Naar Amaris',     rolUsuario: 'admin',    correoUsuario: 'xavier.naar@tgi.com.co',   'contraseñaUsuario': 'meHanAscendidoGente', estadoUsuario: 'activo' },
-  { _id: 3, nombreUsuario: 'Ana Lucia Bernal Perez',         rolUsuario: 'admin',    correoUsuario: 'ana.bernal@tgi.com.co',     'contraseñaUsuario': 'Admin2026*',          estadoUsuario: 'inactivo' },
-  { _id: 4, nombreUsuario: 'Carlos Hernan Mejia Rios',       rolUsuario: 'ayudante', correoUsuario: 'carlos.mejia@tgi.com.co',   'contraseñaUsuario': 'Ayuda123#',           estadoUsuario: 'inactivo' }
+  { _id: 1, nombreUsuario: 'Diana Carolina Munévar Murillo', rolUsuario: 'admin', correoUsuario: 'diana.munevar@tgi.com.co', 'contraseñaUsuario': 'ConfioEnLos3Ninos', estadoUsuario: 'activo' },
+  { _id: 2, nombreUsuario: 'Xavier Enrique Naar Amaris', rolUsuario: 'admin', correoUsuario: 'xavier.naar@tgi.com.co', 'contraseñaUsuario': 'meHanAscendidoGente', estadoUsuario: 'activo' },
+  { _id: 3, nombreUsuario: 'Ana Lucia Bernal Perez', rolUsuario: 'admin', correoUsuario: 'ana.bernal@tgi.com.co', 'contraseñaUsuario': 'Admin2026*', estadoUsuario: 'inactivo' },
+  { _id: 4, nombreUsuario: 'Carlos Hernan Mejia Rios', rolUsuario: 'ayudante', correoUsuario: 'carlos.mejia@tgi.com.co', 'contraseñaUsuario': 'Ayuda123#', estadoUsuario: 'inactivo' }
 ]);
 
-
-// ──────────────────────────────────────────────────────────────────────────────
 // 3. INSERCION DE TRABAJADORES CON DOCUMENTOS EMBEBIDOS (68 registros)
-// ──────────────────────────────────────────────────────────────────────────────
-// Se construyen mapas de consulta para incrustar cargo y centroTrabajo
-
 var cargosMap = {};
 db.cargos.find().forEach(function(c) { cargosMap[c._id] = c; });
 
 var centrosMap = {};
 db.centrosTrabajo.find().forEach(function(ct) { centrosMap[ct._id] = ct; });
 
-// Formato: [_id, nombre, empresa, documento, idCentro, idCargo]
 var trabData = [
-  [1,  'Carlos Andres Peña Rios',              'TGI', '1045678901',  1,  3],
-  [2,  'Maria Fernanda Lopez Arce',            'TGI', '1032456789',  1,  12],
-  [3,  'Jorge Enrique Molina Vega',            'TGI', '79456123',    2,  1],
-  [4,  'Luis Alfredo Torres Gomez',            'TGI', '80134567',    2,  2],
-  [5,  'Diana Marcela Ruiz Herrera',           'TGI', '1076543210',  3,  7],
-  [6,  'Andres Felipe Castro Mora',            'TGI', '1023456789',  3,  6],
-  [7,  'Sandra Patricia Vargas Diaz',          'TGI', '52678901',    4,  8],
-  [8,  'Ricardo Emilio Suarez Leon',           'TGI', '71234890',    4,  3],
-  [9,  'Paula Andrea Jimenez Cruz',            'TGI', '1098765432',  5,  9],
-  [10, 'John Freddy Ramirez Pinto',            'TGI', '91234567',    5,  10],
-  [11, 'Angela Maria Ospina Soto',             'TGI', '1065432198',  6,  11],
-  [12, 'Hector Fabio Mendoza Ruiz',            'TGI', '79012345',    6,  18],
-  [13, 'Viviana Paola Guerrero Alba',          'TGI', '1054321987',  7,  5],
-  [14, 'Camilo Augusto Nieto Ramos',           'TGI', '80876543',    7,  23],
-  [15, 'Beatriz Elena Cardona Meza',           'TGI', '43876543',    8,  19],
-  [16, 'Oscar Ivan Calderon Pena',             'TGI', '79543210',    8,  22],
-  [17, 'Liliana Marcela Reyes Cano',           'TGI', '1087654321',  9,  4],
-  [18, 'Ferney Andres Aguilar Leal',           'TGI', '91876543',    9,  1],
-  [19, 'Natalia Esperanza Vidal Torres',       'TGI', '1043219876',  10, 7],
-  [20, 'Juan Pablo Morales Blanco',            'TGI', '80654321',    10, 13],
-  [21, 'Gloria Ines Acosta Pineda',            'TGI', '43210987',    11, 24],
-  [22, 'Manuel Eduardo Florez Rangel',         'TGI', '91654321',    11, 16],
-  [23, 'Adriana Cecilia Sepulveda Marin',      'TGI', '52109876',    12, 12],
-  [24, 'Roberto Carlos Gomez Alvarado',        'TGI', '79876543',    12, 20],
-  [25, 'Paola Milena Sanchez Duarte',          'TGI', '1076512345',  13, 29],
-  [26, 'Eduardo Antonio Parra Quintero',       'TGI', '80321098',    13, 21],
-  [27, 'Claudia Patricia Bermudez Perez',      'TGI', '52876543',    14, 11],
-  [28, 'Nicolas Arturo Velez Castillo',        'TGI', '1067891234',  14, 15],
-  [29, 'Marcela Johana Rojas Contreras',       'TGI', '1089012345',  15, 5],
-  [30, 'Felipe Ernesto Arango Salcedo',        'TGI', '91012345',    15, 2],
-  [31, 'Yesenia Carolina Gutierrez Franco',    'TGI', '1023487650',  16, 25],
-  [32, 'Mauricio Hernan Cano Naranjo',         'TGI', '80567890',    16, 26],
-  [33, 'Sergio Alejandro Blanco Montes',       'TGI', '1056789012',  17, 1],
-  [34, 'Maria Alejandra Quintero Hoyos',       'TGI', '1098012345',  17, 4],
-  [35, 'Jairo Andres Montoya Rivera',          'TGI', '79098765',    18, 23],
-  [36, 'Leidy Tatiana Cortes Pedraza',         'TGI', '1034567809',  18, 12],
-  [37, 'Giovanny Andres Muñoz Mora',           'TGI', '80789012',    19, 19],
-  [38, 'Luz Marina Olarte Bautista',           'TGI', '51234567',    19, 8],
-  [39, 'Daniel Fernando Posada Arias',         'TGI', '1045312678',  20, 10],
-  [40, 'Alba Lucia Pineda Ceballos',           'TGI', '43678901',    20, 7],
-  [41, 'Rodrigo Enrique Pacheco Garzon',       'Contratista Externo', '80012345',    5,  9],
-  [42, 'Javier Mauricio Lozano Arias',         'Contratista Externo', '79345678',    8,  22],
-  [43, 'Sonia Esperanza Barrera Suarez',       'Contratista Externo', '52456789',    2,  11],
-  [44, 'Henry Eliecer Zapata Torres',          'Contratista Externo', '91456789',    13, 2],
-  [45, 'Juliana Andrea Castillo Mora',         'Contratista Externo', '1056012345',  1,  6],
-  [46, 'Ivan Dario Herrera Ceron',             'TGI', '80234567',    6,  14],
-  [47, 'Tatiana Lorena Bedoya Monsalve',       'TGI', '1078901234',  7,  25],
-  [48, 'Gabriel Andres Silva Palacios',        'TGI', '79901234',    3,  16],
-  [49, 'Pilar Constanza Orjuela Medina',       'TGI', '43901234',    9,  27],
-  [50, 'Andres Camilo Garzon Velasquez',       'TGI', '1067012345',  4,  17],
-  [51, 'Yuri Alexandra Cardenas Blanco',       'TGI', '1089123456',  10, 5],
-  [52, 'Carlos Mario Acevedo Torres',          'TGI', '80456781',    11, 20],
-  [53, 'Lina Maria Buritica Lopez',            'TGI', '1021234569',  14, 29],
-  [54, 'Juan Camilo Ochoa Sanchez',            'TGI', '1045601234',  16, 3],
-  [55, 'Dario Hernando Vasquez Pinto',         'TGI', '79234561',    17, 23],
-  [56, 'Ana Milena Chaparro Rincon',           'TGI', '52789015',    12, 8],
-  [57, 'Omar Ferney Quintero Diaz',            'TGI', '91789012',    18, 10],
-  [58, 'Esperanza Margarita Leon Avila',       'TGI', '43123459',    19, 24],
-  [59, 'William Andres Ramirez Calderon',      'Contratista Externo', '80901238',    20, 1],
-  [60, 'Diana Carolina Trujillo Ospina',       'Contratista Externo', '1032109876',  6,  15],
-  [61, 'Alexander Javier Rios Bermudez',       'TGI', '79678903',    7,  18],
-  [62, 'Claudia Ximena Montano Herrera',       'TGI', '52345671',    15, 12],
-  [63, 'Santiago Andres Pinto Guerrero',       'TGI', '1056892345',  3,  6],
-  [64, 'Maria Camila Suarez Nieto',            'TGI', '1098234567',  5,  7],
-  [65, 'Victor Hugo Zuluaga Marin',            'TGI', '91123456',    13, 21],
-  [66, 'Laura Vanessa Moreno Pena',            'TGI', '1043098765',  2,  4],
-  [67, 'Nicolas Esteban Diaz Uribe',           'TGI', '1078012349',  17, 13],
-  [68, 'Zulema Patricia Vargas Cano',          'TGI', '43456790',    8,  26]
+  [1, 'Carlos Andres Peña Rios', 'TGI', '1045678901', 1, 3],
+  [2, 'Maria Fernanda Lopez Arce', 'TGI', '1032456789', 1, 12],
+  [3, 'Jorge Enrique Molina Vega', 'TGI', '79456123', 2, 1],
+  [4, 'Luis Alfredo Torres Gomez', 'TGI', '80134567', 2, 2],
+  [5, 'Diana Marcela Ruiz Herrera', 'TGI', '1076543210', 3, 7],
+  [6, 'Andres Felipe Castro Mora', 'TGI', '1023456789', 3, 6],
+  [7, 'Sandra Patricia Vargas Diaz', 'TGI', '52678901', 4, 8],
+  [8, 'Ricardo Emilio Suarez Leon', 'TGI', '71234890', 4, 3],
+  [9, 'Paula Andrea Jimenez Cruz', 'TGI', '1098765432', 5, 9],
+  [10, 'John Freddy Ramirez Pinto', 'TGI', '91234567', 5, 10],
+  [11, 'Angela Maria Ospina Soto', 'TGI', '1065432198', 6, 11],
+  [12, 'Hector Fabio Mendoza Ruiz', 'TGI', '79012345', 6, 18],
+  [13, 'Viviana Paola Guerrero Alba', 'TGI', '1054321987', 7, 5],
+  [14, 'Camilo Augusto Nieto Ramos', 'TGI', '80876543', 7, 23],
+  [15, 'Beatriz Elena Cardona Meza', 'TGI', '43876543', 8, 19],
+  [16, 'Oscar Ivan Calderon Pena', 'TGI', '79543210', 8, 22],
+  [17, 'Liliana Marcela Reyes Cano', 'TGI', '1087654321', 9, 4],
+  [18, 'Ferney Andres Aguilar Leal', 'TGI', '91876543', 9, 1],
+  [19, 'Natalia Esperanza Vidal Torres', 'TGI', '1043219876', 10, 7],
+  [20, 'Juan Pablo Morales Blanco', 'TGI', '80654321', 10, 13],
+  [21, 'Gloria Ines Acosta Pineda', 'TGI', '43210987', 11, 24],
+  [22, 'Manuel Eduardo Florez Rangel', 'TGI', '91654321', 11, 16],
+  [23, 'Adriana Cecilia Sepulveda Marin', 'TGI', '52109876', 12, 12],
+  [24, 'Roberto Carlos Gomez Alvarado', 'TGI', '79876543', 12, 20],
+  [25, 'Paola Milena Sanchez Duarte', 'TGI', '1076512345', 13, 29],
+  [26, 'Eduardo Antonio Parra Quintero', 'TGI', '80321098', 13, 21],
+  [27, 'Claudia Patricia Bermudez Perez', 'TGI', '52876543', 14, 11],
+  [28, 'Nicolas Arturo Velez Castillo', 'TGI', '1067891234', 14, 15],
+  [29, 'Marcela Johana Rojas Contreras', 'TGI', '1089012345', 15, 5],
+  [30, 'Felipe Ernesto Arango Salcedo', 'TGI', '91012345', 15, 2],
+  [31, 'Yesenia Carolina Gutierrez Franco', 'TGI', '1023487650', 16, 25],
+  [32, 'Mauricio Hernan Cano Naranjo', 'TGI', '80567890', 16, 26],
+  [33, 'Sergio Alejandro Blanco Montes', 'TGI', '1056789012', 17, 1],
+  [34, 'Maria Alejandra Quintero Hoyos', 'TGI', '1098012345', 17, 4],
+  [35, 'Jairo Andres Montoya Rivera', 'TGI', '79098765', 18, 23],
+  [36, 'Leidy Tatiana Cortes Pedraza', 'TGI', '1034567809', 18, 12],
+  [37, 'Giovanny Andres Muñoz Mora', 'TGI', '80789012', 19, 19],
+  [38, 'Luz Marina Olarte Bautista', 'TGI', '51234567', 19, 8],
+  [39, 'Daniel Fernando Posada Arias', 'TGI', '1045312678', 20, 10],
+  [40, 'Alba Lucia Pineda Ceballos', 'TGI', '43678901', 20, 7],
+  [41, 'Rodrigo Enrique Pacheco Garzon', 'Contratista Externo', '80012345', 5, 9],
+  [42, 'Javier Mauricio Lozano Arias', 'Contratista Externo', '79345678', 8, 22],
+  [43, 'Sonia Esperanza Barrera Suarez', 'Contratista Externo', '52456789', 2, 11],
+  [44, 'Henry Eliecer Zapata Torres', 'Contratista Externo', '91456789', 13, 2],
+  [45, 'Juliana Andrea Castillo Mora', 'Contratista Externo', '1056012345', 1, 6],
+  [46, 'Ivan Dario Herrera Ceron', 'TGI', '80234567', 6, 14],
+  [47, 'Tatiana Lorena Bedoya Monsalve', 'TGI', '1078901234', 7, 25],
+  [48, 'Gabriel Andres Silva Palacios', 'TGI', '79901234', 3, 16],
+  [49, 'Pilar Constanza Orjuela Medina', 'TGI', '43901234', 9, 27],
+  [50, 'Andres Camilo Garzon Velasquez', 'TGI', '1067012345', 4, 17],
+  [51, 'Yuri Alexandra Cardenas Blanco', 'TGI', '1089123456', 10, 5],
+  [52, 'Carlos Mario Acevedo Torres', 'TGI', '80456781', 11, 20],
+  [53, 'Lina Maria Buritica Lopez', 'TGI', '1021234569', 14, 29],
+  [54, 'Juan Camilo Ochoa Sanchez', 'TGI', '1045601234', 16, 3],
+  [55, 'Dario Hernando Vasquez Pinto', 'TGI', '79234561', 17, 23],
+  [56, 'Ana Milena Chaparro Rincon', 'TGI', '52789015', 12, 8],
+  [57, 'Omar Ferney Quintero Diaz', 'TGI', '91789012', 18, 10],
+  [58, 'Esperanza Margarita Leon Avila', 'TGI', '43123459', 19, 24],
+  [59, 'William Andres Ramirez Calderon', 'Contratista Externo', '80901238', 20, 1],
+  [60, 'Diana Carolina Trujillo Ospina', 'Contratista Externo', '1032109876', 6, 15],
+  [61, 'Alexander Javier Rios Bermudez', 'TGI', '79678903', 7, 18],
+  [62, 'Claudia Ximena Montano Herrera', 'TGI', '52345671', 15, 12],
+  [63, 'Santiago Andres Pinto Guerrero', 'TGI', '1056892345', 3, 6],
+  [64, 'Maria Camila Suarez Nieto', 'TGI', '1098234567', 5, 7],
+  [65, 'Victor Hugo Zuluaga Marin', 'TGI', '91123456', 13, 21],
+  [66, 'Laura Vanessa Moreno Pena', 'TGI', '1043098765', 2, 4],
+  [67, 'Nicolas Esteban Diaz Uribe', 'TGI', '1078012349', 17, 13],
+  [68, 'Zulema Patricia Vargas Cano', 'TGI', '43456790', 8, 26]
 ];
 
 trabData.forEach(function(t) {
@@ -229,21 +205,13 @@ trabData.forEach(function(t) {
   });
 });
 
-
-// ──────────────────────────────────────────────────────────────────────────────
 // 4. INSERCION DE CAPACITACIONES CON DOCUMENTOS EMBEBIDOS (50 registros)
-// ──────────────────────────────────────────────────────────────────────────────
-// Se construyen mapas de programas y responsables.
-// Los responsables se agrupan segun la tabla puente detalleCapacitacion.
-
 var programasMap = {};
 db.programas.find().forEach(function(p) { programasMap[p._id] = p; });
 
 var responsablesMap = {};
 db.responsables.find().forEach(function(r) { responsablesMap[r._id] = r; });
 
-// Mapa de responsables por capacitacion
-// Formato original: (idResponsable, idCapacitacion)
 var detalleCapacitacion = [
   [11, 1], [14, 2], [17, 3], [20, 4], [3, 5],
   [6, 6], [9, 7], [12, 8], [15, 9], [18, 10],
@@ -261,7 +229,6 @@ var detalleCapacitacion = [
   [19, 16], [6, 17], [14, 18], [1, 19], [9, 20]
 ];
 
-// Agrupar responsables por idCapacitacion
 var respPorCap = {};
 detalleCapacitacion.forEach(function(d) {
   var idResp = d[0];
@@ -270,59 +237,57 @@ detalleCapacitacion.forEach(function(d) {
   respPorCap[idCap].push(idResp);
 });
 
-// Datos de capacitaciones
-// Formato: [_id, duracion, tema, actividad, asistenciaProgramada, accidentesAsociados, idUsuario, idPrograma]
 var capData = [
-  [1,  8.0,  'Uso y verificación de EPP para alturas',              'Revisión de equipos de protección personal',              20, 0, 1, 1],
-  [2,  16.0, 'Trabajo en cuerdas y sistemas de anclaje',            'Entrenamiento en técnicas de ascenso y descenso',         15, 0, 1, 1],
-  [3,  4.0,  'Rescate en alturas',                                  'Simulacro de rescate en estructura elevada',              12, 1, 2, 1],
-  [4,  6.0,  'Manejo defensivo en vías rurales',                    'Conducción segura en terrenos difíciles',                 18, 0, 1, 2],
-  [5,  4.0,  'Normativa de tránsito para conductores',              'Revisión de código nacional de tránsito',                 25, 0, 2, 2],
-  [6,  8.0,  'Fatiga al volante y factores de riesgo',              'Análisis de accidentes por fatiga',                       10, 0, 1, 2],
-  [7,  6.0,  'Riesgo eléctrico en baja tensión',                   'Identificación de peligros eléctricos domésticos',        30, 0, 2, 3],
-  [8,  8.0,  'Bloqueo y etiquetado LOTO',                          'Procedimiento estándar LOTO en campo',                    14, 0, 1, 3],
-  [9,  4.0,  'Primeros auxilios en electrocución',                  'Atención inmediata ante contacto eléctrico',              22, 2, 2, 3],
-  [10, 12.0, 'Entrenamiento trabajador entrante',                   'Procedimientos de ingreso a espacio confinado',           16, 0, 1, 4],
-  [11, 8.0,  'Entrenamiento vigías',                                'Funciones y responsabilidades del vigía',                 16, 0, 2, 4],
-  [12, 6.0,  'Equipos de rescate en espacios confinados',           'Uso de trípode y arnés en extracción',                   10, 1, 1, 4],
-  [13, 4.0,  'Hábitos de vida saludable',                           'Actividad física y descanso adecuado',                   35, 0, 2, 5],
-  [14, 3.0,  'Alimentación saludable en campo',                     'Nutrición básica para trabajadores en turno',            28, 0, 1, 5],
-  [15, 2.0,  'Riesgo cardiovascular y estrés laboral',              'Control del estrés y signos de alerta',                  40, 0, 2, 5],
-  [16, 8.0,  'Almacenamiento seguro de químicos',                   'Clasificación SGA y fichas de seguridad',                18, 0, 1, 6],
-  [17, 6.0,  'Uso de EPP químico',                                  'Selección y mantenimiento de EPP para químicos',         15, 0, 2, 6],
-  [18, 4.0,  'Respuesta ante derrames',                             'Plan de acción ante derrame de sustancias',              20, 0, 1, 6],
-  [19, 10.0, 'Sistemas de detención de caídas',                     'Tipos de arnés y puntos de anclaje',                     22, 0, 2, 7],
-  [20, 6.0,  'Inspección de líneas de vida',                        'Criterios de retiro y mantenimiento',                    17, 0, 1, 7],
-  [21, 4.0,  'Caídas al mismo nivel',                               'Identificación de superficies resbaladizas',             30, 0, 2, 7],
-  [22, 8.0,  'RCP y desfibrilación',                                'Técnica de RCP y uso del DEA',                           25, 0, 1, 8],
-  [23, 6.0,  'Manejo de heridas y quemaduras',                      'Curación básica y clasificación de quemaduras',          20, 0, 2, 8],
-  [24, 4.0,  'Triaje en campo',                                     'Clasificación de víctimas en emergencias masivas',       12, 0, 1, 8],
-  [25, 10.0, 'Uso y mantenimiento de extintores',                   'Tipos de fuego y agentes extintores',                    28, 0, 2, 9],
-  [26, 8.0,  'Evacuación y brigada contra incendios',               'Plan de evacuación y roles de la brigada',               32, 0, 1, 9],
-  [27, 6.0,  'Sistemas fijos de supresión',                         'Fundamentos de rociadores y CO2',                        14, 0, 2, 9],
-  [28, 4.0,  'Higiene postural en oficina',                         'Ajuste de puesto de trabajo y pausas activas',           45, 0, 1, 10],
-  [29, 6.0,  'Manejo manual de cargas',                             'Técnica segura de levantamiento y transporte',           38, 0, 2, 10],
-  [30, 8.0,  'Desórdenes musculoesqueléticos',                      'Identificación y prevención de DME en campo',            22, 0, 1, 10],
-  [31, 5.0,  'Señalización y demarcación en alturas',               'Zonas de peligro y acceso restringido',                  18, 0, 2, 1],
-  [32, 3.0,  'Check-list de inspección preoperacional',             'Diligenciamiento de formatos de pre-op',                 20, 0, 1, 2],
-  [33, 6.0,  'Riesgo eléctrico en alta tensión',                   'Distancias de seguridad y permisos de trabajo',           10, 0, 2, 3],
-  [34, 4.0,  'Atmosferas peligrosas en espacios confinados',       'Medición de gases y niveles permisibles',                 14, 0, 1, 4],
-  [35, 3.0,  'Pausas activas y bienestar',                          'Ejercicios de estiramiento para jornada laboral',        50, 0, 2, 5],
-  [36, 8.0,  'Gestión de residuos químicos peligrosos',             'Disposición final y manifiestos de residuos',            16, 0, 1, 6],
-  [37, 6.0,  'Protección de bordes y perímetros',                   'Instalación de barandas y mallas de seguridad',          12, 0, 2, 7],
-  [38, 4.0,  'Botiquín de primeros auxilios',                       'Inventario y uso correcto de insumos',                   30, 0, 1, 8],
-  [39, 10.0, 'Plan de emergencia contra incendio',                  'Simulacro integral de emergencia',                       20, 0, 2, 9],
-  [40, 6.0,  'Vibración y ruido ocupacional',                       'Efectos en salud y medidas de control',                  25, 0, 1, 10],
-  [41, 4.0,  'Investigación de incidentes',                         'Metodología de árbol de causas',                         18, 0, 2, 1],
-  [42, 8.0,  'Conducción en vías de alto riesgo',                   'Manejo en zonas de conflicto y clima adverso',           14, 0, 1, 2],
-  [43, 3.0,  'Medidas de prevención de arco eléctrico',             'Equipos de protección contra arco',                      10, 0, 2, 3],
-  [44, 6.0,  'Permisos de trabajo en espacios confinados',          'Diligenciamiento y aprobación de permisos',              15, 0, 1, 4],
-  [45, 4.0,  'Tabaquismo y consumo de alcohol en trabajo',          'Política de sustancias psicoactivas',                    35, 0, 2, 5],
-  [46, 6.0,  'Fichas de datos de seguridad FDS',                    'Lectura e interpretación de FDS',                        20, 0, 1, 6],
-  [47, 8.0,  'Trabajo en andamios',                                 'Montaje seguro y puntos críticos de andamios',           12, 0, 2, 7],
-  [48, 4.0,  'Hipotermia e insolación en campo',                    'Reconocimiento y atención de emergencias térmicas',      18, 0, 1, 8],
-  [49, 10.0, 'Detección temprana de incendios',                     'Sistemas de detección y alarma',                         22, 0, 2, 9],
-  [50, 6.0,  'Iluminación y confort visual',                        'Condiciones lumínicas en puesto de trabajo',             28, 0, 1, 10]
+  [1, 8.0, 'Uso y verificación de EPP para alturas', 'Revisión de equipos de protección personal', 20, 0, 1, 1],
+  [2, 16.0, 'Trabajo en cuerdas y sistemas de anclaje', 'Entrenamiento en técnicas de ascenso y descenso', 15, 0, 1, 1],
+  [3, 4.0, 'Rescate en alturas', 'Simulacro de rescate en estructura elevada', 12, 1, 2, 1],
+  [4, 6.0, 'Manejo defensivo en vías rurales', 'Conducción segura en terrenos difíciles', 18, 0, 1, 2],
+  [5, 4.0, 'Normativa de tránsito para conductores', 'Revisión de código nacional de tránsito', 25, 0, 2, 2],
+  [6, 8.0, 'Fatiga al volante y factores de riesgo', 'Análisis de accidentes por fatiga', 10, 0, 1, 2],
+  [7, 6.0, 'Riesgo eléctrico en baja tensión', 'Identificación de peligros eléctricos domésticos', 30, 0, 2, 3],
+  [8, 8.0, 'Bloqueo y etiquetado LOTO', 'Procedimiento estándar LOTO en campo', 14, 0, 1, 3],
+  [9, 4.0, 'Primeros auxilios en electrocución', 'Atención inmediata ante contacto eléctrico', 22, 2, 2, 3],
+  [10, 12.0, 'Entrenamiento trabajador entrante', 'Procedimientos de ingreso a espacio confinado', 16, 0, 1, 4],
+  [11, 8.0, 'Entrenamiento vigías', 'Funciones y responsabilidades del vigía', 16, 0, 2, 4],
+  [12, 6.0, 'Equipos de rescate en espacios confinados', 'Uso de trípode y arnés en extracción', 10, 1, 1, 4],
+  [13, 4.0, 'Hábitos de vida saludable', 'Actividad física y descanso adecuado', 35, 0, 2, 5],
+  [14, 3.0, 'Alimentación saludable en campo', 'Nutrición básica para trabajadores en turno', 28, 0, 1, 5],
+  [15, 2.0, 'Riesgo cardiovascular y estrés laboral', 'Control del estrés y signos de alerta', 40, 0, 2, 5],
+  [16, 8.0, 'Almacenamiento seguro de químicos', 'Clasificación SGA y fichas de seguridad', 18, 0, 1, 6],
+  [17, 6.0, 'Uso de EPP químico', 'Selección y mantenimiento de EPP para químicos', 15, 0, 2, 6],
+  [18, 4.0, 'Respuesta ante derrames', 'Plan de acción ante derrame de sustancias', 20, 0, 1, 6],
+  [19, 10.0, 'Sistemas de detención de caídas', 'Tipos de arnés y puntos de anclaje', 22, 0, 2, 7],
+  [20, 6.0, 'Inspección de líneas de vida', 'Criterios de retiro y mantenimiento', 17, 0, 1, 7],
+  [21, 4.0, 'Caídas al mismo nivel', 'Identificación de superficies resbaladizas', 30, 0, 2, 7],
+  [22, 8.0, 'RCP y desfibrilación', 'Técnica de RCP y uso del DEA', 25, 0, 1, 8],
+  [23, 6.0, 'Manejo de heridas y quemaduras', 'Curación básica y clasificación de quemaduras', 20, 0, 2, 8],
+  [24, 4.0, 'Triaje en campo', 'Clasificación de víctimas en emergencias masivas', 12, 0, 1, 8],
+  [25, 10.0, 'Uso y mantenimiento de extintores', 'Tipos de fuego y agentes extintores', 28, 0, 2, 9],
+  [26, 8.0, 'Evacuación y brigada contra incendios', 'Plan de evacuación y roles de la brigada', 32, 0, 1, 9],
+  [27, 6.0, 'Sistemas fijos de supresión', 'Fundamentos de rociadores y CO2', 14, 0, 2, 9],
+  [28, 4.0, 'Higiene postural en oficina', 'Ajuste de puesto de trabajo y pausas activas', 45, 0, 1, 10],
+  [29, 6.0, 'Manejo manual de cargas', 'Técnica segura de levantamiento y transporte', 38, 0, 2, 10],
+  [30, 8.0, 'Desórdenes musculoesqueléticos', 'Identificación y prevención de DME en campo', 22, 0, 1, 10],
+  [31, 5.0, 'Señalización y demarcación en alturas', 'Zonas de peligro y acceso restringido', 18, 0, 2, 1],
+  [32, 3.0, 'Check-list de inspección preoperacional', 'Diligenciamiento de formatos de pre-op', 20, 0, 1, 2],
+  [33, 6.0, 'Riesgo eléctrico en alta tensión', 'Distancias de seguridad y permisos de trabajo', 10, 0, 2, 3],
+  [34, 4.0, 'Atmosferas peligrosas en espacios confinados', 'Medición de gases y niveles permisibles', 14, 0, 1, 4],
+  [35, 3.0, 'Pausas activas y bienestar', 'Ejercicios de estiramiento para jornada laboral', 50, 0, 2, 5],
+  [36, 8.0, 'Gestión de residuos químicos peligrosos', 'Disposición final y manifiestos de residuos', 16, 0, 1, 6],
+  [37, 6.0, 'Protección de bordes y perímetros', 'Instalación de barandas y mallas de seguridad', 12, 0, 2, 7],
+  [38, 4.0, 'Botiquín de primeros auxilios', 'Inventario y uso correcto de insumos', 30, 0, 1, 8],
+  [39, 10.0, 'Plan de emergencia contra incendio', 'Simulacro integral de emergencia', 20, 0, 2, 9],
+  [40, 6.0, 'Vibración y ruido ocupacional', 'Efectos en salud y medidas de control', 25, 0, 1, 10],
+  [41, 4.0, 'Investigación de incidentes', 'Metodología de árbol de causas', 18, 0, 2, 1],
+  [42, 8.0, 'Conducción en vías de alto riesgo', 'Manejo en zonas de conflicto y clima adverso', 14, 0, 1, 2],
+  [43, 3.0, 'Medidas de prevención de arco eléctrico', 'Equipos de protección contra arco', 10, 0, 2, 3],
+  [44, 6.0, 'Permisos de trabajo en espacios confinados', 'Diligenciamiento y aprobación de permisos', 15, 0, 1, 4],
+  [45, 4.0, 'Tabaquismo y consumo de alcohol en trabajo', 'Política de sustancias psicoactivas', 35, 0, 2, 5],
+  [46, 6.0, 'Fichas de datos de seguridad FDS', 'Lectura e interpretación de FDS', 20, 0, 1, 6],
+  [47, 8.0, 'Trabajo en andamios', 'Montaje seguro y puntos críticos de andamios', 12, 0, 2, 7],
+  [48, 4.0, 'Hipotermia e insolación en campo', 'Reconocimiento y atención de emergencias térmicas', 18, 0, 1, 8],
+  [49, 10.0, 'Detección temprana de incendios', 'Sistemas de detección y alarma', 22, 0, 2, 9],
+  [50, 6.0, 'Iluminación y confort visual', 'Condiciones lumínicas en puesto de trabajo', 28, 0, 1, 10]
 ];
 
 capData.forEach(function(c) {
@@ -345,86 +310,81 @@ capData.forEach(function(c) {
   });
 });
 
-
-// ──────────────────────────────────────────────────────────────────────────────
 // 5. INSERCION DE PROGRAMACIONES CON TEMA EMBEBIDO (70 registros)
-// ──────────────────────────────────────────────────────────────────────────────
-
 var capMap = {};
 db.capacitaciones.find().forEach(function(c) { capMap[c._id] = c; });
 
-// Formato: [_id, fecha, hora, lugar, modalidad, idCapacitacion, estado]
 var progData = [
-  [1,  '2026-03-25', '07:00:00', 'Sede Administrativa Central - Sala A',                'presencial', 29, 'realizada'],
-  [2,  '2026-03-26', '07:30:00', 'Sala de Capacitaciones Barrancabermeja',               'virtual',    30, 'realizada'],
-  [3,  '2026-03-27', '08:00:00', 'Auditorio Sede Norte Bogota',                          'presencial', 31, 'realizada'],
-  [4,  '2026-03-28', '08:30:00', 'Centro de Entrenamiento Vasconia',                     'virtual',    32, 'realizada'],
-  [5,  '2026-03-29', '09:00:00', 'Sala Virtual - Teams',                                 'presencial', 33, 'realizada'],
-  [6,  '2026-03-30', '09:30:00', 'Campo Cogua - Area Externa',                           'virtual',    34, 'realizada'],
-  [7,  '2026-03-31', '10:00:00', 'Sala de Juntas Cali',                                  'presencial', 35, 'realizada'],
-  [8,  '2026-04-01', '13:00:00', 'Auditorio Sede Medellin',                              'virtual',    36, 'realizada'],
-  [9,  '2026-04-02', '13:30:00', 'Centro Logistico Cartagena - Sala B',                  'presencial', 38, 'realizada'],
-  [10, '2026-04-03', '14:00:00', 'Sede Campo Yopal - Carpa Principal',                   'virtual',    39, 'realizada'],
-  [11, '2026-04-04', '14:30:00', 'Planta Compresora Occidente - Sala Tecnica',           'presencial', 40, 'realizada'],
-  [12, '2026-04-05', '15:00:00', 'Sala Virtual - Zoom',                                  'virtual',    41, 'realizada'],
-  [13, '2026-04-06', '15:30:00', 'Sede Bucaramanga - Aula 2',                            'presencial', 42, 'realizada'],
-  [14, '2026-04-07', '16:00:00', 'Area de Entrenamiento Meta',                           'virtual',    43, 'cancelada'],
-  [15, '2026-04-08', '17:00:00', 'Sede Administrativa Central - Sala A',                 'presencial', 45, 'realizada'],
-  [16, '2026-04-09', '17:30:00', 'Sala de Capacitaciones Barrancabermeja',               'virtual',    46, 'realizada'],
-  [17, '2026-04-10', '07:00:00', 'Auditorio Sede Norte Bogota',                          'presencial', 47, 'realizada'],
-  [18, '2026-04-11', '07:30:00', 'Centro de Entrenamiento Vasconia',                     'virtual',    48, 'cancelada'],
-  [19, '2026-04-12', '08:00:00', 'Sala Virtual - Teams',                                 'presencial', 49, 'realizada'],
-  [20, '2026-04-13', '08:30:00', 'Campo Cogua - Area Externa',                           'virtual',    50, 'realizada'],
-  [21, '2026-04-14', '09:00:00', 'Sala de Juntas Cali',                                  'presencial', 1,  'cancelada'],
-  [22, '2026-04-15', '09:30:00', 'Auditorio Sede Medellin',                              'virtual',    1,  'realizada'],
-  [23, '2026-04-16', '10:00:00', 'Centro Logistico Cartagena - Sala B',                  'presencial', 2,  'cancelada'],
-  [24, '2026-04-17', '13:00:00', 'Sede Campo Yopal - Carpa Principal',                   'virtual',    2,  'realizada'],
-  [25, '2026-04-18', '13:30:00', 'Planta Compresora Occidente - Sala Tecnica',           'presencial', 3,  'realizada'],
-  [26, '2026-04-19', '14:00:00', 'Sala Virtual - Zoom',                                  'virtual',    3,  'realizada'],
-  [27, '2026-04-20', '14:30:00', 'Sede Bucaramanga - Aula 2',                            'presencial', 4,  'realizada'],
-  [28, '2026-04-21', '15:00:00', 'Area de Entrenamiento Meta',                           'virtual',    4,  'realizada'],
-  [29, '2026-03-25', '15:30:00', 'Sede Administrativa Central - Sala A',                 'presencial', 5,  'realizada'],
-  [30, '2026-03-26', '16:00:00', 'Sala de Capacitaciones Barrancabermeja',               'virtual',    5,  'realizada'],
-  [31, '2026-03-27', '17:00:00', 'Auditorio Sede Norte Bogota',                          'presencial', 6,  'realizada'],
-  [32, '2026-03-28', '17:30:00', 'Centro de Entrenamiento Vasconia',                     'virtual',    6,  'realizada'],
-  [33, '2026-03-29', '07:00:00', 'Sala Virtual - Teams',                                 'presencial', 8,  'realizada'],
-  [34, '2026-03-30', '07:30:00', 'Campo Cogua - Area Externa',                           'virtual',    8,  'realizada'],
-  [35, '2026-03-31', '08:00:00', 'Sala de Juntas Cali',                                  'presencial', 9,  'realizada'],
-  [36, '2026-04-01', '08:30:00', 'Auditorio Sede Medellin',                              'virtual',    9,  'realizada'],
-  [37, '2026-04-02', '09:00:00', 'Centro Logistico Cartagena - Sala B',                  'presencial', 10, 'realizada'],
-  [38, '2026-04-03', '09:30:00', 'Sede Campo Yopal - Carpa Principal',                   'virtual',    10, 'realizada'],
-  [39, '2026-04-04', '10:00:00', 'Planta Compresora Occidente - Sala Tecnica',           'presencial', 11, 'realizada'],
-  [40, '2026-04-05', '13:00:00', 'Sala Virtual - Zoom',                                  'virtual',    11, 'realizada'],
-  [41, '2026-04-06', '13:30:00', 'Sede Bucaramanga - Aula 2',                            'presencial', 12, 'realizada'],
-  [42, '2026-04-07', '14:00:00', 'Area de Entrenamiento Meta',                           'virtual',    12, 'realizada'],
-  [43, '2026-04-08', '14:30:00', 'Sede Administrativa Central - Sala A',                 'presencial', 13, 'realizada'],
-  [44, '2026-04-09', '15:00:00', 'Sala de Capacitaciones Barrancabermeja',               'virtual',    13, 'realizada'],
-  [45, '2026-04-10', '15:30:00', 'Auditorio Sede Norte Bogota',                          'presencial', 15, 'realizada'],
-  [46, '2026-04-11', '16:00:00', 'Centro de Entrenamiento Vasconia',                     'virtual',    15, 'realizada'],
-  [47, '2026-04-12', '17:00:00', 'Sala Virtual - Teams',                                 'presencial', 16, 'realizada'],
-  [48, '2026-04-13', '17:30:00', 'Campo Cogua - Area Externa',                           'virtual',    16, 'cancelada'],
-  [49, '2026-04-14', '07:00:00', 'Sala de Juntas Cali',                                  'presencial', 17, 'realizada'],
-  [50, '2026-04-15', '07:30:00', 'Auditorio Sede Medellin',                              'virtual',    17, 'realizada'],
-  [51, '2026-04-16', '08:00:00', 'Centro Logistico Cartagena - Sala B',                  'presencial', 18, 'cancelada'],
-  [52, '2026-04-17', '08:30:00', 'Sede Campo Yopal - Carpa Principal',                   'virtual',    18, 'realizada'],
-  [53, '2026-04-23', '09:00:00', 'Planta Compresora Occidente - Sala Tecnica',           'presencial', 19, 'programada'],
-  [54, '2026-04-24', '09:30:00', 'Sala Virtual - Zoom',                                  'virtual',    19, 'programada'],
-  [55, '2026-04-25', '10:00:00', 'Sede Bucaramanga - Aula 2',                            'presencial', 20, 'programada'],
-  [56, '2026-04-26', '13:00:00', 'Area de Entrenamiento Meta',                           'virtual',    20, 'programada'],
-  [57, '2026-04-27', '13:30:00', 'Sede Administrativa Central - Sala A',                 'presencial', 21, 'programada'],
-  [58, '2026-04-28', '14:00:00', 'Sala de Capacitaciones Barrancabermeja',               'virtual',    21, 'programada'],
-  [59, '2026-04-29', '14:30:00', 'Auditorio Sede Norte Bogota',                          'presencial', 22, 'programada'],
-  [60, '2026-04-30', '15:00:00', 'Centro de Entrenamiento Vasconia',                     'virtual',    22, 'programada'],
-  [61, '2026-05-01', '15:30:00', 'Sala Virtual - Teams',                                 'presencial', 24, 'programada'],
-  [62, '2026-05-02', '16:00:00', 'Campo Cogua - Area Externa',                           'virtual',    24, 'programada'],
-  [63, '2026-05-03', '17:00:00', 'Sala de Juntas Cali',                                  'presencial', 25, 'programada'],
-  [64, '2026-05-04', '17:30:00', 'Auditorio Sede Medellin',                              'virtual',    25, 'programada'],
-  [65, '2026-05-05', '07:00:00', 'Centro Logistico Cartagena - Sala B',                  'presencial', 26, 'programada'],
-  [66, '2026-05-06', '07:30:00', 'Sede Campo Yopal - Carpa Principal',                   'virtual',    26, 'programada'],
-  [67, '2026-05-07', '08:00:00', 'Planta Compresora Occidente - Sala Tecnica',           'presencial', 27, 'programada'],
-  [68, '2026-05-08', '08:30:00', 'Sala Virtual - Zoom',                                  'virtual',    27, 'cancelada'],
-  [69, '2026-05-09', '09:00:00', 'Sede Bucaramanga - Aula 2',                            'presencial', 28, 'programada'],
-  [70, '2026-05-10', '09:30:00', 'Area de Entrenamiento Meta',                           'virtual',    28, 'programada']
+  [1, '2026-03-25', '07:00:00', 'Sede Administrativa Central - Sala A', 'presencial', 29, 'realizada'],
+  [2, '2026-03-26', '07:30:00', 'Sala de Capacitaciones Barrancabermeja', 'virtual', 30, 'realizada'],
+  [3, '2026-03-27', '08:00:00', 'Auditorio Sede Norte Bogota', 'presencial', 31, 'realizada'],
+  [4, '2026-03-28', '08:30:00', 'Centro de Entrenamiento Vasconia', 'virtual', 32, 'realizada'],
+  [5, '2026-03-29', '09:00:00', 'Sala Virtual - Teams', 'presencial', 33, 'realizada'],
+  [6, '2026-03-30', '09:30:00', 'Campo Cogua - Area Externa', 'virtual', 34, 'realizada'],
+  [7, '2026-03-31', '10:00:00', 'Sala de Juntas Cali', 'presencial', 35, 'realizada'],
+  [8, '2026-04-01', '13:00:00', 'Auditorio Sede Medellin', 'virtual', 36, 'realizada'],
+  [9, '2026-04-02', '13:30:00', 'Centro Logistico Cartagena - Sala B', 'presencial', 38, 'realizada'],
+  [10, '2026-04-03', '14:00:00', 'Sede Campo Yopal - Carpa Principal', 'virtual', 39, 'realizada'],
+  [11, '2026-04-04', '14:30:00', 'Planta Compresora Occidente - Sala Tecnica', 'presencial', 40, 'realizada'],
+  [12, '2026-04-05', '15:00:00', 'Sala Virtual - Zoom', 'virtual', 41, 'realizada'],
+  [13, '2026-04-06', '15:30:00', 'Sede Bucaramanga - Aula 2', 'presencial', 42, 'realizada'],
+  [14, '2026-04-07', '16:00:00', 'Area de Entrenamiento Meta', 'virtual', 43, 'cancelada'],
+  [15, '2026-04-08', '17:00:00', 'Sede Administrativa Central - Sala A', 'presencial', 45, 'realizada'],
+  [16, '2026-04-09', '17:30:00', 'Sala de Capacitaciones Barrancabermeja', 'virtual', 46, 'realizada'],
+  [17, '2026-04-10', '07:00:00', 'Auditorio Sede Norte Bogota', 'presencial', 47, 'realizada'],
+  [18, '2026-04-11', '07:30:00', 'Centro de Entrenamiento Vasconia', 'virtual', 48, 'cancelada'],
+  [19, '2026-04-12', '08:00:00', 'Sala Virtual - Teams', 'presencial', 49, 'realizada'],
+  [20, '2026-04-13', '08:30:00', 'Campo Cogua - Area Externa', 'virtual', 50, 'realizada'],
+  [21, '2026-04-14', '09:00:00', 'Sala de Juntas Cali', 'presencial', 1, 'cancelada'],
+  [22, '2026-04-15', '09:30:00', 'Auditorio Sede Medellin', 'virtual', 1, 'realizada'],
+  [23, '2026-04-16', '10:00:00', 'Centro Logistico Cartagena - Sala B', 'presencial', 2, 'cancelada'],
+  [24, '2026-04-17', '13:00:00', 'Sede Campo Yopal - Carpa Principal', 'virtual', 2, 'realizada'],
+  [25, '2026-04-18', '13:30:00', 'Planta Compresora Occidente - Sala Tecnica', 'presencial', 3, 'realizada'],
+  [26, '2026-04-19', '14:00:00', 'Sala Virtual - Zoom', 'virtual', 3, 'realizada'],
+  [27, '2026-04-20', '14:30:00', 'Sede Bucaramanga - Aula 2', 'presencial', 4, 'realizada'],
+  [28, '2026-04-21', '15:00:00', 'Area de Entrenamiento Meta', 'virtual', 4, 'realizada'],
+  [29, '2026-03-25', '15:30:00', 'Sede Administrativa Central - Sala A', 'presencial', 5, 'realizada'],
+  [30, '2026-03-26', '16:00:00', 'Sala de Capacitaciones Barrancabermeja', 'virtual', 5, 'realizada'],
+  [31, '2026-03-27', '17:00:00', 'Auditorio Sede Norte Bogota', 'presencial', 6, 'realizada'],
+  [32, '2026-03-28', '17:30:00', 'Centro de Entrenamiento Vasconia', 'virtual', 6, 'realizada'],
+  [33, '2026-03-29', '07:00:00', 'Sala Virtual - Teams', 'presencial', 8, 'realizada'],
+  [34, '2026-03-30', '07:30:00', 'Campo Cogua - Area Externa', 'virtual', 8, 'realizada'],
+  [35, '2026-03-31', '08:00:00', 'Sala de Juntas Cali', 'presencial', 9, 'realizada'],
+  [36, '2026-04-01', '08:30:00', 'Auditorio Sede Medellin', 'virtual', 9, 'realizada'],
+  [37, '2026-04-02', '09:00:00', 'Centro Logistico Cartagena - Sala B', 'presencial', 10, 'realizada'],
+  [38, '2026-04-03', '09:30:00', 'Sede Campo Yopal - Carpa Principal', 'virtual', 10, 'realizada'],
+  [39, '2026-04-04', '10:00:00', 'Planta Compresora Occidente - Sala Tecnica', 'presencial', 11, 'realizada'],
+  [40, '2026-04-05', '13:00:00', 'Sala Virtual - Zoom', 'virtual', 11, 'realizada'],
+  [41, '2026-04-06', '13:30:00', 'Sede Bucaramanga - Aula 2', 'presencial', 12, 'realizada'],
+  [42, '2026-04-07', '14:00:00', 'Area de Entrenamiento Meta', 'virtual', 12, 'realizada'],
+  [43, '2026-04-08', '14:30:00', 'Sede Administrativa Central - Sala A', 'presencial', 13, 'realizada'],
+  [44, '2026-04-09', '15:00:00', 'Sala de Capacitaciones Barrancabermeja', 'virtual', 13, 'realizada'],
+  [45, '2026-04-10', '15:30:00', 'Auditorio Sede Norte Bogota', 'presencial', 15, 'realizada'],
+  [46, '2026-04-11', '16:00:00', 'Centro de Entrenamiento Vasconia', 'virtual', 15, 'realizada'],
+  [47, '2026-04-12', '17:00:00', 'Sala Virtual - Teams', 'presencial', 16, 'realizada'],
+  [48, '2026-04-13', '17:30:00', 'Campo Cogua - Area Externa', 'virtual', 16, 'cancelada'],
+  [49, '2026-04-14', '07:00:00', 'Sala de Juntas Cali', 'presencial', 17, 'realizada'],
+  [50, '2026-04-15', '07:30:00', 'Auditorio Sede Medellin', 'virtual', 17, 'realizada'],
+  [51, '2026-04-16', '08:00:00', 'Centro Logistico Cartagena - Sala B', 'presencial', 18, 'cancelada'],
+  [52, '2026-04-17', '08:30:00', 'Sede Campo Yopal - Carpa Principal', 'virtual', 18, 'realizada'],
+  [53, '2026-04-23', '09:00:00', 'Planta Compresora Occidente - Sala Tecnica', 'presencial', 19, 'programada'],
+  [54, '2026-04-24', '09:30:00', 'Sala Virtual - Zoom', 'virtual', 19, 'programada'],
+  [55, '2026-04-25', '10:00:00', 'Sede Bucaramanga - Aula 2', 'presencial', 20, 'programada'],
+  [56, '2026-04-26', '13:00:00', 'Area de Entrenamiento Meta', 'virtual', 20, 'programada'],
+  [57, '2026-04-27', '13:30:00', 'Sede Administrativa Central - Sala A', 'presencial', 21, 'programada'],
+  [58, '2026-04-28', '14:00:00', 'Sala de Capacitaciones Barrancabermeja', 'virtual', 21, 'programada'],
+  [59, '2026-04-29', '14:30:00', 'Auditorio Sede Norte Bogota', 'presencial', 22, 'programada'],
+  [60, '2026-04-30', '15:00:00', 'Centro de Entrenamiento Vasconia', 'virtual', 22, 'programada'],
+  [61, '2026-05-01', '15:30:00', 'Sala Virtual - Teams', 'presencial', 24, 'programada'],
+  [62, '2026-05-02', '16:00:00', 'Campo Cogua - Area Externa', 'virtual', 24, 'programada'],
+  [63, '2026-05-03', '17:00:00', 'Sala de Juntas Cali', 'presencial', 25, 'programada'],
+  [64, '2026-05-04', '17:30:00', 'Auditorio Sede Medellin', 'virtual', 25, 'programada'],
+  [65, '2026-05-05', '07:00:00', 'Centro Logistico Cartagena - Sala B', 'presencial', 26, 'programada'],
+  [66, '2026-05-06', '07:30:00', 'Sede Campo Yopal - Carpa Principal', 'virtual', 26, 'programada'],
+  [67, '2026-05-07', '08:00:00', 'Planta Compresora Occidente - Sala Tecnica', 'presencial', 27, 'programada'],
+  [68, '2026-05-08', '08:30:00', 'Sala Virtual - Zoom', 'virtual', 27, 'cancelada'],
+  [69, '2026-05-09', '09:00:00', 'Sede Bucaramanga - Aula 2', 'presencial', 28, 'programada'],
+  [70, '2026-05-10', '09:30:00', 'Area de Entrenamiento Meta', 'virtual', 28, 'programada']
 ];
 
 progData.forEach(function(p) {
@@ -442,20 +402,13 @@ progData.forEach(function(p) {
   });
 });
 
-
-// ──────────────────────────────────────────────────────────────────────────────
 // 6. INSERCION DE ASISTENCIAS CON TRABAJADOR EMBEBIDO (95 registros)
-// ──────────────────────────────────────────────────────────────────────────────
-// Cada asistencia necesita el trabajador embebido y el idPrograma
-// (obtenido de la cadena programacion -> capacitacion -> programa).
-
 var trabMap = {};
 db.trabajadores.find().forEach(function(t) { trabMap[t._id] = t; });
 
 var progMapForAsist = {};
 db.programaciones.find().forEach(function(p) { progMapForAsist[p._id] = p; });
 
-// Funcion para obtener idPrograma a partir de una programacion
 function obtenerIdPrograma(idProgramacion) {
   var programacion = progMapForAsist[idProgramacion];
   if (!programacion) return null;
@@ -464,103 +417,102 @@ function obtenerIdPrograma(idProgramacion) {
   return capacitacion.programa ? capacitacion.programa._id : null;
 }
 
-// Formato: [_id, asistio, fechaDeAsistencia, evaluacionCapacitador, comentarios, idProgramacion, idTrabajador]
 var asistData = [
-  [1,   true,  '2026-04-04 14:36:00', 4, 'Excelente capacitador',                      11, 1],
-  [2,   false, null,                   null, null,                                       51, 2],
-  [3,   true,  '2026-04-11 16:12:00', 4, null,                                          46, 3],
-  [4,   false, null,                   null, null,                                       19, 3],
-  [5,   true,  '2026-04-09 17:36:00', 5, null,                                          16, 4],
-  [6,   true,  '2026-04-08 14:41:00', 3, null,                                          43, 5],
-  [7,   false, null,                   null, null,                                       56, 6],
-  [8,   false, null,                   null, null,                                       18, 6],
-  [9,   true,  '2026-03-28 08:44:00', 4, null,                                          4,  7],
-  [10,  false, null,                   null, null,                                       59, 8],
-  [11,  true,  '2026-04-05 15:16:00', 4, 'Muy bien explicado',                          12, 9],
-  [12,  true,  '2026-03-29 07:00:00', 5, 'No quedo claro',                              33, 10],
-  [13,  true,  '2026-04-06 15:36:00', 4, null,                                          13, 11],
-  [14,  true,  '2026-04-15 09:36:00', 1, null,                                          22, 12],
-  [15,  true,  '2026-03-30 09:44:00', 4, null,                                          6,  12],
-  [16,  false, null,                   null, null,                                       57, 13],
-  [17,  true,  '2026-03-27 17:05:00', 5, 'Muy didactico',                               31, 14],
-  [18,  false, null,                   null, null,                                       3,  15],
-  [19,  false, null,                   null, null,                                       62, 15],
-  [20,  true,  '2026-03-31 10:02:00', 5, null,                                          7,  16],
-  [21,  true,  '2026-04-14 07:04:00', 4, 'Deberias mejorar las instalaciones',          49, 17],
-  [22,  true,  '2026-03-27 17:14:00', 5, null,                                          31, 17],
-  [23,  false, null,                   null, null,                                       58, 18],
-  [24,  true,  '2026-04-17 08:41:00', 2, null,                                          52, 19],
-  [25,  false, null,                   null, null,                                       61, 20],
-  [26,  false, null,                   null, null,                                       26, 20],
-  [27,  true,  '2026-04-18 13:49:00', 4, 'No quedo claro',                              25, 21],
-  [28,  false, null,                   null, null,                                       32, 21],
-  [29,  false, null,                   null, null,                                       62, 22],
-  [30,  false, null,                   null, null,                                       67, 23],
-  [31,  false, null,                   null, null,                                       41, 23],
-  [32,  true,  '2026-04-15 07:35:00', 5, null,                                          50, 24],
-  [33,  true,  '2026-03-31 08:10:00', 4, null,                                          35, 24],
-  [34,  true,  '2026-04-06 13:33:00', 3, 'Falto mas practica en campo',                 41, 25],
-  [35,  true,  '2026-04-02 09:18:00', 3, 'Buen manejo del grupo',                       37, 25],
-  [36,  true,  '2026-04-05 13:12:00', 5, null,                                          40, 26],
-  [37,  true,  '2026-04-17 08:35:00', 3, null,                                          52, 26],
-  [38,  false, null,                   null, null,                                       53, 27],
-  [39,  false, null,                   null, null,                                       70, 28],
-  [40,  true,  '2026-04-09 15:12:00', 4, 'El tema no se profundizo suficiente',         44, 28],
-  [41,  true,  '2026-04-19 14:09:00', 5, null,                                          26, 29],
-  [42,  true,  '2026-04-13 08:37:00', 5, null,                                          20, 30],
-  [43,  true,  '2026-04-20 14:44:00', 5, null,                                          27, 31],
-  [44,  false, null,                   null, null,                                       47, 31],
-  [45,  true,  '2026-04-07 14:10:00', 3, null,                                          42, 32],
-  [46,  true,  '2026-04-01 13:08:00', 5, 'El instructor llego tarde',                   8,  33],
-  [47,  true,  '2026-04-11 16:12:00', 4, null,                                          46, 33],
-  [48,  false, null,                   null, null,                                       21, 34],
-  [49,  true,  '2026-03-29 09:14:00', 5, 'Muy bien explicado',                          5,  35],
-  [50,  false, null,                   null, null,                                       64, 36],
-  [51,  true,  '2026-04-10 15:39:00', 1, 'El proyector fallo a mitad',                  45, 37],
-  [52,  true,  '2026-04-02 09:08:00', 4, null,                                          37, 38],
-  [53,  true,  '2026-04-01 08:37:00', 5, null,                                          36, 39],
-  [54,  true,  '2026-04-04 10:00:00', 5, null,                                          39, 39],
-  [55,  false, null,                   null, null,                                       32, 40],
-  [56,  true,  '2026-04-08 17:05:00', 4, null,                                          15, 41],
-  [57,  false, null,                   null, null,                                       63, 41],
-  [58,  false, null,                   null, null,                                       23, 42],
-  [59,  true,  '2026-04-12 17:08:00', 4, null,                                          47, 43],
-  [60,  true,  '2026-04-18 13:46:00', 4, null,                                          25, 43],
-  [61,  false, null,                   null, null,                                       54, 44],
-  [62,  false, null,                   null, null,                                       60, 45],
-  [63,  false, null,                   null, null,                                       65, 46],
-  [64,  true,  '2026-03-30 07:49:00', 4, 'Excelente capacitador',                       34, 46],
-  [65,  true,  '2026-04-10 07:02:00', 4, null,                                          17, 47],
-  [66,  true,  '2026-04-15 07:41:00', 1, null,                                          50, 47],
-  [67,  true,  '2026-03-30 09:48:00', 5, null,                                          6,  48],
-  [68,  true,  '2026-04-03 14:12:00', 5, 'Sigue asi',                                   10, 49],
-  [69,  false, null,                   null, null,                                       18, 50],
-  [70,  true,  '2026-04-08 14:44:00', 3, null,                                          43, 50],
-  [71,  true,  '2026-03-25 07:17:00', 1, 'Aprendi mucho',                               1,  51],
-  [72,  true,  '2026-04-04 10:12:00', 5, null,                                          39, 52],
-  [73,  true,  '2026-04-09 15:18:00', 3, null,                                          44, 53],
-  [74,  false, null,                   null, null,                                       23, 53],
-  [75,  false, null,                   null, null,                                       63, 54],
-  [76,  true,  '2026-04-21 15:05:00', 1, null,                                          28, 55],
-  [77,  true,  '2026-04-03 14:16:00', 5, 'Buen manejo del grupo',                       10, 55],
-  [78,  true,  '2026-03-26 07:30:00', 4, null,                                          2,  56],
-  [79,  true,  '2026-04-10 07:18:00', 5, 'Muy bien explicado',                          17, 56],
-  [80,  false, null,                   null, null,                                       66, 57],
-  [81,  false, null,                   null, null,                                       48, 58],
-  [82,  false, null,                   null, null,                                       14, 59],
-  [83,  true,  '2026-04-01 13:01:00', 5, 'El proyector fallo a mitad',                  8,  59],
-  [84,  false, null,                   null, null,                                       55, 60],
-  [85,  true,  '2026-03-27 08:01:00', 4, null,                                          3,  60],
-  [86,  true,  '2026-03-31 08:03:00', 5, 'Deberias mejorar las instalaciones',          35, 61],
-  [87,  true,  '2026-03-28 08:36:00', 4, 'Deberias compartir el material',              4,  61],
-  [88,  false, null,                   null, null,                                       5,  62],
-  [89,  true,  '2026-04-02 13:34:00', 3, 'Deberias compartir el material',              9,  63],
-  [90,  false, null,                   null, null,                                       68, 64],
-  [91,  true,  '2026-03-25 15:35:00', 5, null,                                          29, 65],
-  [92,  true,  '2026-04-12 08:19:00', 4, null,                                          19, 66],
-  [93,  true,  '2026-03-26 16:01:00', 3, null,                                          30, 67],
-  [94,  false, null,                   null, null,                                       51, 67],
-  [95,  true,  '2026-04-17 13:09:00', 5, 'Deberias compartir el material',              24, 68]
+  [1, true, '2026-04-04 14:36:00', 4, 'Excelente capacitador', 11, 1],
+  [2, false, null, null, null, 51, 2],
+  [3, true, '2026-04-11 16:12:00', 4, null, 46, 3],
+  [4, false, null, null, null, 19, 3],
+  [5, true, '2026-04-09 17:36:00', 5, null, 16, 4],
+  [6, true, '2026-04-08 14:41:00', 3, null, 43, 5],
+  [7, false, null, null, null, 56, 6],
+  [8, false, null, null, null, 18, 6],
+  [9, true, '2026-03-28 08:44:00', 4, null, 4, 7],
+  [10, false, null, null, null, 59, 8],
+  [11, true, '2026-04-05 15:16:00', 4, 'Muy bien explicado', 12, 9],
+  [12, true, '2026-03-29 07:00:00', 5, 'No quedo claro', 33, 10],
+  [13, true, '2026-04-06 15:36:00', 4, null, 13, 11],
+  [14, true, '2026-04-15 09:36:00', 1, null, 22, 12],
+  [15, true, '2026-03-30 09:44:00', 4, null, 6, 12],
+  [16, false, null, null, null, 57, 13],
+  [17, true, '2026-03-27 17:05:00', 5, 'Muy didactico', 31, 14],
+  [18, false, null, null, null, 3, 15],
+  [19, false, null, null, null, 62, 15],
+  [20, true, '2026-03-31 10:02:00', 5, null, 7, 16],
+  [21, true, '2026-04-14 07:04:00', 4, 'Deberias mejorar las instalaciones', 49, 17],
+  [22, true, '2026-03-27 17:14:00', 5, null, 31, 17],
+  [23, false, null, null, null, 58, 18],
+  [24, true, '2026-04-17 08:41:00', 2, null, 52, 19],
+  [25, false, null, null, null, 61, 20],
+  [26, false, null, null, null, 26, 20],
+  [27, true, '2026-04-18 13:49:00', 4, 'No quedo claro', 25, 21],
+  [28, false, null, null, null, 32, 21],
+  [29, false, null, null, null, 62, 22],
+  [30, false, null, null, null, 67, 23],
+  [31, false, null, null, null, 41, 23],
+  [32, true, '2026-04-15 07:35:00', 5, null, 50, 24],
+  [33, true, '2026-03-31 08:10:00', 4, null, 35, 24],
+  [34, true, '2026-04-06 13:33:00', 3, 'Falto mas practica en campo', 41, 25],
+  [35, true, '2026-04-02 09:18:00', 3, 'Buen manejo del grupo', 37, 25],
+  [36, true, '2026-04-05 13:12:00', 5, null, 40, 26],
+  [37, true, '2026-04-17 08:35:00', 3, null, 52, 26],
+  [38, false, null, null, null, 53, 27],
+  [39, false, null, null, null, 70, 28],
+  [40, true, '2026-04-09 15:12:00', 4, 'El tema no se profundizo suficiente', 44, 28],
+  [41, true, '2026-04-19 14:09:00', 5, null, 26, 29],
+  [42, true, '2026-04-13 08:37:00', 5, null, 20, 30],
+  [43, true, '2026-04-20 14:44:00', 5, null, 27, 31],
+  [44, false, null, null, null, 47, 31],
+  [45, true, '2026-04-07 14:10:00', 3, null, 42, 32],
+  [46, true, '2026-04-01 13:08:00', 5, 'El instructor llego tarde', 8, 33],
+  [47, true, '2026-04-11 16:12:00', 4, null, 46, 33],
+  [48, false, null, null, null, 21, 34],
+  [49, true, '2026-03-29 09:14:00', 5, 'Muy bien explicado', 5, 35],
+  [50, false, null, null, null, 64, 36],
+  [51, true, '2026-04-10 15:39:00', 1, 'El proyector fallo a mitad', 45, 37],
+  [52, true, '2026-04-02 09:08:00', 4, null, 37, 38],
+  [53, true, '2026-04-01 08:37:00', 5, null, 36, 39],
+  [54, true, '2026-04-04 10:00:00', 5, null, 39, 39],
+  [55, false, null, null, null, 32, 40],
+  [56, true, '2026-04-08 17:05:00', 4, null, 15, 41],
+  [57, false, null, null, null, 63, 41],
+  [58, false, null, null, null, 23, 42],
+  [59, true, '2026-04-12 17:08:00', 4, null, 47, 43],
+  [60, true, '2026-04-18 13:46:00', 4, null, 25, 43],
+  [61, false, null, null, null, 54, 44],
+  [62, false, null, null, null, 60, 45],
+  [63, false, null, null, null, 65, 46],
+  [64, true, '2026-03-30 07:49:00', 4, 'Excelente capacitador', 34, 46],
+  [65, true, '2026-04-10 07:02:00', 4, null, 17, 47],
+  [66, true, '2026-04-15 07:41:00', 1, null, 50, 47],
+  [67, true, '2026-03-30 09:48:00', 5, null, 6, 48],
+  [68, true, '2026-04-03 14:12:00', 5, 'Sigue asi', 10, 49],
+  [69, false, null, null, null, 18, 50],
+  [70, true, '2026-04-08 14:44:00', 3, null, 43, 50],
+  [71, true, '2026-03-25 07:17:00', 1, 'Aprendi mucho', 1, 51],
+  [72, true, '2026-04-04 10:12:00', 5, null, 39, 52],
+  [73, true, '2026-04-09 15:18:00', 3, null, 44, 53],
+  [74, false, null, null, null, 23, 53],
+  [75, false, null, null, null, 63, 54],
+  [76, true, '2026-04-21 15:05:00', 1, null, 28, 55],
+  [77, true, '2026-04-03 14:16:00', 5, 'Buen manejo del grupo', 10, 55],
+  [78, true, '2026-03-26 07:30:00', 4, null, 2, 56],
+  [79, true, '2026-04-10 07:18:00', 5, 'Muy bien explicado', 17, 56],
+  [80, false, null, null, null, 66, 57],
+  [81, false, null, null, null, 48, 58],
+  [82, false, null, null, null, 14, 59],
+  [83, true, '2026-04-01 13:01:00', 5, 'El proyector fallo a mitad', 8, 59],
+  [84, false, null, null, null, 55, 60],
+  [85, true, '2026-03-27 08:01:00', 4, null, 3, 60],
+  [86, true, '2026-03-31 08:03:00', 5, 'Deberias mejorar las instalaciones', 35, 61],
+  [87, true, '2026-03-28 08:36:00', 4, 'Deberias compartir el material', 4, 61],
+  [88, false, null, null, null, 5, 62],
+  [89, true, '2026-04-02 13:34:00', 3, 'Deberias compartir el material', 9, 63],
+  [90, false, null, null, null, 68, 64],
+  [91, true, '2026-03-25 15:35:00', 5, null, 29, 65],
+  [92, true, '2026-04-12 08:19:00', 4, null, 19, 66],
+  [93, true, '2026-03-26 16:01:00', 3, null, 30, 67],
+  [94, false, null, null, null, 51, 67],
+  [95, true, '2026-04-17 13:09:00', 5, 'Deberias compartir el material', 24, 68]
 ];
 
 asistData.forEach(function(a) {
@@ -585,206 +537,65 @@ asistData.forEach(function(a) {
   });
 });
 
-
-// ══════════════════════════════════════════════════════════════════════════════
 // 7. CONSULTAS Y OPERACIONES FUNCIONALES
-// ══════════════════════════════════════════════════════════════════════════════
 
-
-// ──────────────────────────────────────────────────────────────────────────────
-// 7.1  CONSULTAS BASICAS
-// ──────────────────────────────────────────────────────────────────────────────
-
-// --- Inicio de sesion (buscar usuario por correo electronico) ---
-db.usuarios.findOne(
-  { correoUsuario: 'diana.munevar@tgi.com.co' }
-);
-
-// --- Consultar informacion de usuarios (sin contraseña) ---
-db.usuarios.find(
-  {},
-  { 'contraseñaUsuario': 0 }
-).pretty();
-
-// --- Lista completa de programas ---
+// 7.1 CONSULTAS BASICAS
+db.usuarios.findOne({ correoUsuario: 'diana.munevar@tgi.com.co' });
+db.usuarios.find({}, { 'contraseñaUsuario': 0 }).pretty();
 db.programas.find().pretty();
-
-// --- Lista completa de responsables ---
 db.responsables.find().pretty();
-
-// --- Lista completa de capacitaciones ---
 db.capacitaciones.find().pretty();
-
-// --- Consultar todos los cargos ---
 db.cargos.find().pretty();
-
-// --- Consultar todos los centros de trabajo ---
 db.centrosTrabajo.find().pretty();
+db.trabajadores.find({}, {
+  documentoTrabajador: 1,
+  nombreTrabajador: 1,
+  empresaDondeTrabaja: 1,
+  'cargo.nombreCargo': 1,
+  'centroTrabajo.nombreCentroTrabajo': 1,
+  'centroTrabajo.ciudad': 1
+}).pretty();
 
-// --- Consultar informacion de trabajadores ---
-db.trabajadores.find(
-  {},
-  {
-    documentoTrabajador: 1,
-    nombreTrabajador: 1,
-    empresaDondeTrabaja: 1,
-    'cargo.nombreCargo': 1,
-    'centroTrabajo.nombreCentroTrabajo': 1,
-    'centroTrabajo.ciudad': 1
-  }
-).pretty();
-
-
-// ──────────────────────────────────────────────────────────────────────────────
-// 7.2  CONSULTAS ESPECIFICAS
-// ──────────────────────────────────────────────────────────────────────────────
-
-// --- Consultar informacion general de una capacitacion ---
-db.capacitaciones.findOne(
-  { _id: 1 },
-  { tema: 1, actividad: 1, 'programa.nombrePrograma': 1 }
-);
-
-// --- Consultar informacion de una programacion ---
-db.programaciones.findOne(
-  { _id: 1 },
-  { fechaProgramada: 1, horaProgramada: 1, tema: 1 }
-);
-
-// --- Consultar trabajadores que ejercen un cargo especifico ---
-db.trabajadores.find(
-  { 'cargo._id': 1 },
-  { nombreTrabajador: 1, documentoTrabajador: 1, 'cargo.nombreCargo': 1 }
-).pretty();
-
-// --- Consultar trabajadores de un centro de trabajo ---
-db.trabajadores.find(
-  { 'centroTrabajo._id': 1 },
-  { nombreTrabajador: 1, documentoTrabajador: 1, 'centroTrabajo.nombreCentroTrabajo': 1 }
-).pretty();
-
-// --- Consultar trabajadores por ciudad ---
-db.trabajadores.find(
-  { 'centroTrabajo.ciudad': 'Barrancabermeja' },
-  { nombreTrabajador: 1, documentoTrabajador: 1, 'centroTrabajo.ciudad': 1 }
-).pretty();
-
-// --- Consultar numero de asistentes citados a una programacion ---
+// 7.2 CONSULTAS ESPECIFICAS
+db.capacitaciones.findOne({ _id: 1 }, { tema: 1, actividad: 1, 'programa.nombrePrograma': 1 });
+db.programaciones.findOne({ _id: 1 }, { fechaProgramada: 1, horaProgramada: 1, tema: 1 });
+db.trabajadores.find({ 'cargo._id': 1 }, { nombreTrabajador: 1, documentoTrabajador: 1, 'cargo.nombreCargo': 1 }).pretty();
+db.trabajadores.find({ 'centroTrabajo._id': 1 }, { nombreTrabajador: 1, documentoTrabajador: 1, 'centroTrabajo.nombreCentroTrabajo': 1 }).pretty();
+db.trabajadores.find({ 'centroTrabajo.ciudad': 'Barrancabermeja' }, { nombreTrabajador: 1, documentoTrabajador: 1, 'centroTrabajo.ciudad': 1 }).pretty();
 db.asistencias.countDocuments({ idProgramacion: 1 });
-
-// --- Consultar lista de trabajadores citados a una programacion ---
-db.asistencias.find(
-  { idProgramacion: 1 },
-  { 'trabajador.nombreTrabajador': 1, 'trabajador.documentoTrabajador': 1, _id: 0 }
-).pretty();
-
-// --- Consultar programaciones por estado ---
-db.programaciones.find(
-  { estadoProgramacion: 'programada' }
-).pretty();
-
-// --- Consultar programaciones en un rango de fecha ---
-db.programaciones.find({
-  fechaProgramada: {
-    $gte: '2026-03-25',
-    $lte: '2026-05-10'
-  }
-}).sort({ fechaProgramada: 1 }).pretty();
-
-// --- Calcular numero de capacitaciones programadas a un trabajador ---
+db.asistencias.find({ idProgramacion: 1 }, { 'trabajador.nombreTrabajador': 1, 'trabajador.documentoTrabajador': 1, _id: 0 }).pretty();
+db.programaciones.find({ estadoProgramacion: 'programada' }).pretty();
+db.programaciones.find({ fechaProgramada: { $gte: '2026-03-25', $lte: '2026-05-10' } }).sort({ fechaProgramada: 1 }).pretty();
 db.asistencias.countDocuments({ 'trabajador._id': 1 });
-
-// --- Calcular numero de capacitaciones asistidas por un trabajador ---
 db.asistencias.countDocuments({ 'trabajador._id': 1, asistio: true });
-
-// --- Calcular porcentaje de cumplimiento a capacitaciones por trabajador ---
 db.asistencias.aggregate([
   { $match: { 'trabajador._id': 1 } },
-  { $group: {
-    _id: '$trabajador._id',
-    totalProgramadas: { $sum: 1 },
-    totalAsistidas: { $sum: { $cond: ['$asistio', 1, 0] } }
-  }},
-  { $project: {
-    _id: 0,
-    totalProgramadas: 1,
-    totalAsistidas: 1,
-    porcentaje: {
-      $cond: [
-        { $eq: ['$totalProgramadas', 0] }, 0,
-        { $round: [{ $multiply: [{ $divide: ['$totalAsistidas', '$totalProgramadas'] }, 100] }, 1] }
-      ]
-    }
-  }}
+  { $group: { _id: '$trabajador._id', totalProgramadas: { $sum: 1 }, totalAsistidas: { $sum: { $cond: ['$asistio', 1, 0] } } } },
+  { $project: { _id: 0, totalProgramadas: 1, totalAsistidas: 1, porcentaje: { $cond: [ { $eq: ['$totalProgramadas', 0] }, 0, { $round: [{ $multiply: [{ $divide: ['$totalAsistidas', '$totalProgramadas'] }, 100] }, 1] } ] } } }
 ]);
-
-// --- Calcular promedio de evaluaciones de los trabajadores a una programacion ---
 db.asistencias.aggregate([
   { $match: { idProgramacion: 1, evaluacionCapacitador: { $ne: null } } },
-  { $group: {
-    _id: '$idProgramacion',
-    promedioEvaluacion: { $avg: '$evaluacionCapacitador' }
-  }}
+  { $group: { _id: '$idProgramacion', promedioEvaluacion: { $avg: '$evaluacionCapacitador' } } }
 ]);
+db.capacitaciones.findOne({ _id: 1 }, { accidentesAsociados: 1, tema: 1 });
+db.trabajadores.find({ empresaDondeTrabaja: { $ne: 'TGI' } }).pretty();
 
-// --- Consultar numero de accidentes asociados a una capacitacion ---
-db.capacitaciones.findOne(
-  { _id: 1 },
-  { accidentesAsociados: 1, tema: 1 }
-);
-
-// --- Consultar trabajadores que no pertenecen a TGI ---
-db.trabajadores.find(
-  { empresaDondeTrabaja: { $ne: 'TGI' } }
-).pretty();
-
-
-// ──────────────────────────────────────────────────────────────────────────────
-// 7.3  INSERCIONES (crear nuevos registros)
-// ──────────────────────────────────────────────────────────────────────────────
-
-// --- Crear un nuevo usuario ---
+// 7.3 INSERCIONES
 var nuevoIdUsuario = db.usuarios.find().sort({ _id: -1 }).limit(1).next()._id + 1;
-db.usuarios.insertOne({
-  _id: nuevoIdUsuario,
-  nombreUsuario: 'Pedro Pablo Martinez Luna',
-  rolUsuario: 'ayudante',
-  correoUsuario: 'pedro.martinez@tgi.com.co',
-  'contraseñaUsuario': 'PedroPass2026!',
-  estadoUsuario: 'activo'
-});
+db.usuarios.insertOne({ _id: nuevoIdUsuario, nombreUsuario: 'Pedro Pablo Martinez Luna', rolUsuario: 'ayudante', correoUsuario: 'pedro.martinez@tgi.com.co', 'contraseñaUsuario': 'PedroPass2026!', estadoUsuario: 'activo' });
 
-// --- Crear un nuevo programa ---
 var nuevoIdPrograma = db.programas.find().sort({ _id: -1 }).limit(1).next()._id + 1;
-db.programas.insertOne({
-  _id: nuevoIdPrograma,
-  nombrePrograma: 'Riesgo Biologico',
-  fasePHVA: 'planear'
-});
+db.programas.insertOne({ _id: nuevoIdPrograma, nombrePrograma: 'Riesgo Biologico', fasePHVA: 'planear' });
 
-// --- Registrar un nuevo responsable ---
 var nuevoIdResponsable = db.responsables.find().sort({ _id: -1 }).limit(1).next()._id + 1;
-db.responsables.insertOne({
-  _id: nuevoIdResponsable,
-  nombreResponsable: 'Fernando Jose Gutierrez Rojas'
-});
+db.responsables.insertOne({ _id: nuevoIdResponsable, nombreResponsable: 'Fernando Jose Gutierrez Rojas' });
 
-// --- Registrar un nuevo cargo ---
 var nuevoIdCargo = db.cargos.find().sort({ _id: -1 }).limit(1).next()._id + 1;
-db.cargos.insertOne({
-  _id: nuevoIdCargo,
-  nombreCargo: 'Ingeniero Ambiental'
-});
+db.cargos.insertOne({ _id: nuevoIdCargo, nombreCargo: 'Ingeniero Ambiental' });
 
-// --- Registrar un nuevo centro de trabajo ---
 var nuevoIdCentro = db.centrosTrabajo.find().sort({ _id: -1 }).limit(1).next()._id + 1;
-db.centrosTrabajo.insertOne({
-  _id: nuevoIdCentro,
-  nombreCentroTrabajo: 'Sede Operacional Norte Santander',
-  ciudad: 'Cucuta'
-});
+db.centrosTrabajo.insertOne({ _id: nuevoIdCentro, nombreCentroTrabajo: 'Sede Operacional Norte Santander', ciudad: 'Cucuta' });
 
-// --- Registrar un nuevo trabajador (con documentos embebidos) ---
 var cargoNuevoTrab = db.cargos.findOne({ _id: 3 });
 var centroNuevoTrab = db.centrosTrabajo.findOne({ _id: 1 });
 var nuevoIdTrabajador = db.trabajadores.find().sort({ _id: -1 }).limit(1).next()._id + 1;
@@ -797,7 +608,6 @@ db.trabajadores.insertOne({
   centroTrabajo: { _id: centroNuevoTrab._id, nombreCentroTrabajo: centroNuevoTrab.nombreCentroTrabajo, ciudad: centroNuevoTrab.ciudad }
 });
 
-// --- Crear una capacitacion (con programa y responsables embebidos) ---
 var progCap = db.programas.findOne({ _id: 1 });
 var respCap = db.responsables.find({ _id: { $in: [1, 5] } }).toArray();
 var nuevoIdCapacitacion = db.capacitaciones.find().sort({ _id: -1 }).limit(1).next()._id + 1;
@@ -813,7 +623,6 @@ db.capacitaciones.insertOne({
   responsables: respCap.map(function(r) { return { _id: r._id, nombreResponsable: r.nombreResponsable }; })
 });
 
-// --- Crear una programacion ---
 var capProg = db.capacitaciones.findOne({ _id: 1 });
 var nuevoIdProgramacion = db.programaciones.find().sort({ _id: -1 }).limit(1).next()._id + 1;
 db.programaciones.insertOne({
@@ -828,7 +637,6 @@ db.programaciones.insertOne({
   tema: capProg.tema
 });
 
-// --- Anadir un trabajador individual al aforo de una programacion ---
 var trabAforo = db.trabajadores.findOne({ _id: 5 });
 var idProgProg = (function() {
   var pr = db.programaciones.findOne({ _id: 53 });
@@ -861,7 +669,6 @@ if (!existeYa) {
   print('El trabajador ya esta convocado');
 }
 
-// --- Anadir trabajadores al aforo por centro de trabajo ---
 var idProgParaCentro = 1;
 var idCentroFiltro = 2;
 var idProgramaCentro = (function() {
@@ -896,7 +703,6 @@ trabsCentro.forEach(function(t) {
   }
 });
 
-// --- Anadir trabajadores al aforo por ciudad ---
 var idProgParaCiudad = 1;
 var ciudadFiltro = 'Barrancabermeja';
 var idProgramaCiudad = (function() {
@@ -931,7 +737,6 @@ trabsCiudad.forEach(function(t) {
   }
 });
 
-// --- Anadir trabajadores al aforo por cargo ---
 var idProgParaCargo = 1;
 var idCargoFiltro = 2;
 var idProgramaCargo = (function() {
@@ -966,154 +771,54 @@ trabsCargo.forEach(function(t) {
   }
 });
 
+// 7.4 MODIFICACIONES
+db.usuarios.updateOne({ _id: 4 }, { $set: { rolUsuario: 'admin' } });
+db.usuarios.updateOne({ _id: 1 }, { $set: { estadoUsuario: 'inactivo' } });
+db.usuarios.updateOne({ _id: 2 }, { $set: { 'contraseñaUsuario': 'voyARetirar' } });
 
-// ──────────────────────────────────────────────────────────────────────────────
-// 7.4  MODIFICACIONES
-// ──────────────────────────────────────────────────────────────────────────────
+db.capacitaciones.updateOne({ _id: 1 }, { $set: { tema: 'Nuevo enfoque en Trabajo en Alturas', actividad: 'Simulacro avanzado en andamios' } });
+db.programaciones.updateMany({ idCapacitacion: 1 }, { $set: { tema: 'Nuevo enfoque en Trabajo en Alturas' } });
 
-// --- Modificar rol de un usuario ---
-db.usuarios.updateOne(
-  { _id: 4 },
-  { $set: { rolUsuario: 'admin' } }
-);
-
-// --- Modificar estado de un usuario ---
-db.usuarios.updateOne(
-  { _id: 1 },
-  { $set: { estadoUsuario: 'inactivo' } }
-);
-
-// --- Cambiar contraseña de un usuario ---
-db.usuarios.updateOne(
-  { _id: 2 },
-  { $set: { 'contraseñaUsuario': 'voyARetirar' } }
-);
-
-// --- Modificar tema y actividad de una capacitacion ---
-// Tambien se actualiza el tema embebido en programaciones relacionadas
-db.capacitaciones.updateOne(
-  { _id: 1 },
-  { $set: {
-    tema: 'Nuevo enfoque en Trabajo en Alturas',
-    actividad: 'Simulacro avanzado en andamios'
-  }}
-);
-db.programaciones.updateMany(
-  { idCapacitacion: 1 },
-  { $set: { tema: 'Nuevo enfoque en Trabajo en Alturas' } }
-);
-
-// --- Modificar lista de responsables: agregar un responsable a una capacitacion ---
 var capParaResp = db.capacitaciones.findOne({ _id: 16 });
 var yaAsignado = capParaResp.responsables.some(function(r) { return r._id === 16; });
 if (!yaAsignado) {
   var respNuevo = db.responsables.findOne({ _id: 16 });
-  db.capacitaciones.updateOne(
-    { _id: 16 },
-    { $push: { responsables: { _id: respNuevo._id, nombreResponsable: respNuevo.nombreResponsable } } }
-  );
+  db.capacitaciones.updateOne({ _id: 16 }, { $push: { responsables: { _id: respNuevo._id, nombreResponsable: respNuevo.nombreResponsable } } });
   print('Responsable agregado a la capacitacion correctamente');
 } else {
   print('El responsable ya estaba asignado');
 }
 
-// --- Modificar lista de responsables: eliminar un responsable de una capacitacion ---
-db.capacitaciones.updateOne(
-  { _id: 16 },
-  { $pull: { responsables: { _id: 16 } } }
-);
+db.capacitaciones.updateOne({ _id: 16 }, { $pull: { responsables: { _id: 16 } } });
 
-// --- Modificar nombre de un responsable (con cascada a capacitaciones) ---
-db.responsables.updateOne(
-  { _id: 3 },
-  { $set: { nombreResponsable: 'Dayro Castellanos Sanchez' } }
-);
-db.capacitaciones.updateMany(
-  { 'responsables._id': 3 },
-  { $set: { 'responsables.$.nombreResponsable': 'Dayro Castellanos Sanchez' } }
-);
+db.responsables.updateOne({ _id: 3 }, { $set: { nombreResponsable: 'Dayro Castellanos Sanchez' } });
+db.capacitaciones.updateMany({ 'responsables._id': 3 }, { $set: { 'responsables.$.nombreResponsable': 'Dayro Castellanos Sanchez' } });
 
-// --- Modificar estado de una programacion ---
-db.programaciones.updateOne(
-  { _id: 15 },
-  { $set: { estadoProgramacion: 'cancelada' } }
-);
+db.programaciones.updateOne({ _id: 15 }, { $set: { estadoProgramacion: 'cancelada' } });
+db.programaciones.updateOne({ _id: 5 }, { $set: { fechaProgramada: '2026-08-15', horaProgramada: '14:00:00' } });
+db.programaciones.updateOne({ _id: 12 }, { $set: { modalidadProgramada: 'virtual' } });
+db.programaciones.updateOne({ _id: 5 }, { $set: { lugarProgramado: 'Cementerio' } });
 
-// --- Modificar fecha y hora de una programacion ---
-db.programaciones.updateOne(
-  { _id: 5 },
-  { $set: { fechaProgramada: '2026-08-15', horaProgramada: '14:00:00' } }
-);
+db.trabajadores.updateOne({ _id: 6 }, { $set: { empresaDondeTrabaja: 'TGI', nombreTrabajador: 'Carlos Andres Peña Modificado' } });
+db.asistencias.updateMany({ 'trabajador._id': 6 }, { $set: { 'trabajador.nombreTrabajador': 'Carlos Andres Peña Modificado' } });
 
-// --- Cambiar modalidad de una programacion ---
-db.programaciones.updateOne(
-  { _id: 12 },
-  { $set: { modalidadProgramada: 'virtual' } }
-);
-
-// --- Modificar lugar de realizacion de una programacion ---
-db.programaciones.updateOne(
-  { _id: 5 },
-  { $set: { lugarProgramado: 'Cementerio' } }
-);
-
-// --- Modificar informacion basica de un trabajador ---
-// Tambien se actualiza el nombre embebido en asistencias
-db.trabajadores.updateOne(
-  { _id: 6 },
-  { $set: { empresaDondeTrabaja: 'TGI', nombreTrabajador: 'Carlos Andres Peña Modificado' } }
-);
-db.asistencias.updateMany(
-  { 'trabajador._id': 6 },
-  { $set: { 'trabajador.nombreTrabajador': 'Carlos Andres Peña Modificado' } }
-);
-
-// --- Modificar cargo de un trabajador (con actualizacion de documento embebido) ---
 var nuevoCargo = db.cargos.findOne({ _id: 4 });
 var trabParaCargo = db.trabajadores.findOne({ documentoTrabajador: '1045678901' });
-db.trabajadores.updateOne(
-  { documentoTrabajador: '1045678901' },
-  { $set: { cargo: { _id: nuevoCargo._id, nombreCargo: nuevoCargo.nombreCargo } } }
-);
+db.trabajadores.updateOne({ documentoTrabajador: '1045678901' }, { $set: { cargo: { _id: nuevoCargo._id, nombreCargo: nuevoCargo.nombreCargo } } });
 if (trabParaCargo) {
-  db.asistencias.updateMany(
-    { 'trabajador._id': trabParaCargo._id },
-    { $set: { 'trabajador.idCargo': 4 } }
-  );
+  db.asistencias.updateMany({ 'trabajador._id': trabParaCargo._id }, { $set: { 'trabajador.idCargo': 4 } });
 }
 
-// --- Modificar centro de trabajo de un trabajador (con actualizacion de documento embebido) ---
 var nuevoCentro = db.centrosTrabajo.findOne({ _id: 2 });
 var trabParaCentro = db.trabajadores.findOne({ documentoTrabajador: '1045678901' });
-db.trabajadores.updateOne(
-  { documentoTrabajador: '1045678901' },
-  { $set: {
-    centroTrabajo: {
-      _id: nuevoCentro._id,
-      nombreCentroTrabajo: nuevoCentro.nombreCentroTrabajo,
-      ciudad: nuevoCentro.ciudad
-    }
-  }}
-);
+db.trabajadores.updateOne({ documentoTrabajador: '1045678901' }, { $set: { centroTrabajo: { _id: nuevoCentro._id, nombreCentroTrabajo: nuevoCentro.nombreCentroTrabajo, ciudad: nuevoCentro.ciudad } } });
 if (trabParaCentro) {
-  db.asistencias.updateMany(
-    { 'trabajador._id': trabParaCentro._id },
-    { $set: { 'trabajador.idCentroTrabajo': 2, 'trabajador.ciudad': nuevoCentro.ciudad } }
-  );
+  db.asistencias.updateMany({ 'trabajador._id': trabParaCentro._id }, { $set: { 'trabajador.idCentroTrabajo': 2, 'trabajador.ciudad': nuevoCentro.ciudad } });
 }
 
-// --- Registrar asistencia de un trabajador a una programacion ---
 var asistParaRegistrar = db.asistencias.findOne({ idProgramacion: 53, 'trabajador._id': 5 });
 if (asistParaRegistrar && !asistParaRegistrar.asistio) {
-  db.asistencias.updateOne(
-    { _id: asistParaRegistrar._id },
-    { $set: {
-      asistio: true,
-      fechaDeAsistencia: new Date('2026-04-23 09:15:00'),
-      evaluacionCapacitador: 5,
-      comentariosCapacitacion: 'Muy buen servicio'
-    }}
-  );
+  db.asistencias.updateOne({ _id: asistParaRegistrar._id }, { $set: { asistio: true, fechaDeAsistencia: new Date('2026-04-23 09:15:00'), evaluacionCapacitador: 5, comentariosCapacitacion: 'Muy buen servicio' } });
   print('Fue registrada la asistencia');
 } else if (asistParaRegistrar && asistParaRegistrar.asistio) {
   print('Esta asistencia ya estaba registrada');
@@ -1121,87 +826,26 @@ if (asistParaRegistrar && !asistParaRegistrar.asistio) {
   print('El trabajador no fue citado a esta programacion');
 }
 
-// --- Registrar comentarios y evaluacion de un trabajador a una programacion ---
-db.asistencias.updateOne(
-  { idProgramacion: 2, 'trabajador._id': 1 },
-  { $set: { evaluacionCapacitador: 5, comentariosCapacitacion: 'Muy buen servicio' } }
-);
+db.asistencias.updateOne({ idProgramacion: 2, 'trabajador._id': 1 }, { $set: { evaluacionCapacitador: 5, comentariosCapacitacion: 'Muy buen servicio' } });
+db.capacitaciones.updateOne({ _id: 1 }, { $inc: { accidentesAsociados: 1 } });
+db.programas.updateOne({ _id: 1 }, { $set: { fasePHVA: 'verificar' } });
+db.capacitaciones.updateMany({ 'programa._id': 1 }, { $set: { 'programa.fasePHVA': 'verificar' } });
 
-// --- Registrar accidente de trabajo asociado a una capacitacion ---
-db.capacitaciones.updateOne(
-  { _id: 1 },
-  { $inc: { accidentesAsociados: 1 } }
-);
+// 7.5 ELIMINACION
+db.asistencias.deleteOne({ idProgramacion: 45, 'trabajador._id': 3, asistio: false });
 
-// --- Modificar estado del ciclo PHVA de un programa (con cascada a capacitaciones) ---
-db.programas.updateOne(
-  { _id: 1 },
-  { $set: { fasePHVA: 'verificar' } }
-);
-db.capacitaciones.updateMany(
-  { 'programa._id': 1 },
-  { $set: { 'programa.fasePHVA': 'verificar' } }
-);
-
-
-// ──────────────────────────────────────────────────────────────────────────────
-// 7.5  ELIMINACION
-// ──────────────────────────────────────────────────────────────────────────────
-
-// --- Eliminar asistencia no realizada de un trabajador en una programacion ---
-db.asistencias.deleteOne({
-  idProgramacion: 45,
-  'trabajador._id': 3,
-  asistio: false
-});
-
-
-// ──────────────────────────────────────────────────────────────────────────────
-// 7.6  CALCULOS Y AGREGACIONES AVANZADAS
-// ──────────────────────────────────────────────────────────────────────────────
-
-// --- Porcentaje de cumplimiento de asistencia por rango de fecha en un programa ---
-// Pipeline de agregacion con $lookup para cruzar asistencias con programaciones
+// 7.6 CALCULOS Y AGREGACIONES AVANZADAS
 db.asistencias.aggregate([
   { $match: { idPrograma: 7 } },
-  { $lookup: {
-    from: 'programaciones',
-    localField: 'idProgramacion',
-    foreignField: '_id',
-    as: '_prgm'
-  }},
+  { $lookup: { from: 'programaciones', localField: 'idProgramacion', foreignField: '_id', as: '_prgm' } },
   { $unwind: '$_prgm' },
-  { $match: {
-    '_prgm.fechaProgramada': { $gte: '2026-01-01', $lte: '2026-12-31' }
-  }},
-  { $group: {
-    _id: '$idPrograma',
-    numAsistentes: { $sum: { $cond: ['$asistio', 1, 0] } },
-    asistenciaProgramada: { $sum: 1 }
-  }},
-  { $lookup: {
-    from: 'programas',
-    localField: '_id',
-    foreignField: '_id',
-    as: 'p'
-  }},
+  { $match: { '_prgm.fechaProgramada': { $gte: '2026-01-01', $lte: '2026-12-31' } } },
+  { $group: { _id: '$idPrograma', numAsistentes: { $sum: { $cond: ['$asistio', 1, 0] } }, asistenciaProgramada: { $sum: 1 } } },
+  { $lookup: { from: 'programas', localField: '_id', foreignField: '_id', as: 'p' } },
   { $unwind: '$p' },
-  { $project: {
-    _id: 0,
-    nombrePrograma: '$p.nombrePrograma',
-    numAsistentes: 1,
-    asistenciaProgramada: 1,
-    porcentajeCumplimiento: {
-      $cond: [
-        { $eq: ['$asistenciaProgramada', 0] }, 0,
-        { $round: [{ $multiply: [{ $divide: ['$numAsistentes', '$asistenciaProgramada'] }, 100] }, 2] }
-      ]
-    }
-  }}
+  { $project: { _id: 0, nombrePrograma: '$p.nombrePrograma', numAsistentes: 1, asistenciaProgramada: 1, porcentajeCumplimiento: { $cond: [ { $eq: ['$asistenciaProgramada', 0] }, 0, { $round: [{ $multiply: [{ $divide: ['$numAsistentes', '$asistenciaProgramada'] }, 100] }, 2] } ] } } }
 ]);
 
-// --- Estadisticas por trimestre para un año dado ---
-// Se calculan: total programadas, total realizadas, porcentaje de cumplimiento y accidentes
 var anio = 2026;
 for (var trim = 1; trim <= 4; trim++) {
   var mesInicio = (trim - 1) * 3 + 1;
@@ -1210,17 +854,12 @@ for (var trim = 1; trim <= 4; trim++) {
   var ultimoDia = new Date(anio, mesFin, 0).getDate();
   var fin = anio + '-' + (mesFin < 10 ? '0' : '') + mesFin + '-' + (ultimoDia < 10 ? '0' : '') + ultimoDia;
 
-  var progs = db.programaciones.find({
-    fechaProgramada: { $gte: inicio, $lte: fin }
-  }).toArray();
-
+  var progs = db.programaciones.find({ fechaProgramada: { $gte: inicio, $lte: fin } }).toArray();
   var totalProgramadas = progs.length;
   var totalRealizadas = progs.filter(function(p) { return p.estadoProgramacion === 'realizada'; }).length;
 
   var idsCap = [];
-  progs.forEach(function(p) {
-    if (idsCap.indexOf(p.idCapacitacion) === -1) idsCap.push(p.idCapacitacion);
-  });
+  progs.forEach(function(p) { if (idsCap.indexOf(p.idCapacitacion) === -1) idsCap.push(p.idCapacitacion); });
 
   var totalAT = 0;
   if (idsCap.length > 0) {
@@ -1228,9 +867,7 @@ for (var trim = 1; trim <= 4; trim++) {
     caps.forEach(function(c) { totalAT += (c.accidentesAsociados || 0); });
   }
 
-  var pctCumplimiento = totalProgramadas > 0
-    ? Math.round((totalRealizadas / totalProgramadas) * 10000) / 100
-    : 0;
+  var pctCumplimiento = totalProgramadas > 0 ? Math.round((totalRealizadas / totalProgramadas) * 10000) / 100 : 0;
 
   print('--- Trimestre ' + trim + ' de ' + anio + ' ---');
   print('  Total programadas: ' + totalProgramadas);
@@ -1238,9 +875,3 @@ for (var trim = 1; trim <= 4; trim++) {
   print('  Porcentaje cumplimiento: ' + pctCumplimiento + '%');
   print('  Accidentes de trabajo asociados: ' + totalAT);
 }
-
-
-// ══════════════════════════════════════════════════════════════════════════════
-// FIN DEL ARCHIVO DE COMANDOS MONGOSH
-// Base de datos: sst_tgi_cli
-// ══════════════════════════════════════════════════════════════════════════════
