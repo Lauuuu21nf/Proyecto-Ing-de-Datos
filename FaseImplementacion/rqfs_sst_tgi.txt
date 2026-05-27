@@ -3,10 +3,10 @@
 // Base de datos MongoDB (mongosh)
 // ==============================================================================
 
-// 1. CONFIGURACION DE LA BASE DE DATOS
-use sst_tgi_cli;
+// 1. CONFIGURACION DE LA BASE DE DATOS (Usando sintaxis pura de JS)
+db = db.getSiblingDB('sst_tgi_cli');
 db.dropDatabase();
-use sst_tgi_cli;
+db = db.getSiblingDB('sst_tgi_cli');
 
 // 2. INSERCION DE COLECCIONES BASE
 
