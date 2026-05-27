@@ -11,3 +11,5 @@ Repositorio grupal del grupo 02 de Ingenieria de Datos, 2026-1
 
 > "Es de lo mejor"
 > - _Cliente satisfecho_
+
+Agradecimientos a Kris R. y a Claude.
